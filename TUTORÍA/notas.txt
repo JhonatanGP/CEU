@@ -1,0 +1,17 @@
+Belén Tudo: btudo@ceu.es 
+ctrl may f: formatear
+ctrl s : guardar
+Indalecio García. igarciam@ceu.es https://linkedin.com/in/indaleciogarciamateos/
+
+BASE DE DATOS 18/09
+TIPOS DE FICHEROS: 
+.HTML .CLASS  .DIA  .CSS  .JS  .JAVA  .JASON  .XML  
+.SQL  .PHP  .JRE  . JSP  .PY  .ISO  .BAT  .VDI  .MD(MARKDOWN)
+todo lo anterior se usa para programar.
+
+GIT: GITLAB-README.MD 
+
+TEXTO PLANO SON CARACTERES
+2^8
+
+Rafael Madrigal: rmadrigal@ceu.es

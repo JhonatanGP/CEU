@@ -1,0 +1,31 @@
+body {
+  background-image: url("fondo.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.tabla1 {
+  margin: 0 auto;
+  margin-top: 250px;
+}
+
+tr {
+  height: 100%;
+}
+
+td {
+  background-color: white;
+  padding: 10px;
+}
+img {
+  width: 100px;
+}
+.tabla2 {
+  margin: 0 auto;
+}
+
+th {
+  background-color: #94cc96;
+  color: rgb(11, 63, 63);
+}

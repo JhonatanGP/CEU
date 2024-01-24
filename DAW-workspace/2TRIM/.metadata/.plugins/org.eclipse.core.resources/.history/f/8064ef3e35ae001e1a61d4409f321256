@@ -1,0 +1,11 @@
+package ej18;
+
+public class Alumno {
+	
+	private Integer dni;
+	private String nombre;
+	private Integer edad;
+	private Double nota;
+	
+
+}

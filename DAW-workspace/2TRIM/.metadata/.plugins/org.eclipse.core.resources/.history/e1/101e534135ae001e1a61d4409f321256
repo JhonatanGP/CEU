@@ -1,0 +1,17 @@
+package ej18;
+
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		Alumno alumno = new Alumno();
+		
+		System.out.println("Dime el dni");
+		String dni = scanner.nextLine();
+		
+	}
+
+}

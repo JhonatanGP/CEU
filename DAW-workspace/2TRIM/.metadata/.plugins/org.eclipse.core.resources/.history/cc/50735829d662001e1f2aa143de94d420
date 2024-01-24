@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public class Ejercicio14b {
+
+	public static void main(String[] args) {
+		Scanner scanner= new scanner.nextInt();
+		System.out.println("Introduce un número por pantalla");
+		Integer numero = scanner.nexInt();
+		
+		System.out.println("**** LA TABLA DEL NÚMERO " + numero + "****");
+		for (int fila =0; fila<=10; fila++)
+		{
+			System.out.println(numero + " x " + fila + " = " + fila*numero);
+		}
+	}
+
+}

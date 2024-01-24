@@ -1,0 +1,18 @@
+INDEX VERSION 1.134+C:\Users\TECH\DAW-workspace\1TRIM\.metadata\.plugins\org.eclipse.jdt.core
+2354538127.index
+3668836219.index
+1725040058.index
+534492796.index
+2654697412.index
+3580801660.index
+1865797976.index
+2165004686.index
+108505478.index
+4062222716.index
+2622025289.index
+3828635753.index
+2233969130.index
+2685200931.index
+358920302.index
+2601667710.index
+2407433366.index

@@ -1,0 +1,10 @@
+package ej18;
+
+public class Alumno {
+
+	public static void main(String[] args) {
+
+		private String Nombre
+	}
+
+}
