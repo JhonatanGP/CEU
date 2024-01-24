@@ -38,7 +38,7 @@ public class Semaforo {
 			this.parpadeando = parpadeando;
 			
 		}
-		OLL
+		JUAN
 		
 
 }
