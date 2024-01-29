@@ -10,3 +10,13 @@ SELECT COUNT (*) FROM FUTBOLISTAS WHERE POSICION NOT LIKE 'PORTERO' AND SUBSTR (
 decimales con alias "Salario medio" de los futbolistas agrupado por el equipo en el que juegan.*/
 SELECT COUNT (*), ID_EQUIPO "NUMERO DE FUTBOLISTAS" FROM FUTBOLISTAS GROUP BY ID_EQUIPO;
 SELECT ROUND (AVG(SALARIO),2) "SALARIO MEDIO" FROM FUTBOLISTAS GROUP BY ID_EQUIPO;
+--1 corregido
+select * from futbolistas;
+select min(salario) from futbolistas;
+select nombre 
+    from futbolistas 
+    where to_char(fecha_nacimiento,'yyyy') between 1985 and 1990
+        and salario = (
+            select min(salario) 
+                from futbolistas 
+                where to_char(fecha_nacimiento,'yyyy') between 1985 and 1990);
