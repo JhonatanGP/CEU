@@ -1,124 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tema 9 html</title>
+    <title>Tema 9_1 html</title>
     <link rel="icon" type="image/x-icon" href="imagenes/favicon.ico">
+    <style>
+        table{
+            border: 1px solid black;
+            border-radius: 10px;
+
+        }
+        th,
+        td{
+            border: 1px solid black;
+            border-collapse:separate;
+            border-style:double;
+            border-color: blue;
+            font-size: 20px;
+        }
+        th,
+        td {
+            background-color: #96d4d4;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Uso de table -->
+    <!-- USO DE THEAD, TBODY Y TFOOT -->
+    <H1>ELEMENTOS THEAD, TBODY Y TFOOT</H1>
     <table>
-        <!-- Primera Fila ponemos los titulos con directiva <th> -->
-        <tr>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Edad</th>
-            <th>Profesión</th>
-        </tr> 
-        <!--Datos fila de Antonio  -->
-        <tr>
-        <td>Antonio</td>
-        <td>antoniog@gmail.com</td>
-        <td>26</td>
-        <td>Informático</td>
-        </tr>
-        <!--Datos fila de Andre  -->
-        <tr>
-            <td>Andrea</td>
-            <td>andreabc@gmail.com</td>
-            <td>29</td>
-            <td>Economista</td>
-        </tr>
-        <!--Datos fila de Pilar  -->
-        <tr>
-            <td>Pilar</td>
-            <td>pilarbc@gmail.com</td>
-            <td>32</td>
-            <td>Publicista</td>
-        </tr>
+        <thead>
+            <tr>
+                <th>DIA</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>300</td>
+            </tr>
+            
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Suma</td>
+                <td>400</td>
+            </tr>
+        </tfoot>
     </table>
-    <hr>
-        <!-- Uso de caption en table -->
-    <table>
-        <caption>PRESUPUESTO 1º TRIMESTRE</caption>
-        <tr>
-            <th>MES</th>
-            <th>PRESUPUESTO</th>
-        </tr>
-        <tr>
-            <td>Enero</td>
-            <td>2000€</td>
-        </tr>
-        <tr>
-            <td>Febrero</td>
-            <td>3000€</td>
-        </tr>
-        <tr>
-            <td>Marzo</td>
-            <td>5000€</td>
-        </tr>
-    </table>
-    <hr>
-    <table>
-        <caption style="text-align: center;">PRESUPUESTO 2º TRIMESTRE</caption>
-        <tr>
-            <th>MES</th>
-            <th>PRESUPUESTO</th>
-        </tr>
-        <tr>
-            <td>Abril</td>
-            <td>4000€</td>
-        </tr>
-        <tr>
-            <td>Mayo</td>
-            <td>5000€</td>
-        </tr>
-        <tr>
-            <td>Junio</td>
-            <td>6000€</td>
-        </tr>
-    </table>
-    <hr>
-    <table>
-        <caption style="caption-side: bottom;">PRESUPUESTO 3º TRIMESTRE</caption>
-        <tr>
-            <th>MES</th>
-            <th>PRESUPUESTO</th>
-        </tr>
-        <tr>
-            <td>Julio</td>
-            <td>8000€</td>
-        </tr>
-        <tr>
-            <td>Agosto</td>
-            <td>9000€</td>
-        </tr>
-        <tr>
-            <td>Septiembre</td>
-            <td>10000€</td>
-        </tr>
-    </table>
-    <hr>
-    <!-- USO DE <COLGROUP> EN TABLE -->
-    <table>
-        <colgroup>
-            <col style="background-color: cyan ;">
-            <col style="background-color: yellow;">
-            <col style="background-color: red;">
-        </colgroup>
-        <tr>
-            <th>ISBN</th>
-            <th>TÍTULO</th>
-            <th>PRECIO</th>
-        </tr>
-        <tr>
-            <TD>3476896</TD>
-            <TD>Aprende HTML desde cero</TD>
-            <TD>53€</TD>
-        </tr>
-    </table>
-    <hr>
+    
     
 
 </body>
