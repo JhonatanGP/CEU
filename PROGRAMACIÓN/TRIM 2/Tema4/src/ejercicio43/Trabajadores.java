@@ -1,6 +1,10 @@
 package ejercicio43;
 
-public class Trabajadores {
+public abstract class Trabajadores {
+	protected static final Integer GUIONISTAS = 50000; // ES PROTECTED PORQUE QUEREMOS QEU LO VEA LA CLASE HIJA Y NO EL RESTO
+	protected static final Integer DIRECTORES = 200000;
+	protected static final Integer ACTORES = 100000;
+	//Atributos creados
 	private String nombre;
 	private Integer anoNacimineto;
 	private String nacionalidad;
@@ -28,6 +32,6 @@ public class Trabajadores {
 		this.nacionalidad = nacionalidad;
 	}
 	
-	
+	public abstract Integer getSueldo();
 
 }
