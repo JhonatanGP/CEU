@@ -21,8 +21,16 @@ public class App {
 			
 			nacimiento = LocalDate.of(ano, mes, dia);
 			
-
-		}
+			if(dia >= 1 && dia <= 31 && mes >= 1 && mes <= 12 && ano<= hoy.getYear()) {
+				correcto = true;
+			}
+			
+			else System.out.println("¿Fecha correcta?");
+		}while(!correcto);
+		
+		System.out.println("¿Naciste en un año bisiesto? " + nacimiento.isLeapYear());
+		
+		
 		
 	}
 
