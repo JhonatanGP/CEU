@@ -240,8 +240,10 @@ select add_months(sysdate,6) from dual;
  -- 3. Muestra el número de meses que hay entre hoy y la fecha de nacimiento de todos los futbolistas.
 select floor(months_between(sysdate, fecha_nacimiento)) "Meses entre hoy y nacimiento" from futbolistas;
  -- 4. ¿Cuál es el último día de este mes? Muéstralo.
+select last_day(sysdate) from dual;
 select last_day(sysdate) "Último día del mes" from dual;
  -- 5. ¿Qué día será el próximo lunes? Ponlo por pantalla mediante una petición.
+select next_day(sysdate, 'lunes') from dual;
 select next_day(sysdate, 'lunes') "Siguiente lunes" from dual;
  -- 6. Muestra el día que era hace 4 días. ¿Y el día de mañana?
 select sysdate - 4 "Hace 4 días", sysdate + 1 "Mañana" from dual;
@@ -263,11 +265,15 @@ select to number ('1000.45€','9999.99L') from dual;
 --3
 select to number ('-$1000.45','S$9999.99') from dual;
 --4
+select  to_char(sysdate,'') from dual;
+select  to_char(sysdate,'dd/mm/yyyy') from dual;
+
 select  to_char(sysdate,'dd/mm/yyyy'),
         sysdate,
         to_char(sysdate,'dd-mon-yyyy'),
         to_char(sysdate,'dd') || ' de ' || replace(to_char(sysdate,'month'),' ','') || ' de ' || to_char(sysdate,'yyyy')
             from dual;
+
 --5
 select to_number(substr(ID,2,length(ID)-1),'99999') from futbolistas;
 --6
@@ -307,4 +313,4 @@ UPDATE FUTBOLISTAS SET ALTURA = 162, PESO = 60 WHERE NOMBRE LIKE 'ENRIQUE';
 
 select decode(posicion, !'PORTERO' and '%EZ', count(*))from futbolistas;
 
-
+se
