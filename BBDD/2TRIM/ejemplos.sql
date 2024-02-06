@@ -33,7 +33,7 @@ select
     posicion  "posición",
     salario "salario actual",
     id_equipo "identificador equipo actual"
-from futbolistas;
+                                            from futbolistas;
 select * from equipos;
 select * from futbolistas;
 select * from equipos, futbolistas where id_equipo = equipo.id;
@@ -44,19 +44,15 @@ select id from equipos e;
 select e.id from equipos; --IMPORTANTE
 select e.id from equipos e;
 --EJ 3
-select F.apellidos
-    from futbolistas 
-    where posicion = 'DEFENSA';
-    
-select e.id, f.nombre
-    from equipos e,futbolistas f;
-/*--OBLIGATORIO
-select COLUMNAS from TABLAS.
---OPCIONALES
-select COLUMNAS 
-    FROM TABLAS
-    WHERE CONDICIONES 
-    ORDER BY columnas;
+--Devuelve los apellidos de los futbolistas que su posición sea DEFENSA. Aplica un alias a apellidos para que se muestre “Futbolista” y asigna el 
+--alias F a la tabla futbolistas.
+SELECT APELLIDOS FROM FUTBOLISTAS WHERE POSICION = 'DEFENSA'; 
+SELECT APELLIDOS "Futbolista" FROM FUTBOLISTAS WHERE POSICION = 'DEFENSA'; 
+SELECT F.APELLIDOS "Futbolista" FROM FUTBOLISTAS F WHERE POSICION = 'DEFENSA';
+
+select e.id, f.nombre from equipos e,futbolistas f;
+/*--OBLIGATORIO select COLUMNAS from TABLAS.
+select COLUMNAS     FROM TABLAS    WHERE CONDICIONES     ORDER BY columnas;
 */
 select nombre, apellidos, salario from futbolistas order by salario;
 select nombre, apellidos, salario from futbolistas order by salario asc; 
@@ -67,8 +63,10 @@ select nombre, apellidos, salario from futbolistas order by 2 desc, 3 desc;
 select nombre, fecha_nacimiento from futbolistas;
 select nombre, fecha_nacimiento from futbolistas order by fecha_nacimiento desc;
 --Ej 4
+--Devuelve los apellidos de los futbolistas que su posición sea DEFENSA ordenador de la Z a la A.
 select apellidos from futbolistas where posicion = 'DEFENSA' order by apellidos desc;
 --Ej 5
+--Devuelve todos los datos de futbolistas ordenados primero por posición y luego por apellidos.
 select * from futbolistas order by posicion asc,  apellidos asc;
 /*
 select (4+4)*3 || 'a' from dual;
