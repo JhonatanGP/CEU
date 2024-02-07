@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 9_4 html</title>
+    <link rel="icon" type="image/x-icon" href="imagenes/favicon.ico">
+    <style>
+        td {
+            border-bottom: 1px solid rgb(221, 221, 221);
+        }
+
+        /*Para resaltar cuando pasemos el ratón: hover*/
+        tr:hover {
+            background-color: #D6EEEE;
+        }
+
+        th:hover {
+            background-color: #DD0000;
+        }
+
+        td:hover {
+            background-color: #0000FF;
+        }
+    </style>
+</head>
+
+<body>
+    <table style="width: 100%;">
+        <tr>
+            <th>NOMBRE</th>
+            <th>APELLIDO</th>
+            <th>PAGADO</th>
+        </tr>
+        <tr>
+            <td>PEDRO</td>
+            <td>GARCÍA</td>
+            <td>200 €</td>
+        </tr>
+        <tr>
+            <td>SILVIA</td>
+            <td>HURTADO</td>
+            <td>150€</td>
+        </tr>
+        <tr>
+            <td>LAURA</td>
+            <td>NOESTA</td>
+            <td>450€</td>
+        </tr>
+        <tr>
+            <td>ANTONIO</td>
+            <td>PAVÓN</td>
+            <td>250€</td>
+        </tr>
+    </table>
+    <br><br>
+    <h2 style="text-align: center;">DIVISION POR BORDES</h2>
+    <table style="width: 100%;">
+        <colgroup>
+            <col span="2" style="width: 120px; background-color: #00FF00;">
+        </colgroup>
+        <tr>
+            <th>NOMBRE</th>
+            <th>APELLIDO</th>
+            <th>PAGADO</th>
+        </tr>
+        <tr>
+            <td>PEDRO</td>
+            <td>GARCÍA</td>
+            <td>200 €</td>
+        </tr>
+        <tr>
+            <td>SILVIA</td>
+            <td>HURTADO</td>
+            <td>150€</td>
+        </tr>
+        <tr>
+            <td>LAURA</td>
+            <td>NOESTA</td>
+            <td>450€</td>
+        </tr>
+        <tr>
+            <td>ANTONIO</td>
+            <td>PAVÓN</td>
+            <td>250€</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

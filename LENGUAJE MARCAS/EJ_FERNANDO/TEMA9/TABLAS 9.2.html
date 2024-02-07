@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 9_1 html</title>
+    <link rel="icon" type="image/x-icon" href="imagenes/favicon.ico">
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid gray;
+        }
+        th{
+            text-align: left;
+        }
+        th,
+        td {
+            padding: 15px;
+        }
+    </style> 
+</head>
+<body>
+    <!-- USO DE WIDTH EN TABLA -->
+    <table style="width: 100%;">
+        <tr>
+            <!-- USO DE WIDTH EN COLUMNA: CAMBIANDO EL ANCHO DE UNA COLUMNA -->
+            <th style="width: 25%;">Producto</th>
+            <th>Fecha</th>
+            <th>Cantidad</th>
+        </tr>
+        <tr>
+            <td>Pantalla LG 300h</td>
+            <td>20/01/2024</td>
+            <td>25</td>
+        </tr>
+        <br><br>
+        <!-- USO DE HEIGTH EN FILA: CAMBIANDO EL ALTO DE UNA FILA -->
+        <tr style="height: 200px;">
+            <td>Teclado Logitech 1je3p</td>
+            <td>20/01/2024</td>
+            <td>45</td>
+        </tr>
+        <tr>
+            <td>Alfombrilla solar mac 1g</td>
+            <td>20/01/2024</td>
+            <td>50</td>
+        </tr>
+        <br><br>
+        <!-- TABLA CON CABECERAS VERTICALES, EN FILAS -->
+        <h2>CABECERAS VERTICALES</h2>
+        <table style="width: 100%;">
+            <caption>LISTADO DE ALUMNOS 1º DAW</caption>
+            <tr>
+                <th style="width: 10%;">Nombre</th>
+                <td>Pablo</td>
+                <td>Eva</td>
+                <td>María</td>
+            </tr>
+            <tr>
+                <th>Apellidos</th>
+                <td>García</td>
+                <td>Valenzuela</td>
+                <td>Gómez</td>
+            </tr>
+            <tr>
+                <th>Edad</th>
+                <td>24</td>
+                <td>35</td>
+                <td>31</td>
+            </tr>
+        </table>
+        <br><br>
+        <!-- TABLA CON CABECERAS EN COLUMNAS Y EXPANDIDAS -->
+        <table style="width: 100%;">
+            <caption>LISTADO DE ALUMNOS 1º DAW</caption>
+            <tr>
+                <th colspan="2" style="text-align: center;">Nombre</th>
+                <th style="text-align: center;">Edad</th>
+            </tr>
+            <tr>
+                <td>Carlos</td>
+                <td>Pedraza</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>Rocío</td>
+                <td>Castro</td>
+                <td>31</td>
+            </tr>
+        </table>
+        <br><br>
+        <!-- TABLA CON CABECERAS EN COLUMNAS Y EXPANDIDAS, padding -->
+        <table style="width: 100%;">
+            <caption>LISTADO DE ALUMNOS 1º DAW</caption>
+            <tr>
+                <th colspan="2" style="text-align: center;">Nombre</th>
+                <th style="text-align: center;">Edad</th>
+            </tr>
+            <tr>
+                <td style="padding: 5px;">Carlos</td>
+                <td style="padding: 5px;">Pedraza</td>
+                <td style="padding: 5px;">25</td>
+            </tr>
+            <tr>
+                <td style="padding: 5px;">Rocío</td>
+                <td style="padding: 5px;">Castro</td>
+                <td style="padding: 5px;">31</td>
+            </tr>
+        </table>
+        <br><br>
+        <table style="width: 100%;">
+            <caption>PROPIEDADES PADDING</caption>
+            <tr>
+                <th style="text-align: center; width: 20%;">PROPIEDADES</th>
+                <th style="text-align: center;">NOMBRE</th>
+            </tr>
+            <tr>
+                <th style="text-align: center;">PADDING-TOP</th>
+                <td style="padding-top: 50px;">JUAN CARLOS</td>
+            </tr>
+            <tr>
+                <th style="text-align: center;">PADDING-BOTTOM</th>
+                <td style="padding-bottom: 50px;">JUAN CARLOS</td>
+            </tr>
+            <tr>
+                <th style="text-align: center;">PADDING-LEFT</th>
+                <td style="padding-left: 50px;">JUAN CARLOS</td>
+            </tr>
+            <tr>
+                <th style="text-align: center;">PADDING-RIGHT</th>
+                <td style="text-align: right;padding-right: 50px;">JUAN CARLOS</td>
+            </tr>
+            
+        </table>
+        <br><br>
+        <!-- Igual pero el stylo de tabla diferente -->
+        <table style="width: 100%;border-spacing: 20px;">
+            <caption>PROPIEDADES PADDING</caption>
+            <tr>
+                <th style="text-align: center; width: 20%;">PROPIEDADES</th>
+                <th style="text-align: center;">NOMBRE</th>
+            </tr>
+            <tr>
+                <th style="text-align: center;">PADDING-TOP</th>
+                <td style="padding-top: 50px;">JUAN CARLOS</td>
+            </tr>
+            <tr>
+                <th style="text-align: center;">PADDING-BOTTOM</th>
+                <td style="padding-bottom: 50px;">JUAN CARLOS</td>
+            </tr>
+            <tr>
+                <th style="text-align: center;">PADDING-LEFT</th>
+                <td style="padding-left: 50px;">JUAN CARLOS</td>
+            </tr>
+            <tr>
+                <th style="text-align: center;">PADDING-RIGHT</th>
+                <td style="text-align: right;padding-right: 50px;">JUAN CARLOS</td>
+            </tr>
+            
+        </table>
+        <br><br>
+                                        <!-- AMPLIACIÓN 2 -->
+        <!-- TABLA CON CABECERAS EN COLUMNAS Y EXPANDIDAS -->
+        <table style="width: 100%;">
+            <caption>LISTADO DE TRABAJADORES</caption>
+            <tr>
+                <th colspan="2" style="text-align: center;">DATOS IDENTIFICATIVOS</th>
+                <th rowspan="2" style="text-align: center;">Edad</th>
+            </tr>
+            <tr>
+                <th style="text-align: center;">NOMBRE</th>
+                <th style="text-align: center;">APELLIDOS</th>
+            </tr>
+            <tr>
+                <td style="padding: 5px;">Carlos</td>
+                <td style="padding: 5px;">Pedraza</td>
+                <td style="padding: 5px;">25</td>
+            </tr>
+            <tr>
+                <td style="padding: 5px;">Rocío</td>
+                <td style="padding: 5px;">Castro</td>
+                <td style="padding: 5px;">31</td>
+            </tr>
+        </table>
+        <br><br>
+
+
+
+    </table>
+</body>
+</html>
+
+
+
+
+
+
+
+

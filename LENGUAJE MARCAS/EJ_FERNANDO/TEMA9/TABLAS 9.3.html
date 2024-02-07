@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 9_3 html</title>
+    <link rel="icon" type="image/x-icon" href="imagenes/favicon.ico">
+    <style>
+        table{
+           /* border-collapse: collapse;*/
+            width: 100%;
+        }
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even){
+            background-color: #D6EEEE;
+        }
+        tr:nth-child(odd){
+            background-color: #0e6130;
+        }
+        td:nth-child(even), /*Para cambiar en amarillo la fila 1 y 3, tendríamos que cambiar "even" a “odd”*/
+        th:nth-child(odd){ /*Para cambiar en amarillo la columna 1 y 3, tendríamos que cambiar "odd" a "even"*/
+            background-color: #0fbdbd; /*cambio color apellidos*/
+        } 
+    </style>
+</head>
+<body>
+    <table>
+        <tr style="background-color: #adc747;"> <!-- para cambiar el encabezado -->
+            <th>NOMBRE</th>
+            <th>APELLIDO</th>
+            <th>PAGADO</th>
+        </tr>
+        <tr>
+            <td>PEDRO</td>
+            <td>GARCÍA</td>
+            <td>200 €</td>
+        </tr>
+        <tr>
+            <td>SILVIA</td>
+            <td>HURTADO</td>
+            <td>150€</td>
+        </tr>
+        <tr>
+            <td>LAURA</td>
+            <td>NOESTA</td>
+            <td>450€</td>
+        </tr>
+        <tr>
+            <td>ANTONIO</td>
+            <td>PAVÓN</td>
+            <td>250€</td>
+        </tr>
+    </table>
+    
+</body>
+</html>
