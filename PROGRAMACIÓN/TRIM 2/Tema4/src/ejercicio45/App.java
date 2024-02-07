@@ -1,6 +1,9 @@
 package ejercicio45;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class App {
@@ -26,12 +29,26 @@ public class App {
 			}
 			
 			else System.out.println("¿Fecha correcta?");
+			
 		}while(!correcto);
 		
 		System.out.println("¿Naciste en un año bisiesto? " + nacimiento.isLeapYear());
+		System.out.println("Naciste un " + nacimiento.getDayOfWeek());
 		
+		Period periodo = nacimiento.until(hoy);
+		System.out.println("Tienes " + periodo.getYears() + " años");
 		
+		LocalDate muerte = nacimiento.plusYears(100);
+		periodo = hoy.until(muerte);
+		System.out.println("Te quedan: " + periodo.getYears() + " años" + periodo.getMonths()+ " meses"+ periodo.getDays()+ " dias");
 		
+		LocalTime hora = LocalTime.now();
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm:ss");
+		System.out.println("Hora actual: " + formato.format(hora));
+		
+		scanner.close();
+		
+			
 	}
 
 }
