@@ -1,17 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Sistema de picaje" company="" webLink="http://" view-date="2024-01-29" view-index="0" gantt-divider-location="351" resource-divider-location="300" version="3.2.3247" locale="es_ES">
+<?xml version="1.0" encoding="UTF-8"?><project name="Sistema de picaje" company="" webLink="http://" view-date="2024-02-19" view-index="0" gantt-divider-location="351" resource-divider-location="300" version="3.2.3247" locale="es_ES">
     <description/>
     <view zooming-state="default:6" id="gantt-chart">
         <field id="tpd3" name="Nombre" width="200" order="0"/>
         <field id="tpd4" name="Fecha de inicio" width="75" order="1"/>
         <field id="tpd5" name="Fecha de fin" width="75" order="2"/>
         <option id="filter.completedTasks" value="false"/>
+        <option id="color.recent">
+            <![CDATA[#ff0033 #ff0000 #ff3333]]>
+        </option>
     </view>
     <view id="resource-table">
         <field id="0" name="Nombre" width="210" order="0"/>
         <field id="1" name="Función" width="86" order="1"/>
     </view>
     <!-- -->
-    <calendars>
+    <calendars base-id="Ninguna">
         <day-types>
             <day-type id="0"/>
             <day-type id="1"/>
@@ -20,9 +23,9 @@
             <overriden-day-types/>
             <days/>
         </day-types>
-        <date year="2024" month="2" date="28" type="HOLIDAY"/>
-        <date year="2024" month="2" date="29" type="HOLIDAY"/>
-        <date year="2024" month="5" date="1" type="HOLIDAY"/>
+        <date year="2024" month="2" date="28" type="HOLIDAY" color="#ff3333"/>
+        <date year="2024" month="2" date="29" type="HOLIDAY" color="#ff0000"/>
+        <date year="2024" month="5" date="1" type="HOLIDAY" color="#ff0033"/>
     </calendars>
     <tasks empty-milestones="true">
         <taskproperties>
