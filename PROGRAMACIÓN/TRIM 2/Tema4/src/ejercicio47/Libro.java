@@ -8,4 +8,10 @@ public class Libro extends Articulo {
 		return autor;
 	}
 
+	public void setAutor(String autor) {
+		this.autor = autor;
+	}
+
+	
+
 }
