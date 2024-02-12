@@ -1,4 +1,4 @@
-package ejercicio47;
+package ejercicio48;
 
 public class Cliente {
 
@@ -17,6 +17,11 @@ public class Cliente {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
+	@Override
+	public String toString() {
+		return "Cliente [nombre=" + nombre + ", dni=" + dni + "]";
+	}
+	
 
 	
 }

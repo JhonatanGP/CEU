@@ -1,4 +1,4 @@
-package ejercicio47;
+package ejercicio48;
 
 public class App {
 

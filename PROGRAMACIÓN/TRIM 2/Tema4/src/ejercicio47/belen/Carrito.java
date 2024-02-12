@@ -1,10 +1,10 @@
-package ejercicio47;
+package ejercicio47.belen;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Carrito {
 
@@ -13,26 +13,13 @@ public class Carrito {
 	private Cliente cliente;
 	private List<Articulo> articulos;
 	
-	public LocalDate getFechaCreacion() {
-		return fechaCreacion;
-	}
-	public LocalDate getFechaModificacion() {
-		return fechaModificacion;
-	}
-	public Cliente getCliente() {
-		return cliente;
-	}
-	public List<Articulo> getArticulos() {
-		return articulos;
-	}
-	
 	public Carrito(Cliente cliente) {
 		this.cliente = cliente;
-		this.fechaCreacion = LocalDate.now();
-		this.fechaModificacion = LocalDate.now();
-		this.articulos = new ArrayList<>();
+		fechaCreacion = LocalDate.now();
+		fechaModificacion = LocalDate.now();
+		articulos = new ArrayList<>();
 	}
-
+	
 	public Double getTotal() {
 		Double total = 0D;
 		for (Articulo articulo : articulos) {
@@ -42,24 +29,21 @@ public class Carrito {
 	}
 	
 	public Double getPrecioMedio() {
-		if (getCantidad () == 0) {
+		if  (getCantidad() == 0) {
 			return 0D;
 		}
 		return getTotal() / getCantidad();
 	}
-	public Integer getCantidad() {
-		return  articulos.size();
-	}
+	
 	@Override
 	public String toString() {
-		DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm:ss");
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		return "Cliente: " + cliente.getDni() + " / " + cliente.getNombre()
-		+ " Artculos: " + getCantidad() + " / " + getTotal() + " euros"
-		+ " Fecha ltima actualizacin :" + fechaModificacion.format(formato);
-
+			+ " Artculos: " + getCantidad() + " / " + getTotal() + " euros"
+			+ " Fecha ltima actualizacin :" + fechaModificacion.format(formato);
 	}
 	
-	public void addArticulo (Articulo articulo) {
+	public void addArticulo(Articulo articulo) {
 		articulos.add(articulo);
 		fechaModificacion = LocalDate.now();
 	}
@@ -79,8 +63,24 @@ public class Carrito {
 		articulos.clear();
 		fechaModificacion = LocalDate.now();
 	}
-
+	
+	public Integer getCantidad() {
+		return articulos.size();
+	}
+	
+	public LocalDate getFechaCreacion() {
+		return fechaCreacion;
+	}
+	public LocalDate getFechaModificacion() {
+		return fechaModificacion;
+	}
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public List<Articulo> getArticulos() {
+		return articulos;
+	}
 	
 	
-
 }
+

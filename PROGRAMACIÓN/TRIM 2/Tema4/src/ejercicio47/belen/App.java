@@ -1,4 +1,4 @@
-package ejercicio47;
+package ejercicio47.belen;
 
 public class App {
 

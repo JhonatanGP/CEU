@@ -1,8 +1,7 @@
-package ejercicio47;
+package ejercicio48;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.HashSet;
+import java.util.Set;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -11,7 +10,7 @@ public class Carrito {
 	private LocalDate fechaCreacion;
 	private LocalDate fechaModificacion;
 	private Cliente cliente;
-	private List<Articulo> articulos;
+	private Set<Articulo> articulos;
 	
 	public LocalDate getFechaCreacion() {
 		return fechaCreacion;
@@ -22,7 +21,7 @@ public class Carrito {
 	public Cliente getCliente() {
 		return cliente;
 	}
-	public List<Articulo> getArticulos() {
+	public Set<Articulo> getArticulos() {
 		return articulos;
 	}
 	
@@ -30,7 +29,7 @@ public class Carrito {
 		this.cliente = cliente;
 		this.fechaCreacion = LocalDate.now();
 		this.fechaModificacion = LocalDate.now();
-		this.articulos = new ArrayList<>();
+		this.articulos = new HashSet<>();
 	}
 
 	public Double getTotal() {
@@ -56,14 +55,12 @@ public class Carrito {
 		return "Cliente: " + cliente.getDni() + " / " + cliente.getNombre()
 		+ " Artculos: " + getCantidad() + " / " + getTotal() + " euros"
 		+ " Fecha ltima actualizacin :" + fechaModificacion.format(formato);
-
 	}
-	
-	public void addArticulo (Articulo articulo) {
+	public void addArticulo(Articulo articulo) {
 		articulos.add(articulo);
 		fechaModificacion = LocalDate.now();
 	}
-	
+
 	public void borrarArticulo(int posicion) {
 		
 		// hay que comprobar si la posicion es correcta:
@@ -74,13 +71,10 @@ public class Carrito {
 			fechaModificacion = LocalDate.now();
 		}
 	}
-	
 	public void vaciarCesta() {
 		articulos.clear();
 		fechaModificacion = LocalDate.now();
 	}
-
 	
-	
-
+		
 }
