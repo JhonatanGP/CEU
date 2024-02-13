@@ -5,11 +5,14 @@
 select * from equipos;
 select * from futbolistas;
 select futbolistas.nombre, equipos.nombre from futbolistas join equipos on futbolistas.id_equipo = equipos.id;
---2. ¿Cuál es el nombre del equipo donde juega el jugador más alto?
-select equipos.nombre 
--- ¿Cómo se llama el jugador más alto?
 
+--2. ¿Cuál es el nombre del equipo donde juega el jugador más alto?
+select equipos.nombre from futbolistas join equipos on equipos.id = futbolistas.id_equipo where altura = (select max (altura) from futbolistas);
+
+-- ¿Cómo se llama el jugador más alto?
+select nombre from futbolistas where altura = (select max (altura) from futbolistas);
 -- ¿Cuánto mide el jugador más alto?
+select max (altura) from futbolistas;
 
 --3. Utiliza UNION para mostrar el nombre de los futbolistas del equipo A, y los del equipo B.
 

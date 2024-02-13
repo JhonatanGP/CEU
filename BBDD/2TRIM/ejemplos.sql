@@ -313,4 +313,3 @@ UPDATE FUTBOLISTAS SET ALTURA = 162, PESO = 60 WHERE NOMBRE LIKE 'ENRIQUE';
 
 select decode(posicion, !'PORTERO' and '%EZ', count(*))from futbolistas;
 
-se
