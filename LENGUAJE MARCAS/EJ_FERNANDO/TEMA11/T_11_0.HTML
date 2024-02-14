@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEMA 11</title>
+    <link rel="icon" type="image/x-icon" href="imagenes/favicon.ico">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!-- bloques de visualizacion -->
+    <p style="border: 1px solid black;">Hola párrafo</p>
+    <div style="border: 1px solid black;">Hola capa</div>
+
+    <p>"P" y "DIV" son ambos elementos de bloque, smp empiezan en una nueva línea y smp toman todo el ancho de la pag
+    </p>
+    <!-- Visualización en línea: span -->
+    <span style="border:1px solid blue">Hola bloque en línea</span>
+    <span style="border:1px solid red;">Hola segundo bloque en línea</span>
+    <br>
+    <br>
+    <!-- USO DE ELEMENTO DIV (CAPA O CONTENEDOR) CON ESTILO -->
+    <div style="background-color: green;color: white; padding: 20px;">
+        <h2>Madrid</h2>
+        <p>Madrid es la capital de España. Es una de las ciudades más populares de España con una población superior a
+            los 6 millones de habitantes</p>
+    </div>
+    <!-- USO DE ELEMENTO SPAN (CONTENEDOR EN LÍNEA: INLINE) CON ESTILO -->
+    <P>Mi hermano tiene los ojos de color <span style="color: blue;font-weight: bold;">azul</span>
+        y mi hermana los tiene de color <span style="color: red;font-weight: bold;">rojo</span> y yo los tengo negro</P>
+    <!-- USO DE DIV COMO CONTENEDOR -->
+    Primera línea<div>Segunda línea</div>Tercera linea.
+    <hr>
+    <!-- USO DE ELEMENTO DIV (CAPA O CONTENEDOR) CON ESTILO -->
+    <div style="background-color: green;color: white; padding: 20px;width: 300px;margin: auto;">
+        <h2>Madrid</h2>
+        <p>Madrid es la capital de España. Es una de las ciudades más populares de España con una población superior a
+            los 6 millones de habitantes</p>
+    </div>
+    <hr>
+    <!-- MULTIPLES DIV -->
+    <div style="background-color: rgb(43, 72, 101); color: white;padding: 10px;">
+        <h2>Londres</h2>
+        <p>Londres es la capital de Inglaterra.</p>
+        <p>Londres tiene más de 13 millones de habitantes.</p>
+    </div>
+
+    <div style="background-color: rgb(56, 104, 67); color: white; padding:10px;">
+        <h2>Oslo</h2>
+        <p>Oslo es la capital de Noruega.</p>
+        <p>Oslo tiene más de 600.000 habitantes.</p>
+    </div>
+
+    <div style="background-color: rgb(115, 61, 82); color: white; padding: 10px;">
+        <h2>Roma</h2>
+        <p>Roma es la capital de Italia.</p>
+        <p>Roma tiene casi 3 millones de habitantes.</p>
+    </div>
+    <hr>
+    <!-- MULTIPLES DIV -->
+    <div style="background-color: rgb(43, 72, 101); color: white;padding: 10px; width: 31%;float: left;">
+        <h2>Londres</h2>
+        <p>Londres es la capital de Inglaterra.</p>
+        <p>Londres tiene más de 13 millones de habitantes.</p>
+    </div>
+
+    <div style="background-color: rgb(56, 104, 67); color: white; padding:10px;width: 31%;float: left;">
+        <h2>Oslo</h2>
+        <p>Oslo es la capital de Noruega.</p>
+        <p>Oslo tiene más de 600.000 habitantes.</p>
+    </div>
+
+    <div style="background-color: rgb(115, 61, 82); color: white; padding: 10px;width: 31%;float: left;">
+        <h2>Roma</h2>
+        <p>Roma es la capital de Italia.</p>
+        <p>Roma tiene casi 3 millones de habitantes.</p>
+    </div>
+
+    <!-- MULTIPLES DIV DISPLAY INLINE-BLOCK -->
+    <div
+        style="background-color: rgb(43, 72, 101); color: white;padding: 10px; width: 31%;display: inline-block; margin-top: 10px;">
+        <h2>Londres</h2>
+        <p>Londres es la capital de Inglaterra.</p>
+        <p>Londres tiene más de 13 millones de habitantes.</p>
+    </div>
+    <div style="background-color: rgb(56, 104, 67); color: white; padding:10px;width: 31%;display: inline-block;">
+        <h2>Oslo</h2>
+        <p>Oslo es la capital de Noruega.</p>
+        <p>Oslo tiene más de 600.000 habitantes.</p>
+    </div>
+
+    <div style="background-color: rgb(115, 61, 82); color: white; padding: 10px;width: 31%;display: inline-block;">
+        <h2>Roma</h2>
+        <p>Roma es la capital de Italia.</p>
+        <p>Roma tiene casi 3 millones de habitantes.</p>
+    </div>
+    <!-- MULTIPLES DIV DENTRO DE OTRO DIV CON DISPLAY FLEX -->
+    <div style="display: flex;">
+        <div style="background-color: rgb(43, 72, 101); color: white;padding: 10px; width: 31%;display: inline-block;margin-top: 10px;">
+            <h2>Londres</h2>
+            <p>Londres es la capital de Inglaterra.</p>
+            <p>Londres tiene más de 13 millones de habitantes.</p>
+        </div>
+        <div style="background-color: rgb(56, 104, 67); color: white; padding:10px;width: 31%;display: inline-block;margin-top: 10px;">
+            <h2>Oslo</h2>
+            <p>Oslo es la capital de Noruega.</p>
+            <p>Oslo tiene más de 600.000 habitantes.</p>
+        </div>
+
+        <div style="background-color: rgb(115, 61, 82); color: white; padding: 10px;width: 31%;display: inline-block;margin-top: 10px;">
+            <h2>Roma</h2>
+            <p>Roma es la capital de Italia.</p>
+            <p>Roma tiene casi 3 millones de habitantes.</p>
+        </div>
+    </div>
+    <!-- MULTIPLES DIV DENTRO DE OTRO DIV CON DISPLAY GRID -->
+    <div style="display: grid;grid-template-columns: 33% 33% 33%;">
+        <div style="background-color: rgb(43, 72, 101); color: white;padding:10px;margin-top: 10px;">
+            <h2>Londres</h2>
+            <p>Londres es la capital de Inglaterra.</p>
+            <p>Londres tiene más de 13 millones de habitantes.</p>
+        </div>
+        <div style="background-color: rgb(56, 104, 67); color: white; padding:10px;margin-top: 10px;">
+            <h2>Oslo</h2>
+            <p>Oslo es la capital de Noruega.</p>
+            <p>Oslo tiene más de 600.000 habitantes.</p>
+        </div>
+
+        <div style="background-color: rgb(115, 61, 82); color: white; padding:10px;margin-top: 10px;">
+            <h2>Roma</h2>
+            <p>Roma es la capital de Italia.</p>
+            <p>Roma tiene casi 3 millones de habitantes.</p>
+        </div>
+    </div>
+    <!-- MULTIPLES DIV DENTRO DE OTRO DIV CON DISPLAY GRID y widht -->
+    <div style="display: grid;grid-template-columns: 33% 33% 33%;">
+        <div style="background-color: rgb(43, 72, 101); color: white;padding:10px;margin-top: 10px;width: 50%;">
+            <h2>Londres</h2>
+            <p>Londres es la capital de Inglaterra.</p>
+            <p>Londres tiene más de 13 millones de habitantes.</p>
+        </div>
+        <div style="background-color: rgb(56, 104, 67); color: white; padding:10px;margin-top: 10px;width: 50%;">
+            <h2>Oslo</h2>
+            <p>Oslo es la capital de Noruega.</p>
+            <p>Oslo tiene más de 600.000 habitantes.</p>
+        </div>
+
+        <div style="background-color: rgb(115, 61, 82); color: white; padding:10px;margin-top: 10px;width: 50%;">
+            <h2>Roma</h2>
+            <p>Roma es la capital de Italia.</p>
+            <p>Roma tiene casi 3 millones de habitantes.</p>
+        </div>
+    </div>
+</body>
+
+</html>
