@@ -1,8 +1,4 @@
 
-
-
-
-
 --31. Calcular el último dia del mes (fecha) del mes actual.
 
 select last_day(sysdate) from dual;
