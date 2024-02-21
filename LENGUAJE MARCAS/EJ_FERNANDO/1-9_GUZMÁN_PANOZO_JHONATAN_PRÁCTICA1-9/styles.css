@@ -1,0 +1,18 @@
+body{
+    background-image:url(imagenes/fondo.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+    padding-left: 2px;
+}
+tr:nth-child(even){
+    background-color: rgba(241, 216, 216, 0.7);
+}
+tr:nth-child(odd){
+    background-color: rgba(246, 204, 204, 0.7);
+}
