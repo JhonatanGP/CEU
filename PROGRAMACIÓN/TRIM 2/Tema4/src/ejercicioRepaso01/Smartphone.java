@@ -1,8 +1,9 @@
-package ejerciciosRepaso1;
+package ejercicioRepaso01;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 
 public class Smartphone {
 	
@@ -21,7 +22,7 @@ public class Smartphone {
 		this.activo = true;		
 				
 	}
-	// Constructor que reciba e inicialice el imei
+	// Constructor que reciba e inicialice el imei (cuando pone que recibe, se debe de poner entre parentesis lo que recibe)
 	public  Smartphone (String imei) { //el nombre debe ser smp el nombre de la clase
 		this.imei = imei;
 		this.precio = BigDecimal.ZERO;
@@ -38,7 +39,7 @@ public class Smartphone {
 	}	
 	// Todos los constructores deben inicializar el smartphone como activo y a precio 0.
 	
-	// setPrecio()  permite cambiar el precio del Smartphone
+	// setPrecio()  permite cambiar el precio del Smartphone,(con el set cambio el precio) void no devuelve nada
 	public void setPrecio(BigDecimal precio) {
 		this.precio = precio;
 	}
@@ -47,16 +48,21 @@ public class Smartphone {
 	public void activar() { //no devuelve nada es un boleano, no hace falta
 		this.activo = true;
 	}
-	// desactivar  inactiva el Smartphone
+	// desactivar  inactiva el Smartphone (ponemos a false el boolean y se desactiva)
 	public void desactivar() {
 		this.activo = false;		
 	}
 	// getEdad()  devuelve los años transcurridos desde el 1 de abril del 2000 hasta la fecha de fabricación del Smartphone
 	private Integer getEdad() {
 		LocalDate fecha2000 = LocalDate.of(2000, Month.APRIL, 1);
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("ss/MM/yyyy");
+		LocalDate 
 		return ;
 	}
 	// cambiarMarcaModelo()  recibe una marca y modelo para cambiar los del Smartphone
+	public void cambiarMarcaModelo() {
+		this.
+	}
 	
 	// establecerFabricacion()  recibe y cambia la fecha de fabricación del Smartphone
 	public void establecerFabricacion(LocalDate fabricacion) {
