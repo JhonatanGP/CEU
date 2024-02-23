@@ -56,7 +56,7 @@ public class Smartphone {
 	private Integer getEdad() {
 		LocalDate fecha2000 = LocalDate.of(2000, Month.APRIL, 1);
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("ss/MM/yyyy");
-		LocalDate 
+		LocalDate  = 
 		return ;
 	}
 	// cambiarMarcaModelo()  recibe una marca y modelo para cambiar los del Smartphone
