@@ -1,9 +1,13 @@
 --51. Qué día de la semana se contrató a cada empleado.
-select * from emp; 
+select ename, hiredate as "Fecha de contratacion" from emp;
 
-select hiredate from emp where ;
 --52. Calcular la paga de beneficios que corresponde a cada empleado (3 salarios mensuales incrementados un: 10% para PRESIDENT, 20% para los MANAGER, 30% para el resto).
-
+SELECT ename,sal,  CASE 
+        WHEN job = 'PRESIDENT' THEN sal * 1.10 -- 10% incremento
+        WHEN job = 'MANAGER' THEN sal * 1.20   -- 20% incremento
+        ELSE sal * 1.30                           -- 30% incremento para el resto
+    END AS paga_beneficios
+FROM emp;
 --53. Cuantos días han pasado desde el 25 julio de 1992.
 
 --54. Seleccionar el nombre de cada empleado junto al nombre del departamento en el que está.
@@ -11,15 +15,20 @@ select hiredate from emp where ;
 --55. Seleccionar el nombre y puesto de cada empleado junto al nombre del departamento al que pertenece y la localización del departamento.
 
 --56. Seleccionar el nombre de cada empleado, el nombre de! departamento al que pertenece, y el codigo de departamento del empleado.
-
+select em.ename, e.ename, em.hiredate "Empleado", e.hiredate "Jefe" from emp em join emp e on e.empno = em.mgr where e.hiredate > em.hiredate;
 --57. Listar el nombre del empleado y el nombre de su jefe.
-
+select em.ename, e.ename from emp em join emp e on e.empno = em.mgr;
 --58. Listar el nombre del empleado y el nombre de su jefe. Incluir empleados que no tengan jefe.
 
 --59. Seleccionar nombre del empleado, nombre del jefe, fechas contrato del trabajador y del jefe, de forma que la fecha de contrato del empleado sea anterior a la de su jefe.
 
 --60. Seleccionar nombre del empleado, nombre del jefe, salarios del trabajador y del jefe, de forma que el sueldo del empleado sea inferior a la mitad del salario de su jefe.
-
+SELECT e.ENAME ,
+d.DNAME,
+e.EMPNO
+FROM
+EMP e 
+JOIN DEPT d ON d.DEPTNO = e.DEPTNO WHERE emp.sal < e.ename.sal;
 --61. Seleccionar las distintas ubicaciones de los departamentos.
 
 --62. Seleccionar la ubicación y el nombre empleado. Incluir también las ubicaciones de departamentos sin empleados.
@@ -99,9 +108,9 @@ SELECT ename, sal,LPAD(ename,15,'$') FROM EMP;
 --columna de forma que los que más ganan aparezcan primero. Los nombres deben quedar ajustados a la longitud del nombre más largo. Ej.: "KING..:  *****"
 
 --98. Listar los distintos nombres de puestos de los empleados, de forma que : PRESIDENT se traduzca por A, MANAGER por B, ANALYST por C, CLERK por D y el resto por E.
-
+SELECT DISTINCT job , DECODE('PRESIDENT','A','MANAGER','B','ANALISTA','C','CLERK','D') FROM EMP;
 --99. Listar todos los campos de la tabla DEPT.
-
+select DEPTMO, DNAME, LOC from DEPT;
 --100. Seleccionar el nombre de departamento, y el nombre de la ciudad donde está.
 
 SELECT ENAME 'empleado', sal 'salario mensual',dname FROM emp WHERE comm >400;
