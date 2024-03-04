@@ -169,15 +169,12 @@ select chr(65) from dual;
 select ascii('A') from dual;
 select ascii('a') from dual;
 select ascii('Ñ') from dual;
-CONCAT = ||
+--CONCAT = ||
 SELECT CONCAT(CONCAT(NOMBRE,ESTADIO),PRESUPUESTO) FROM EQUIPOS;
+SELECT NOMBRE||' '|| ESTADIO||' '|| PRESUPUESTO FROM EQUIPOS;
 SELECT RPAD('NOMBREAAA',10,'-') FROM DUAL;
 
-select lpad(substr(nombre,1,3),5,'-') from futbolistas 
-    where id_equipo = (
-        select id 
-        from equipos 
-        where nombre ='EQUIPO A');
+select lpad(substr(nombre,1,3),5,'-') from futbolistas where id_equipo = (select id from equipos where nombre ='EQUIPO A');
 select substr(nombre,1,3) from futbolistas;
 select replace(nombre,'QUI','KI') from equipos;
 select replace(nombre,'E','-') from futbolistas;
