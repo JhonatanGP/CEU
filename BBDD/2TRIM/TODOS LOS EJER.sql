@@ -167,3 +167,4 @@ select to_date('25/06/24') + 1 from dual;--CONVIERTE DE TEXTO A FECHA Y LE SUMA 
 --5. Convierte el ID de la tabla FUTBOLISTAS en un número de tres cifras.
 
 --6. Muestra todos los años de nacimiento de los futbolistas (solo el año, ej.: 1990, 1991, etc.). Ordénalos de menor a mayor año.
+ 
