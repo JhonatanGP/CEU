@@ -168,3 +168,4 @@ select to_date('25/06/24') + 1 from dual;--CONVIERTE DE TEXTO A FECHA Y LE SUMA 
 
 --6. Muestra todos los años de nacimiento de los futbolistas (solo el año, ej.: 1990, 1991, etc.). Ordénalos de menor a mayor año.
  
+ 
