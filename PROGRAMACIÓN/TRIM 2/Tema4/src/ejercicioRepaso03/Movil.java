@@ -2,9 +2,12 @@ package ejercicioRepaso03;
 
 public class Movil extends Telefono {
 	
-	private Integer numero;
-	private boolean enLlamada;
-
-
+private LocalizacionGPS localizador;
+	
+	public Movil(LocalizacionGPS localizador,Integer numero) {
+		super(numero);
+		this.localizador= localizador;
+	}
 
 }
+
