@@ -1,9 +1,12 @@
 package ejercicioRepaso02;
 
 public class Fijo extends Telefono {
+private String direccion;
 	
-	private Integer numero;
-	private boolean enLlamada;
+	public Fijo(String direccion, Integer numero) {
+		super(numero);
+		this.direccion = direccion;
+	}
 
 
 }

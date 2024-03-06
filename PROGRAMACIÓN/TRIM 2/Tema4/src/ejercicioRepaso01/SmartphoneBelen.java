@@ -35,11 +35,9 @@ public class SmartphoneBelen {
 		this.activo = true;
 	}
 	
-	
 	public void desactivar() {
 		this.activo = false;
 	}
-	
 	
 	public Integer getEdad() {
 		return anyoFabricacion - 2000;
@@ -53,7 +51,6 @@ public class SmartphoneBelen {
 	public void establecerFabricacion(Integer anyo) {
 		anyoFabricacion = anyo;
 	}
-	
 	
 	public BigDecimal getPrecioMasIva() {
 		return this.precio.add(this.precio.multiply(new BigDecimal(0.21)));
