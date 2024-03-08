@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  h1, caption {
+    text-align: center;
+    color: #7191d0;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    margin-bottom: 20px;
+  }
+  
+  thead {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  .marcas {
+    color: white;
+    background-color: aquamarine;
+    text-align: center;
+  }
+  .programacion {
+    color: white;
+    background-color: rgb(219, 173, 99);
+    text-align: center;
+  }
+  .sistemas_informaticos {
+    color: white;
+    background-color: rgb(202, 122, 194);
+    text-align: center;
+  }
+  .bases_datos {
+    color: white;
+    background-color: rgb(143, 58, 58);
+    text-align: center;
+  }
+  .entornos_desarrollo {
+    color: white;
+    background-color: rgb(130, 192, 217);
+    text-align: center;
+  }
+  .orientacion_laboral {
+    color: white;
+    background-color: rgb(4, 37, 30);
+    text-align: center;
+  }
+  
+  .semana_verde {
+    background-color: green;
+  }
+
+  div {
+    width: 30%;
+    display: inline-block;
+  }
+
+  .centrado {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  
+}
