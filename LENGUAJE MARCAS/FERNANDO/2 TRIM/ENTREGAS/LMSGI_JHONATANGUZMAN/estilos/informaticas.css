@@ -1,0 +1,17 @@
+.mujeres{
+    width:9%;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 40px;
+    margin-right: 40px;
+    display: inline-block;
+}
+img{
+    width: 100%;
+}
+.titulo{
+    background-color:  #c9c9ff ; 
+    color: white;padding: 10px;
+    width: 100%;
+}
