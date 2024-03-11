@@ -1,0 +1,137 @@
+-<h1> es el nivel de sección más alto y el más destacado     
+-<h6> es el más bajo y, por lo tanto, menos destacado.
+-<br> (Salto de línea)              
+-<hr> línea horizontal.   
+-El atributo “<a>” define un hyperlink y el atributo “href” especifica la URL o dirección de la página a la cual 
+    se redirige al pulsar dicho link. <a href=”https://www.ceu.es/”>Visita la CEU</a>   
+
+- Target 
+    _blank: le dice al buscador que abra la nueva dirección en una nueva pestaña.
+    <a href=https://www.ceu.es/  target= “_blank”>Visita la CEU</a> 
+    _self: le dice al buscador que abra la nueva dirección en una nueva pestaña.
+    <a href=https://www.ceu.es/  target= “_self”>Visita la CEU</a>
+    _parent: Abre el documento en la ventana padre
+    _top:  Abre el documento en el cuerpo completo de la ventana 
+
+-Atributo src crea una direccion que puede ser 
+    Absoluta: link externo en internet <img src= "https://cdn.pixabay.com/photo/2023/12/04/17/24/sandpiper8429874_640.jpg">
+    Relativa: Crea un enlace hacia el host local <img src=”logotipo.png”> 
+
+- width y height: ancho y alto. va dentro de la img <img src=”imagenes/pajaros.png” width=”50” height=”50”>
+
+- “Title” se usa para dar información extra de un elemento. El valor del atributo “title” se mostrará a modo de “tooltip”
+  cuando se pasa con el ratón por encima del elemento.   <p title="I'm a tooltip">This is a paragraph.</p>
+
+- “Style” se usa para dar estilos como color, formato de letra, tamaño de letra, etc a los elementos que aparecen en
+nuestra página html. <p style="color:red;">Esto es un texto en color rojo.</p>
+
+- Comillas simples o comillas dobles en el tooltip: 
+<p title='John "ShotGun" Nelson'>Prueba de párrafo con “comillas dobles” y ‘comillas simples’.</p>
+    O vice versa:
+<p title="John 'ShotGun' Nelson"> Prueba de párrafo con “comillas dobles” y ‘comillas simples’.</p>
+
+- Background Color: Define el color de fondo de un elemento en html.Ejemplo: si quisiéramos cambiar el color de fondo a 
+<h1 style="background-color:powderblue;">Cabecera1</h1>
+<p style="background-color:tomato;">Párrafo1</p>
+
+-Text Color: Define el color de texto de un elemento en html. Ejemplo:
+<h1 style="color:blue;">Cabecera1</h1>
+<p style="color:red;">Párrafo1</p>
+
+- Fonts:  “font-family” define la fuente del tipo de letra usada en un elemento html. Ejemplo:
+<h1 style="font-family:verdana;">Cabecera escrita en fuente verdana</h1>
+<p style="font-family:courier;">Párrafo escrito en fuente courier</p>
+
+- Text Size: “font-size” define el tamaño del texto de un elemento html. Ejemplo:
+<h1 style="font-size:300%;">Cabecera1</h1>
+<p style="font-size:160%;">Párrafo1</p>
+
+-Text alignment: “text-align” define el tipo de centrado horizontal de un elemento html. Ejemplo:
+<h1 style="text-align:center;">CABECERA CENTRADA HORIZONTALMENTE</h1>
+<p style="text-align:center;">PÁRRAFO CENTRADO HORIZONTALMENTE</p>
+
+<!-- FORMATOS --> TODOS SE PONEN AL PRINCIPIO Y AL FINAL
+    <b> Texto en negrita</b>
+    <strong> Texto importante, resaltado</strong>
+    <i> Texto en letra itálica cursiva</i>
+    <em> Texto enfatizado  cursiva</em>
+    <mark> Texto resaltado (Como con un rotulador resaltador en amarillo)</mark>
+    <small> Texto pequeño</small>
+    <del> Texto borrado (tachado)</del>
+    <ins> Texto insertado, aparece con una línea de subrayado debajo del texto</ins>
+    <sub> Texto subíndice</sub>
+    <sup> Texto superíndice</sup>
+        
+<!-- FORMATOS --> TODOS SE PONEN AL PRINCIPIO Y AL FINAL
+<blockquote> Texto citado de otra fuente de información</blockquote>
+    <blockquote cite="http://www.worldwildlife.org/who/index.html">
+        For 60 years, WWF has worked to help people and nature thrive. As the world's leading conservation organization, WWF works in nearly
+        100 countries. At every level, we collaborate with people around the world to develop and deliver innovative solutions that protect
+        communities, wildlife, and the places in which they live.
+    </blockquote>
+
+<q> Anotación importante entre comillas </q>
+    <p>Los objetivos de la asignatura de Lenguaje de Marcas <q>Impartida en 2º de DAW</q> son que el alumno sepa
+    interpretar el lenguaje HTML y demás lenguajes de marcas existentes interpretados por los navegadores. </p>
+
+<abbr> Marcar abreviatura</abbr>
+    <p>The <abbr title="World Wide Web Consortium” ">W3C</abbr> fue fundada el 1 de octubre de 1994 por Tim Berners-Lee. </p>
+
+<address> Marcar dirección de contacto. 
+    <p>La página web ha sido desarrollada por la empresa WBD
+        <address>
+        C/ Gran vía, Madrid<br>
+        www.wbd.es<br>
+        tfno: 91151594<br>
+        España<br>
+        </address>
+        <br>
+        Y ha sido galardonada con el premio a Mejor empresa joven
+        emprendedora del año por la revista “New generation”.
+        </p>
+
+<cite> Define el título de una obra creativa
+    <p>Entre 1888 y 1889, Vincent van Gogh pintó una serie de cinco óleos florales con jarrón, que se convertirían en 
+        su obra más famosa: <cite>Los girasoles.</cite></p>
+
+<bdo> Cambio de direccionalidad del texto
+    <bdo dir="rtl">Este texto será escrito de derecha a izquierda</bdo>
+
+-- correo a  
+    <a href=”mailto:alguien@example.com”>Enviar correo</a>
+-- enlace a telefono
+    <a href=”tel:+349999999”>Llamar al número +349999999</a>
+
+<!-- TRATAMIENTO DE IMAGENES -->
+    APNG Animated Portable Network Graphics .apng
+    GIF Graphics Interchange Format .gif
+    ICO Microsoft Icon .ico, .cur
+    JPEG Joint Photographic Expert Group image .jpg, .jpeg, .jfif, .pjpeg, .pjp
+    PNG Portable Network Graphics .png
+    SVG Scalable Vector Graphics .svg
+
+-Para saber las coordenadas https://www.image-map.net/ ver pactica zoo
+
+-Elemento Background Image: Para añadir una imagen de fondo a un elemento HTML se usa el atributo “style” y la propiedad de 
+css “background-image”.<p style="background-image: url('imagenes/fondo.jpg');"></p>
+
+-ver pag 15 del tema 8
+
+-dentro del <style>
+            p{
+                background-image: url('imagenes/fondo.jpg');
+            }
+            body{
+                background-repeat: no-repeat;
+                background-image: url('imagenes/fondobody.jpg');
+                background-size: cover; 
+                /* Para respetar el tamaño completo de la imagen
+                background-size: 100% 100%;
+                background-attachment: fixed; */
+            }
+            </style>background-repeat: no-repeat;
+
+- Favicon https://www.favicon.cc/
+<hr>
+<!-- Tema 9 Tablas -->
+
