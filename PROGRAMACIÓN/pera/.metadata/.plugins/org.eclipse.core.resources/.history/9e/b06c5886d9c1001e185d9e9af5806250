@@ -1,0 +1,5 @@
+package EJ43;
+
+public class guionistas extends padre{
+
+}

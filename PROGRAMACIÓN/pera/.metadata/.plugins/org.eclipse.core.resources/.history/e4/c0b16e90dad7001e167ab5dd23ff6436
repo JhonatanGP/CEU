@@ -1,0 +1,33 @@
+package EJRepaso4;
+
+import java.time.LocalDate;
+import java.util.List;
+
+public class Libreria {
+
+	
+	private String direccion;
+	private Integer telefono;
+	private List<Libro> libros;
+	
+	
+	public Libreria(String titulo, String autor, LocalDate fechaEdicion, Integer paginas) {
+		libros = new ArrayList<>;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,11 @@
+package EJ43;
+
+public class directores extends padre {
+
+
+	//Método get sueldo
+		public void getSueldo(){
+		
+		}
+	
+}

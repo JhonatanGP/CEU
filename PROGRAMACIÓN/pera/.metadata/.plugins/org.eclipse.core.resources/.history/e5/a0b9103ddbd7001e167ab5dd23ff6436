@@ -1,0 +1,29 @@
+package EJRepaso4;
+
+import java.time.LocalDate;
+
+public class Digital extends Libro{
+
+	
+	
+	public Digital(String titulo, String autor, LocalDate fechaEdicion, Integer paginas) {
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

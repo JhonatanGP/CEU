@@ -1,0 +1,44 @@
+package EJ43;
+
+import java.util.List;
+
+public class Peliculas {
+
+	private Integer añoEstreno;
+	private String titulo;
+	List <actores>actores;
+	guionistas guionista;
+	directores director;
+	
+//Get y set	
+	public Integer getAñoEstreno() {
+		return añoEstreno;
+	}
+	public void setAñoEstreno(Integer añoEstreno) {
+		this.añoEstreno = añoEstreno;
+	}
+	public String getTitulo() {
+		return titulo;
+	}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+	public String getListaActores() {
+		return listaActores;
+	}
+	public void setListaActores(String listaActores) {
+		this.listaActores = listaActores;
+	}
+	public String getGuionista() {
+		return guionista;
+	}
+	public void setGuionista(String guionista) {
+		this.guionista = guionista;
+	}
+	public String getDirector() {
+		return director;
+	}
+	public void setDirector(String director) {
+		this.director = director;
+	}
+}

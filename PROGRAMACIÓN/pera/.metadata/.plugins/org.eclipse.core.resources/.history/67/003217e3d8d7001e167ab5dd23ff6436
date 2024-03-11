@@ -1,0 +1,15 @@
+package EJRepaso3;
+
+
+
+
+
+public class movil extends telefono{
+	private LocalizacionGPS localizacion;	
+	
+	
+	public  TelefonoMovil(LocalizacionGPS localizacion,Integer numero) {
+		super(numero);
+		this.localizacion=localizacion;
+}
+}

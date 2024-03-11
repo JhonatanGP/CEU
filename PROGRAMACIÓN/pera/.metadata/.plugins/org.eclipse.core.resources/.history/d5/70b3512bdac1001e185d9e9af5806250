@@ -1,0 +1,35 @@
+package EJ43;
+
+public class App {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	actores actor1= new actores();
+	actor1.setNombre("Blas Blau");
+	actor1.setNacionalidad("España");
+	actor1.getAñoNacimiento(2004);
+	
+	
+
+	actores actor2= new actores();
+	actor2.setNombre("Blas Blau");
+	actor2.setNacionalidad("España");
+	actor2.getAñoNacimiento(2004);
+	
+		
+
+	actores actor3= new actores();
+	actor3.setNombre("Blas Blau");
+	actor3.setNacionalidad("España");
+	actor2.getAñoNacimiento(2004);
+	
+		
+		
+		
+		
+		
+		
+	}
+
+}

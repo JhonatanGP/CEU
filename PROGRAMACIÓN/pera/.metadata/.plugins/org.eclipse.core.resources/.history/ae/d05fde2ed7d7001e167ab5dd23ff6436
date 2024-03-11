@@ -1,0 +1,10 @@
+package EJRepaso3;
+
+import java.math.BigDecimal;
+
+public class movil extends telefono{
+	private BigDecimal gps;
+	
+	
+	
+}

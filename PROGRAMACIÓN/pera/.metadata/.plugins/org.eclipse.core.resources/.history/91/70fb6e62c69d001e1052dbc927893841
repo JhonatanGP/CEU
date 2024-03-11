@@ -1,0 +1,24 @@
+package Ejercicios_primeros;
+
+public class EJ4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		System.out.println(getMinusculas("    Buenos dias   "));
+		System.out.println(getMayusculas("   Introduccion   "));
+		System.out.println(getMayusculas("   Conclusion  "));
+	
+		
+	}
+
+	public static String getMinusculas(String cadena){
+		return cadena.trim().toLowerCase();
+	
+	}
+	
+	public static String getMayusculas(String cadena){
+		return cadena.trim().toUpperCase();
+	}
+
+}

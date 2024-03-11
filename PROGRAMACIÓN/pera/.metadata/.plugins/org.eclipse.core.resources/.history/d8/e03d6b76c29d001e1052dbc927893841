@@ -1,0 +1,36 @@
+package Ejercicios_primeros;
+
+import java.util.Scanner;
+
+public class EJ3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Scanner scanner = new Scanner (System.in);
+		
+		System.out.println("Escribe una cadena");
+		String nombre = scanner.nextLine();
+		
+		
+		System.out.println("Dime un número del 1 al 2");
+		Integer numero = scanner.nextInt();
+		
+		
+		getMayMin(nombre, numero);
+		
+	}
+
+	public static String getMayMin(String cadena, Integer numero){
+	
+	
+		if(numero<=1){
+			return cadena.trim().toUpperCase();
+		}
+		
+		if(numero>=2){
+			return cadena.trim().toLowerCase();
+		}
+		return cadena;
+	}
+}

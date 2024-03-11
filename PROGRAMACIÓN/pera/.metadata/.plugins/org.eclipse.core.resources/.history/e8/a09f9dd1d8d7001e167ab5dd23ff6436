@@ -1,0 +1,21 @@
+package EJRepaso3;
+
+public class app {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	/*¿Cómo has creado el atributo GPS en el ejercicio anterior? Si lo has hecho como un Integer o
+un String, mejóralo. Crea una clase que sea LocalizacionGPS que tenga dos atributos que sean
+las coordenadas GPS, con su get y set y su constructor.
+Haz que el atributo de la clase Móvil sea un objeto de esta clase. */	
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}

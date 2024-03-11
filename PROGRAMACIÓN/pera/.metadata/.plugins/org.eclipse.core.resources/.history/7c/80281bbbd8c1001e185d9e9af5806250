@@ -1,0 +1,46 @@
+package EJ43;
+
+public class padre{
+	
+	
+	
+	
+	protected static final int SUELDO_ACTOR =
+	protected static final int SUELDO_DIRECTOR=
+	protected static final int SUELDO_GUIONISTA=
+	
+	
+	
+	
+	
+	
+	
+	private String nombre;
+	private int añoNacimiento;
+	private String nacionalidad;
+	
+//get y set 	
+	public String getNombre(){
+		return nombre;
+	}
+	public void setNombre(String nombre){
+		this.nombre = nombre;
+	}
+	public int getAñoNacimiento(){
+		return añoNacimiento;
+	}
+	public void setAñoNacimiento(int añoNacimiento){
+		this.añoNacimiento = añoNacimiento;
+	}
+	public String getNacionalidad(){
+		return nacionalidad;
+	}
+	public void setNacionalidad(String nacionalidad){
+		this.nacionalidad = nacionalidad;
+	}
+	//Método get sueldo
+		public abstract Integer getSueldo();
+			
+		
+		
+}  

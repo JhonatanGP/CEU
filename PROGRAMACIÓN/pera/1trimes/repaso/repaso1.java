@@ -1,0 +1,24 @@
+package repaso;
+
+public class repaso1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Integer[] listadenotas = new Integer[] {7,9,8,4,0,6,3,4,1,7,3,1,9,10};
+		Integer contador =0;
+		for(int i=0;i<listadenotas.length;i++){
+			if(listadenotas[i]<5) {
+				contador++;
+			}
+			
+		}
+		
+		System.out.println("\nTotal alumnos suspensos: "+ contador);
+		
+		
+		
+		
+	}
+
+}
