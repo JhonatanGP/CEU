@@ -8,10 +8,19 @@ SELECT * FROM FUTBOLISTAS;
 SELECT * FROM EQUIPOS;
 SELECT FUTBOLISTAS.NOMBRE "FUTBOLISTA",EQUIPOS.NOMBRE "EQUIPO" FROM FUTBOLISTAS, EQUIPOS WHERE FUTBOLISTAS.ID_EQUIPO = EQUIPOS.ID;
 
---3Incluye un nuevo equipo en la tabla EQUIPOS. Obtén un listado de los equipos y jugadores que pertenecen a estos (nombre de equipo, nombre de jugador y posición).
+--3Incluye un nuevo equipo en la tabla EQUIPOS. Obtén un listado de los equipos y jugadores que pertenecen a estos (nombre de equipo, 
+--nombre de jugador y posición).
+insert into equipos VALUES (5,'EQUIPO D','ESTADIO D', 150000);
+select equipos.nombre, futbolistas.nombre, apellidos from equipos, futbolistas where equipos.ID = futbolistas.ID_EQUIPO(+);
 
 --4.Muestra el nombre de los futbolistas seguido del nombre del equipo en el que juega utilizando CROSS JOIN.
 SELECT * FROM FUTBOLISTAS CROSS JOIN EQUIPOS;
+SELECT F.NOMBRE, E.NOMBRE FROM FUTBOLISTAS F CROSS JOIN EQUIPOS E;
+
+--Eje5 Muestra todos los datos de empleados y departamentos (EMP y DEPT)el nombre de los futbolistas seguido del nombre del equipo en el que juega
+select * from dept natural join emp;
+SELECT * FROM DEPT,EMP;
+
 --5.Muestra el nombre de los futbolistas seguido del nombre del equipo en el que juega utilizando JOIN … USING.
 SELECT * FROM EMP NATURAL JOIN DEPT;
 --6. Muestra el nombre de los futbolistas seguido del nombre del equipo en el que juega utilizando JOIN … ON
@@ -40,7 +49,8 @@ SELECT *
 
 --EJERCICIO 8 Obtén el nombre, apellidos y nombre del equipo de los futbolistas que sean defensas.
 select f.nombre,f.apellidos,e.nombre from futbolistas f join equipos e on f.id_equipo = e.id where f.posicion = 'DEFENSA';
-select futbolistas.nombre,futbolistas.apellidos,equipos.nombre from futbolistas join equipos on futbolistas.id_equipo = equipos.id where futbolistas.posicion = 'DEFENSA';
+select futbolistas.nombre,futbolistas.apellidos,equipos.nombre from futbolistas 
+    join equipos on futbolistas.id_equipo = equipos.id where futbolistas.posicion = 'DEFENSA';
 
 --30/01/24
 /*LIKE SOLO USARLO PARA EXPRESINOES REGULARES
@@ -99,8 +109,8 @@ select nombre,apellidos from futbolistas; -- hay 4 futbolistas.
  select * from emp inner join dept on emp.deptno = dept.deptno;
  --solución
  select emp.ename, emp.sal from emp inner join dept on emp.deptno = dept.deptno where dept.loc = 'DALLAS';
---2. Indica el id, nombre y sueldo de los empleados que estén en departamentos donde haya otros compañeros empleados con una letra 'u' en su nombre, y que además ganen sueldos 
---mayores que la media de los sueldos de la empresa.
+--2. Indica el id, nombre y sueldo de los empleados que estén en departamentos donde haya otros compañeros empleados con una letra 'u' 
+--en su nombre, y que además ganen sueldos mayores que la media de los sueldos de la empresa.
 select * from emp;
 select deptno from emp where ename like '%U%';
 select empno,ename,sal from emp where deptno = (select deptno from emp where ename like '%U%') and sal > (select avg(sal) from emp);
