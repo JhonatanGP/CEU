@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- ETIQUETA PARA HACER RESPONSIVE LA PÁGINA, ADAPTACIÓN DE ESCALAS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 13_1 html</title>
+    <!-- ICONO DE VENTANA -->
+    <link rel="icon" type="image/x-icon" href="imagenes/favicon.ico">
+    <!-- HOJA DE ESTILOS EXTERNA -->
+    <link rel="stylesheet" href="estilos/estilos.css">
+</head>
+
+<body>
+    <!-- ATRIBUTO "ID" USADO COMO BOOKMARK PARA ACCEDER MEDIANTE UN LINK -->
+    <!-- BOOKMARKS: ENLACES INTERNOS DENTRO DE NUESTRA PROPIA PÁGINA HTML -->
+    <div class="enlaces">
+        <h1>ESTAMOS EN LA PÁGINA DEL TEMA13_2</h1>
+        <p>Vamos a mostrar la otra página tema13_2.html dentro de nuestro iframe</p>
+    </div>
+    <!-- <iframe>: visualizar una página html dentro de otra página html  -->
+    <!-- <iframe src="url" title="descripción"></iframe> -->
+    <!--<iframe src="T13.html" style="height: 300px; width: 100%;" title="T13.html"></iframe> --><!--con borde-->
+    <!--<iframe src="T13.html" style="height: 300px; width: 100%; border: none;" title="T13.html"></iframe>--><!--sin borde-->
+    <iframe src="T13.html" style="height: 300px; width: 100%; border: 2px solid red;" title="T13.html"></iframe><!--Con borde rojo-->
+    <hr>
+    <!-- USO DE IFRAME PARA CARGAR UNA PÁGINA RELATIVA -->
+    <a href="https://www.diariodesevilla.es/" target="iframe_buscador">Abrir diario de Sevilla en el frame de abajo</a>
+    <iframe name="iframe_buscador" style="height: 300px; width: 100%; border: 2px solid green;" title="abrir buscador"></iframe>
+
+</body>
+
+</html>

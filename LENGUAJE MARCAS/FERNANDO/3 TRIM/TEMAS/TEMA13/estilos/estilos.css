@@ -1,0 +1,36 @@
+
+#miCabecera{
+    background-color: rgb(46, 21, 157);
+    color: white;
+    border: 2px solid black;
+    margin: 20px;
+    padding: 20px;
+}
+.enlaces{
+    background-color: rgb(114, 157, 21);
+    color: rgb(16, 15, 15);
+    border: 2px solid black;
+    margin: 20px;
+    padding: 50px;
+}
+.capa1{
+    background-color: rgb(46, 21, 157);
+    color: white;
+    border: 2px solid black;
+    margin: 20px;
+    padding: 50px;
+}
+.capa2{
+    background-color: rgb(17, 112, 14);
+    color: white;
+    border: 2px solid black;
+    margin: 20px;
+    padding: 50px;
+}
+.capa3{
+    background-color: rgb(131, 44, 17);
+    color: white;
+    border: 2px solid black;
+    margin: 20px;
+    padding: 50px;
+}

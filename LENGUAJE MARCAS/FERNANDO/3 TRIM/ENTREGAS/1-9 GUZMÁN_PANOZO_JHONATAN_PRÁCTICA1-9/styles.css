@@ -1,0 +1,23 @@
+body{
+    background-image:url(imagenes/fondo1.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+    padding-left: 2px;
+}
+tr:nth-child(even){
+    background-color: rgba(169, 203, 239, 0.7);
+}
+tr:nth-child(odd){
+    background-color: rgba(133, 172, 231, 0.7);
+}
+div{
+    width: 225px;
+    backdrop-filter: blur(10px);
+    border-radius: 20%;
+}

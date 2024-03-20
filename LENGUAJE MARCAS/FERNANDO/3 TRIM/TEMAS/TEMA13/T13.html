@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- ETIQUETA PARA HACER RESPONSIVE LA PÁGINA, ADAPTACIÓN DE ESCALAS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 13 html</title>
+    <!-- ICONO DE VENTANA -->
+    <link rel="icon" type="image/x-icon" href="imagenes/favicon.ico">
+    <!-- HOJA DE ESTILOS EXTERNA -->
+    <link rel="stylesheet" href="estilos/estilos.css">
+</head>
+
+<body>
+    <!-- CABECERA NORMAL -->
+    <h2>CABECERA SIN ESTILOS</h2>
+    <!-- CABECERA CON IDENTIFICADOR DE ESTILOS -->
+    <!-- los id se ponen en css con almohadilla #  -->
+    <h2 id="miCabecera">CABECERA CON UN IDENTIFICADOR PARA ESTILOS</h2>
+    <!-- CABECERA CON MISMO IDENTIFICADOR SE REPITE ESTILO -->
+    <h2 id="miCabecera">CABECERA CON UN IDENTIFICADOR REPETIDO</h2>
+
+    <!-- ATRIBUTO "ID" USADO COMO BOOKMARK PARA ACCEDER MEDIANTE UN LINK -->
+    <!-- BOOKMARKS: ENLACES INTERNOS DENTRO DE NUESTRA PROPIA PÁGINA HTML -->
+    <div class="enlaces">
+        <h1>PULSE LA SECCIÓN A LA QUE DESEA ACCEDER</h1>
+        <a href="#C1"> Sección 1</a><br>
+        <a href="#C2"> Sección 2</a><br>
+        <a href="#C3"> Sección 3</a><br>
+        <a href="T13_1.html">Volver a tema13_1</a> <!-- Vuelve a la pagina Tema 13_1 -->
+    </div>
+    <br><br>
+    <div id="C1" class="capa1">
+        <h1>SECCIÓN PRIMERA</h1>
+        <p>Esta es la primera sección de nuestra página</p>
+    </div>
+    <div id="C2" class="capa2">
+        <h1>SECCIÓN SEGUNDA</h1>
+        <p>Esta es la segunda sección de nuestra página</p>
+    </div>
+    <div id="C3" class="capa3">
+        <h1>SECCIÓN TERCERA</h1>
+        <p>Esta es la tercera sección de nuestra página</p>
+    </div>
+    <script>
+        function cambiaTexto(){
+            document.getElementById("miCabecera").innerHTML = "TEXTO DE CABECERA MODIFICADO";
+        }
+        cambiaTexto();
+    </script>
+</body>
+
+</html>
