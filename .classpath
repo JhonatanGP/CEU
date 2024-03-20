@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="EXAMEN/" kind="src" path="ENTORNOS/1TRIM"/>
+	<classpathentry kind="src" path="ENTORNOS/1TRIM/EXAMEN"/>
+	<classpathentry kind="src" path="PROGRAMACIÓN/pera/1trimes"/>
+	<classpathentry kind="src" path="PROGRAMACIÓN/pera/2TRIMESTRE"/>
+	<classpathentry kind="src" path="PROGRAMACIÓN/pera/Prácticas/src"/>
+	<classpathentry kind="src" path="PROGRAMACIÓN/pera/Primer scanner/src"/>
+	<classpathentry kind="src" path="PROGRAMACIÓN/pera/tarea1/src"/>
+	<classpathentry kind="src" path="PROGRAMACIÓN/pera/Tema0/src"/>
+	<classpathentry kind="src" path="PROGRAMACIÓN/TRIM 2/ExamenTAjguzman5292/src"/>
+	<classpathentry kind="src" path="PROGRAMACIÓN/TRIM 2/Listas/src"/>
+	<classpathentry kind="src" path="PROGRAMACIÓN/TRIM 2/Tema4/src"/>
+	<classpathentry kind="src" path="PROGRAMACIÓN/TRIM 2/Tema4LGP/src"/>
+	<classpathentry kind="src" path="PROGRAMACIÓN/TRIM 2/TRIM1/src"/>
+	<classpathentry kind="output" path="PROGRAMACIÓN/TRIM 2/Tema4LGP/bin"/>
+</classpath>
