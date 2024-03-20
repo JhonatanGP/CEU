@@ -12,8 +12,8 @@ public class app {
 	
 		// TODO Auto-generated method stub
 		Map<Integer, Integer> num = new HashMap<Integer, Integer>();
-		int Map = 0;
-		if(Map  = 0) {
+		
+		if(Map) {
 			Scanner scanner = new Scanner(System.in);
 			System.out.println("Introduce un numero");
 			Integer num1 = scanner.nextInt();
