@@ -1,4 +1,0 @@
-INDEX VERSION 1.134+C:\Users\perav\Desktop\DAW\Programación\.metadata\.plugins\org.eclipse.jdt.core
-1834888319.index
-1865797976.index
-2914596064.index
