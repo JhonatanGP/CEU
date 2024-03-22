@@ -3,6 +3,8 @@ package tema1;
 import java.util.Scanner;
 
 public class Ej06 {
+	
+	public static final Double IVA = 0.21;
 
 	public static void main(String[] args) {
 	// 1. Solicita por consola al usuario cuál es el precio sin IVA del artículo (puede llevar decimales)
