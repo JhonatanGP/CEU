@@ -22,6 +22,9 @@ public class Ej02 {
 		String resp = sc.next();
 		//8. Mostrar un último mensaje indicando “Gracias. Un saludo”
 		System.out.println("Gracias. un saludo");
+		
+		sc.close();
+
 	}
 
 }
