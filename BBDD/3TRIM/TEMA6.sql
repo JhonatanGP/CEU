@@ -169,24 +169,133 @@ tamaño 10 con la frase CLASE DE DAMDAW.
 ? Declara una constante numérica y valor 11.
 
 --LUNES 01/04/2024
-SET SERVEROUTPUT ON;
-DECLARE
-    MIVARIABLE INT;
-    MIVARIABLE2 DEPT.DEPTNO%TYPE; --NUMBER(2,0) AHORA, SI CAMBIA, EL NUEVO.
-    MIVARIABLE3 DEPT.DNAME%TYPE;
-    MIVARIABLAE4 DEPT.LOC%TYPE;
-    MIFILA DEPT%REOTYPE;
-BEGIN
-    MIVARIBLE := 25; --NI = PARA ASIGNAR, NI == PARA COMPARAR
-    MIVARIBLE2 := 8;
-    MIVARIBLE3 := 'NOMBRE';
-    MIVARIBLE4 := 'SEVILLA BAJO';
-    MIFILA.DEPTNO := 8;
-    SELECT * INTO MIFILA FROM DEPT WHERE DEPTNO = 10;
-    DBMS_OUTPUT.PUT_LINE(MIFILA.DEPTNO || MI FILA.DNAME || MIFILA.LOC
-    
-END;
-/ 
+
+SET SERVEROUTPUT ON; 
+declare
+    mivariable int;
+    mivariable2 dept.deptno%type; --numbre (2,0) ahora, si cambia, el nuevo
+    mivariable3 dept.dname%type;
+    mivariable4 dept.loc%type;
+    mifila dept%rowtype;
+begin
+    mivariable := 25;-- 2 cosas que no se pueden hacer ni el = para asignar ni el == para comparar
+    mivariable2:=8;
+    mivariable3 := 'Nombre';
+    mivariable4 := 'Sevilla bajo';
+    mifila.deptno := 8;
+    select * into mifila from dept where deptno = 10; --para guardar todos los datos selecionados en la variable mifila
+   -- dbms_output.put_line(mivariable);
+    --dbms_output.put_line(mivariable2);
+    --dbms_output.put_line(mifila.deptno);
+     dbms_output.put_line(mifila.deptno||mifila.dname||mifila.loc);
+end;
+/
+
+--Ejercicio 1
+SET SERVEROUTPUT ON; 
+declare
+    fecha date;
+    fecha2 date := '06/04/2021';
+    -- fecha2 date := to_date('06/04/2021');
+    -- fecha2 date := to_date('06/04/2021'),'dd/mm/yyyy';
+    numero number(3);
+    numero1 number(4,2) := 10.99;
+    nombre1 varchar2(10) := 'CLASE DE D';
+    -- nombre1 varchar2(15) := 'CLASE DE DAMDAW';
+begin
+    dbms_output.put_line('');
+end;
+/
+--Ejercicio 2
+declare 
+    variable1 emp.ename%type;
+    variabale2 emp.%rowtype;
+begin
+    --Primer caso
+    select ename into variable1 from emp where
+    dbms_output.put_line(variable1);
+    --Segundo caso
+    select * into variable2 from emp where empno = 7698;
+    dbms_output.put_line(variable2.ename);
+end;
+/
+/*Ej 4
+1.T
+2.F
+3.T
+4.N
+5.T
+6.T
+7.T
+8.F
+9.T
+10.F
+11.F
+12.F
+*/
+--EJERCICIO 5
+--Crea un bloque de código anónimo que pida la base y altura de un triángulo, y devuelva el área de este.
+--NOTA: El área de un triángulo es base por altura entre dos.
+SET SERVEROUTPUT ON; 
+
+create or replace function calcularAreaTriangulo(base int,altura int)return number
+is
+    total number := 0;
+begin
+    total :=  (base*altura)/2;
+    return total;
+end;
+/
+
+declare
+    base int :=&dame_un_valor_para_base;
+    altura int := &dame_un_numero_para_altura;
+    total int;
+begin
+    total := (base*altura)/2;
+    dbms_output.put_line('El área es: ' || total);
+    dbms_output.put_line('El área es (con funcion): ' || calcularAreaTriangulo(5,15));
+end;
+/
+--Ejercio6
+SET SERVEROUTPUT ON; 
+declare
+    nombre varchar2(100) := '&dametunombre';
+    apellido varchar2(100) := '&dametuapellido';
+begin
+    dbms_output.put_line('Hola ' || nombre || ' ' || apellido);
+end;
+/
+
+--Ejercicio 7
+declare
+    num1 int;
+    num2 int;
+begin 
+    num1 := 8;
+    num2 := 4;
+    /*dbms_output.put_line(num1+num2);
+    dbms_output.put_line(num1-num2);
+    dbms_output.put_line(num1*num2);
+    dbms_output.put_line(num1/num2);*/
+    ejercicio7
+end;
+/
+
+--Ejercicio 7 otra forma
+declare
+    num1 int;
+    num2 int;
+begin 
+    num1 := 8;
+    num2 := 4;
+    /*dbms_output.put_line(num1+num2);
+    dbms_output.put_line(num1-num2);
+    dbms_output.put_line(num1*num2);
+    dbms_output.put_line(num1/num2);*/
+    ejercicio7
+end;
+/
 
 
     
