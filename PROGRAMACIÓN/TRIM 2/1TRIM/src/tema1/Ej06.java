@@ -11,10 +11,10 @@ public class Ej06 {
 	System.out.println("¿Cuál es el precio sin IVA del artículo?");	
 	// 2. Recoge el dato y calcula el IVA (21%)
 	Scanner sc = new Scanner(System.in);
-	
+	Double precio = sc.nextDouble();
+	Double iva = precio*0.21;
 	// 3. Muestra como resultado en la consola el IVA calculado y el precio final (la suma del precio sin IVA más el IVA) 
-
-
+	System.out.println("El IVA de "+ precio+ " euros" + " es " + iva + " euros.\n" + "El precio final es " + (precio+iva) + " euros.");
 	}
 
 }
