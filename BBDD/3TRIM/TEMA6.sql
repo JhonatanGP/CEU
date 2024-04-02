@@ -156,6 +156,8 @@ end;
 /
 --PDF 2
 -- Ejercicio 1
+/*
+
 ? Declara una variable tipo fecha sin inicializarla.
 ? Declara una variable tipo fecha inicializada a día 6
 de abril de 2021.
@@ -167,6 +169,7 @@ e inicialízala a 10,99.
 ? Declara una variable carácter (VARCHAR2) de
 tamaño 10 con la frase CLASE DE DAMDAW.
 ? Declara una constante numérica y valor 11.
+*/
 
 --LUNES 01/04/2024
 
@@ -209,10 +212,10 @@ end;
 --Ejercicio 2
 declare 
     variable1 emp.ename%type;
-    variabale2 emp.%rowtype;
+    variabale2 emp%rowtype;
 begin
     --Primer caso
-    select ename into variable1 from emp where
+    select ename into variable1 from emp where empno = 7698;
     dbms_output.put_line(variable1);
     --Segundo caso
     select * into variable2 from emp where empno = 7698;
@@ -221,7 +224,7 @@ end;
 /
 /*Ej 4
 1.T
-2.F
+2 .F
 3.T
 4.N
 5.T
@@ -268,6 +271,7 @@ end;
 /
 
 --Ejercicio 7
+/*
 declare
     num1 int;
     num2 int;
@@ -277,7 +281,7 @@ begin
     /*dbms_output.put_line(num1+num2);
     dbms_output.put_line(num1-num2);
     dbms_output.put_line(num1*num2);
-    dbms_output.put_line(num1/num2);*/
+    dbms_output.put_line(num1/num2);*//*
     ejercicio7
 end;
 /
@@ -292,10 +296,153 @@ begin
     /*dbms_output.put_line(num1+num2);
     dbms_output.put_line(num1-num2);
     dbms_output.put_line(num1*num2);
-    dbms_output.put_line(num1/num2);*/
+    dbms_output.put_line(num1/num2);*//*
     ejercicio7
 end;
 /
+*/
+
+--02/02/2024
+--Ejercio8
+SET SERVEROUTPUT ON; 
+declare
+    num1 int := 7;
+    num2 int;
+    --num2 int := 3;
+begin
+    num2 := 3;
+    if num1 > num2 then 
+        dbms_output.put_line('La suma de  ' || num1 || ' y ' || num2 ||' es ' || (num1+num2));
+        dbms_output.put_line(num1+num2);
+    end if;
+end;
+/
+
+/*Ejercicio 9 modificado
+Crea una función llamada restarNumEnteros que reciba dos
+parámetros, num1 y num2, y si num1 es mayor que num2, devuelva
+la resta de ambos números. En caso contrario, muestra por
+pantalla "Num1 es menor o igual que num2" y devuelva -1.
+Llama a dicha función desde un bloque de código anónimo con
+los valores 7 y 3, en primer lugar, y 4 y 8 en segundo lugar.
+*/
+SET SERVEROUTPUT ON; 
+
+create or replace function restarNumeros (num1 int, num2 int) return int
+is
+
+begin 
+    if num1 > num2 then
+        return num1 - num2;
+    else
+        dbms_output.put_line(num1 || 'es menor o igual que ' || num2);
+        return -1;
+    end if;
+end;
+/
+
+declare
+    numero1 int := 7;
+    numero2 int := 3;
+    resta int;
+begin
+    resta := restarNumeros (7,3);
+    dbms_output.put_line(restarNumeros(numero1,numero2));
+end;
+/
+
+--inda
+create or replace function restarNumEnteros (num1 int, num2 int) return int
+is
+ 
+begin
+    if num1 > num2 then
+        return num1 - num2;
+    else
+        dbms_output.put_line(num1 || ' es menor o igual que ' || num2);
+        return -1;
+    end if;
+end;
+/
+ 
+declare
+    numero1 int := 7;
+    numero2 int := 3;
+    resta int;
+begin
+    resta := restarNumEnteros(7,3);
+    dbms_output.put_line(resta);
+    numero1 := 4;
+    numero2 := 8;
+    dbms_output.put_line(restarNumEnteros(numero1,numero2));
+end;
+/
+
+--EJERCICIO 10 con IF / ELSIF / ELSE
+declare
+    nota number(2,1) := &nota;
+begin
+    if nota < 5 and nota >= 0 then
+        dbms_output.put_line('SUSPENSO');
+    elsif nota >= 5 and nota < 6 then
+    dbms_output.put_line('APROBADO');
+    elsif nota >= 6 and nota < 7 then
+    dbms_output.put_line('BIEN');
+    elsif nota >= 7 and nota < 9 then
+    dbms_output.put_line('NOTABLE');
+    elsif nota >= 9 and nota < 10 then
+    dbms_output.put_line('SOBRESALIENTE');
+    else
+        dbms_output.put_line('El valor introducido es incorrecto');
+    end if;
+end;
+/
+
+--inda
+declare
+    nota number(3,1) := &nota;
+begin
+    if nota < 5 and nota >= 0 then
+        dbms_output.put_line('SUSPENSO');
+    elsif nota >=5 and nota < 6 then
+        dbms_output.put_line('APROBADO');
+    elsif nota >=6 and nota < 7 then
+        dbms_output.put_line('BIEN');
+    elsif nota >=7 and nota < 9 then
+        dbms_output.put_line('NOTABLE');
+    elsif nota >=9 and nota <= 10 then
+        dbms_output.put_line('SOBRESALIENTE');
+    else
+        dbms_output.put_line('El valor introducido es incorrecto');
+    end if;
+end;
+/
+
+--Ejercicio 11. Hacerlo con CASE
+declare
+    nota number(3,1) := &nota;
+begin
+    case
+        when nota between 0 and 4.9 then
+            dbms_output.put_line('SUSPENSO');
+        when nota >=5 and nota < 6 then
+            dbms_output.put_line('APROBADO');
+        when nota >=6 and nota < 7 then
+            dbms_output.put_line('BIEN');
+        when nota >=7 and nota < 9 then
+            dbms_output.put_line('NOTABLE');
+        when nota >=9 and nota <= 10 then
+            dbms_output.put_line('SOBRESALIENTE');
+        else
+            dbms_output.put_line('El valor introducido es incorrecto');
+    end case;
+end;
+/
+
+/*12 Realiza un programa que lea por teclado dos números enteros. El primero será los goles del
+equipo de casa, y el segundo los goles del equipo de fuera.
+Se quiere devolver por pantalla quién ha ganado: “El equipo de casa/visitante ha ganado”. En caso
+de empate se indicará “El resultado del partido ha sido de empate”. */
 
 
-    
+
