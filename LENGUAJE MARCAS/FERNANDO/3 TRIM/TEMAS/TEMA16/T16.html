@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- ESTABLECE EL JUEGO DE CARACTERES -->
+    <meta charset="UTF-8">
+    <!-- ETIQUETA PARA HACER RESPONSIVE LA PÁGINA, ADAPTACIÓN DE ESCALAS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ESTABLECE UNA DESCRIPCIÓN DE LA PÁGINA -->
+    <meta name="descripction" content="Curso Html Tema 16">
+    <!-- ESTABLECE PALABRAS CLAVE PARA SER LOCALIZADA LA PÁGINA POR LOS MOTORES DE BÚSQUEDA -->
+    <meta name="keywords" content="HTML, CSS, JAVASCRIPT, META, RESPONSIVE">
+    <!-- ESTABLECE EL AUTOR DEL ARCHIVO -->
+    <meta name="AUTHOR" content="JHONATAN GUZMÁN ">
+    <title>Tema 16 html</title>
+    <!-- ICONO DE VENTANA -->
+    <link rel="icon" type="image/x-icon" href="imagenes/favicon.ico">
+    <!-- HOJA DE ESTILOS EXTERNA -->
+    <link rel="stylesheet" href="estilos/estilos.css">
+</head>
+<body>
+    <h2>CAMPOS DE ENTRADA DE TEXTO</h2>
+    <!-- FORMULARIO DE ENTRADA DE DATOS(CAMPOS DE TEXTO) -->
+    <form>
+        <!-- ETIQUETA LABEL PARA PODER ESCRIBIR ETIQUETAS DE TEXTO -->
+        <label for="idNombre">Nombre:</label><br>
+    <!-- TAG INPUT PARA PODER INTRODUCIR  TEXTO EL USUARIO-->
+    <input type="text" id="idNombre" name="idNombre"><br>
+    <label for="idApellidos">Apellidos:</label><br>
+    <input type="text" id="idApellidos" name="idApellidos">
+    <!-- USO DE RADIO BUTTON -->
+    <br><br>
+    <label>Selecciona tu especialidad:</label>
+    <br>
+    <input type="radio" id="idDAW" name="idCICLO" value="DAW">
+    <label for="idDAW">DAW</label><br>
+    <input type="radio" id="idDAM" name="idCICLO" value="DAM">
+    <label for="idDAM">DAM</label><br>
+    <input type="radio" id="idASIR" name="idCICLO" value="ASIR">
+    <label for="idASIR">ASIR</label>
+    <!-- USO DE CHECKBOXES -->
+    <br><br>
+    <label>Selecciona las opciones que correspondan:</label>
+    <br>
+    <input type="checkbox" id="idCarnet" name="idCarnet" value="carnet">
+    <label for="idCarnet">Tengo carnet de conducir</label><br>
+    <input type="checkbox" id="idVehiculo" name="idVehiculo" value="vehiculo">
+    <label for="idVehiculo">Tengo vehículo propio</label><br>
+    <input type="checkbox" id="idIngles" name="idIngles" value="ingles">
+    <label for="idIngles">Domino el Inglés</label>
+    <!-- BOTÓN SUBMIT-->
+    <br><br>
+    <input type="submit" value="Submit">
+
+    </form>
+    
+
+</body>
+</html>
