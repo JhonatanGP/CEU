@@ -445,4 +445,272 @@ Se quiere devolver por pantalla quién ha ganado: “El equipo de casa/visitante ha
 de empate se indicará “El resultado del partido ha sido de empate”. */
 
 
+--08/04/2024
+
+--BUCLES
+
+set serveroutput on;
+declare
+    i int := 0;
+begin
+    loop 
+        if i < 10 then
+    dbms_output.put_line(i);
+    elsif i = 10 then
+        exit;
+        end if;
+        i := i+1; --i++ no, i+=1
+    end loop;
+end;
+/
+--otro ejemplo
+set serveroutput on;
+declare
+    i int := 0;
+begin
+    loop 
+        dbms_output.put_line(i);
+        i := i+1;
+        exit when i >=1;
+    end loop;
+end;
+/
+--Ejercicio 13
+declare
+    num1 int := 0;
+begin
+    loop 
+    num1 := num1+2; --me lo suma segun ponga el numero
+        dbms_output.put_line(num1);
+        exit when num1 > 20;
+    end loop;
+end;
+/
+
+--Ejercicio 14
+declare
+    num1 int := 0;
+begin
+    loop 
+    num1 := num1+1; --me lo suma segun ponga el numero
+        dbms_output.put_line(num1);
+        if num1 > 20 then
+            exit;
+        end if;
+    end loop;
+end;
+/
+--Ejercicio 15
+declare
+    num1 int := 0;
+begin
+    while num1 <=20 loop
+        num1 := num1+1; --me lo suma segun ponga el numero
+        dbms_output.put_line(num1);
+    end loop;
+end;
+/
+--Ejercicio 16
+declare
+begin
+    for i in 1..20 loop
+        dbms_output.put_line(i);
+    end loop;
+end;
+/
+-- Ejercicio 17 in reverse
+declare
+begin
+    for i in reverse 0..20 loop
+        dbms_output.put_line(i);
+    end loop;
+end;
+/
+--Ejercicio 18
+declare 
+    i int;
+begin
+    for indice in 0..40 loop
+--  for indice in 1..40 loop
+        i := mod(indice,2); 
+      if i = 0 and indice != 0 then --CONDICION PAR
+     -- if i != 0 then --CONDICION IMPAR
+            dbms_output.put_line(indice);
+        end if;
+    end loop;
+end;
+/
+-- Ejercicio 19
+declare
+
+begin
+    for i in 1..10 loop
+        for j in 1..10 loop
+            dbms_output.put_line(i || 'x' || j || '=' || i*j);
+        end loop;
+    end loop;
+end;
+/
+
+/*Actividad para pensar
+Quiero pedir por teclado una palabra y a continuación mostraremos dicha palabra del revés. 
+Deben salir en la misma línea. Ej: HOLA mostraría ALOH. */
+declare
+    palabra varchar(10) := '&palabra';
+begin
+    dbms_output.put_line(palabra); --coche
+    dbms_output.put_line(substr(palabra,1,1)); --c
+    dbms_output.put_line(length(palabra)); --5
+end;
+/
+
+declare
+    palabra varchar(10) := '&palabra';
+    palabra2 varchar(10);
+begin
+    for i in reverse 1..length(palabra) loop
+      --dbms_output.put_line(substr(palabra,i,1)); 
+      palabra2 := palabra2 || substr(palabra,i,1);
+    end loop;
+    dbms_output.put_line(palabra2);
+end;
+/
+--PDF REGISTROS Y TABLAS
+
+/* Ejercicio 1
+Declarar un tipo registro Tpersona con los siguientes campos: un código de tipo numérico, un nombre de tipo cadena
+de 100 caracteres y la edad integer. Asignarle valor a una variable de tipo Tpersona e imprimirlo por pantalla */
+declare
+    type tPersona is record(
+        codigo number,
+        nombre varchar(100),
+        edad int
+    );
+    persona1 tPersona;
+    persona2 tPersona;
+begin
+    persona1.codigo := 1;
+    persona1.nombre := 'Pedro';
+    persona1.edad := 25;
+    dbms_output.put_line('Mostrar los datos');
+    dbms_output.put_line(persona1.codigo||'|'||persona1.nombre||'|'||persona1.edad);
+    dbms_output.put_line(persona2.codigo||'|'||persona2.nombre||'|'||persona2.edad);
+end;
+/
+--otro tipo
+declare
+    type tPersona is record(
+        codigo number,
+        nombre varchar(100),
+        edad int
+    );
+    type tMascota is record(
+        nombre varchar(100),
+        propietario tPersona
+    );
+    persona1 tPersona;
+    persona2 tPersona;
+    mascota1 tMascota;
+begin
+    persona1.codigo := 1;
+    persona1.nombre := '&propietario';
+    persona1.edad := 25;
+    mascota1.propietario := persona1;
+    mascota1.nombre := '&mascota';
+    dbms_output.put_line('Mostrar los datos de personas');
+    dbms_output.put_line(persona1.codigo||'|'||persona1.nombre||'|'||persona1.edad);
+    dbms_output.put_line(persona2.codigo||'|'||persona2.nombre||'|'||persona2.edad);
+    dbms_output.put_line('Mostrar los datos de mascotas');
+    dbms_output.put_line(mascota1.nombre||'|'||mascota1.propietario.codigo||'|'||mascota1.propietario.nombre||'|'||mascota1.propietario.edad);
+end;
+/
+
+--QUIERO QUE ME HAGAIS UN REGISTRO TDEPT CON LA ESTRUCTURA DE LA TABLA DEPT
+DECLARE
+    TYPE TDEPT IS RECORD(
+    DEPTNO DEPT.DEPTNO%TYPE,
+    DNAME DEPT.DNAME%TYPE,
+    LOC DEPT.LOC%TYPE
+    );
+    DEPARTAMENTO TDEPT;
+BEGIN
+    SELECT DNAME INTO DEPARTAMENTO.DNAME FROM DEPT WHERE DEPTNO = 40;
+    SELECT * INTO DEPARTAMENTO FROM DEPT WHERE DEPTNO = 40;
+    DBMS_OUTPUT.PUT_LINE(DEPARTAMENTO.DNAME);
+    DBMS_OUTPUT.PUT_LINE(DEPARTAMENTO.DEPTNO);
+    DBMS_OUTPUT.PUT_LINE(DEPARTAMENTO2.DNAME);
+    DBMS_OUTPUT.PUT_LINE(DEPARTAMENTO2.DEPTNO);
+END;
+/
+/*EJERCICIO 2 
+2.1. Crea un registro tpersona igual que el del ejemplo de teoría. Después, crea otro registro alumno que tenga como
+campos nombre varchar 100, y profesor tpersona.
+
+2.2. Crea una variable alumno1 del tipo alumno, dale valores a todos sus campos y muéstralos por la salida.
+
+2.3. Crea una variable alumno2 del tipo alumno, dale valores solo a nombre y código de profesor, y
+saca los datos por la salida. */
+
+--Ejercicio2
+declare
+    type tPersona is record(
+        codigo number,
+        nombre varchar(100),
+        edad int
+    );
+    --Ejercicio 2.1
+    type alumno is record(
+        nombre varchar(100),
+        profesor tPersona
+    );
+    --Ejercicio 2.2
+    alumno1 alumno;
+    --Ejercicio 2.3
+    alumno2 alumno;
+begin
+    --Ejercicio 2.2
+    alumno1.nombre := 'Rocket';
+    alumno1.profesor.codigo := 0;
+    alumno1.profesor.nombre := 'Drax';
+    alumno1.profesor.edad := 125;
+    dbms_output.put_line(alumno1.nombre);
+    dbms_output.put_line(alumno1.profesor.codigo);
+    dbms_output.put_line(alumno1.profesor.nombre);
+    dbms_output.put_line(alumno1.profesor.edad);
+    --Ejercicio 2.3
+    alumno2.nombre := 'Groot';
+    alumno2.profesor.codigo := 0;
+    dbms_output.put_line(alumno2.nombre);
+    dbms_output.put_line(alumno2.profesor.codigo);
+end;
+/
+/*Ej 5
+Se quieren guardar todos los datos del
+departamento cuyo deptno es 30 en una variable
+del tipo %rowtype llamada filacompleta. Muestra
+por la salida el valor de los distintos campos de
+filacompleta.*/
+declare
+    filacompleta dept%rowtype;
+begin
+    select * into filacompleta from dept where deptno = 30;
+    dbms_output.put_line(filacompleta.deptno);
+    dbms_output.put_line(filacompleta.dname);
+    dbms_output.put_line(filacompleta.loc);
+end;
+/
+
+--6
+declare
+    filacompleta2 dept%rowtype;
+    departamentoCodigo dept.deptno%type;
+begin
+    select deptno,loc into filacompleta from dept where deptno = 30;
+    dbms_output.put_line(filacompleta.deptno);
+    dbms_output.put_line(filacompleta.dname);
+    dbms_output.put_line(filacompleta.loc);
+end;
+/
+
+
 
