@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 public class OpenConnection {
 	public Connection getNewConnection() throws SQLException{
-		String usuario = "Jhonatan";
-		String password = "123456";
+		String usuario = "PROG";
+		String password = "a123456";
 		
 		String url = "jdbc:oracle:thin:@//10.50.16.33:1521/XE";
 		String driverClass = "oracle.jdbc.driver.OracleDriver";

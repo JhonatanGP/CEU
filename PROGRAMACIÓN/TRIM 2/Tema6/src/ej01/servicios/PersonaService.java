@@ -38,15 +38,16 @@ public class PersonaService {
 				
 				String apellidos = rs.getString("APELLIDOS");
 				p.setApellidos(apellidos);
-				p.setFechaNac(rs.getDate("FECHA_NAC").toLocalDate());
+				p.setFechaNac(rs.getDate("FECHA_NACIMIENTO").toLocalDate());
 				//return getPersonaFromResultSet(rs);		
 				return p;
 			}else {
 				return null;
-				
 			}
 			
-		}finally }
+		}finally {
+			System.out.println("");
+		}
 		
 	}
 
