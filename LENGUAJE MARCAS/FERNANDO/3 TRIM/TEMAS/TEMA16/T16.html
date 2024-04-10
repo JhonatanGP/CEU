@@ -18,42 +18,94 @@
     <!-- HOJA DE ESTILOS EXTERNA -->
     <link rel="stylesheet" href="estilos/estilos.css">
 </head>
+
 <body>
     <h2>CAMPOS DE ENTRADA DE TEXTO</h2>
     <!-- FORMULARIO DE ENTRADA DE DATOS(CAMPOS DE TEXTO) -->
     <form>
         <!-- ETIQUETA LABEL PARA PODER ESCRIBIR ETIQUETAS DE TEXTO -->
         <label for="idNombre">Nombre:</label><br>
-    <!-- TAG INPUT PARA PODER INTRODUCIR  TEXTO EL USUARIO-->
-    <input type="text" id="idNombre" name="idNombre"><br>
-    <label for="idApellidos">Apellidos:</label><br>
-    <input type="text" id="idApellidos" name="idApellidos">
-    <!-- USO DE RADIO BUTTON -->
-    <br><br>
-    <label>Selecciona tu especialidad:</label>
-    <br>
-    <input type="radio" id="idDAW" name="idCICLO" value="DAW">
-    <label for="idDAW">DAW</label><br>
-    <input type="radio" id="idDAM" name="idCICLO" value="DAM">
-    <label for="idDAM">DAM</label><br>
-    <input type="radio" id="idASIR" name="idCICLO" value="ASIR">
-    <label for="idASIR">ASIR</label>
-    <!-- USO DE CHECKBOXES -->
-    <br><br>
-    <label>Selecciona las opciones que correspondan:</label>
-    <br>
-    <input type="checkbox" id="idCarnet" name="idCarnet" value="carnet">
-    <label for="idCarnet">Tengo carnet de conducir</label><br>
-    <input type="checkbox" id="idVehiculo" name="idVehiculo" value="vehiculo">
-    <label for="idVehiculo">Tengo vehículo propio</label><br>
-    <input type="checkbox" id="idIngles" name="idIngles" value="ingles">
-    <label for="idIngles">Domino el Inglés</label>
-    <!-- BOTÓN SUBMIT-->
-    <br><br>
-    <input type="submit" value="Submit">
-
+        <!-- TAG INPUT PARA PODER INTRODUCIR  TEXTO EL USUARIO-->
+        <input type="text" id="idNombre" name="idNombre"><br>
+        <label for="idApellidos">Apellidos:</label><br>
+        <input type="text" id="idApellidos" name="idApellidos">
+        <!-- USO DE RADIO BUTTON -->
+        <br><br>
+        <label>Selecciona tu especialidad:</label>
+        <br>
+        <input type="radio" id="idDAW" name="idCICLO" value="DAW">
+        <label for="idDAW">DAW</label><br>
+        <input type="radio" id="idDAM" name="idCICLO" value="DAM">
+        <label for="idDAM">DAM</label><br>
+        <input type="radio" id="idASIR" name="idCICLO" value="ASIR">
+        <label for="idASIR">ASIR</label>
+        <!-- USO DE CHECKBOXES -->
+        <br><br>
+        <label>Selecciona las opciones que correspondan:</label>
+        <br>
+        <input type="checkbox" id="idCarnet" name="idCarnet" value="carnet">
+        <label for="idCarnet">Tengo carnet de conducir</label><br>
+        <input type="checkbox" id="idVehiculo" name="idVehiculo" value="vehiculo">
+        <label for="idVehiculo">Tengo vehículo propio</label><br>
+        <input type="checkbox" id="idIngles" name="idIngles" value="ingles">
+        <label for="idIngles">Domino el Inglés</label>
+        <!-- BOTÓN SUBMIT-->
+        <br><br>
+        <input type="submit" value="Submit">
     </form>
-    
+    <br><br>
+    <h2>FORMULARIO DE ENVIO DE 2 CAMPOS</h2>
+    <form action="https://www.w3schools.com/action_page.php">
+        <label for="idNombre">Nombre:</label><br>
+        <input type="text" id="idNombre" name="idNombre" value="María"><br>
+        <label for="idApellidos">Apellidos:</label><br>
+        <input type="text" id="idApellidos" name="idApellidos" value="Dorado Sanz"><br><br>
+        <!-- BOTÓN SUBMIT-->
+        <input type="submit" value="Submit">
+    </form>
+    <!-- en otra página -->
+    <h2>FORMULARIO DE ENVIO DE 2 CAMPOS</h2>
+    <form action="https://www.w3schools.com/action_page.php" target=”_blank”>
+        <label for="idNombre">Nombre:</label><br>
+        <input type="text" id="idNombre" name="idNombre" value="María"><br>
+        <label for="idApellidos">Apellidos:</label><br>
+        <input type="text" id="idApellidos" name="idApellidos" value="Dorado Sanz"><br><br>
+        <!-- BOTÓN SUBMIT-->
+        <input type="submit" value="Submit">
+    </form>
+    <h2>FORMULARIO CON LISTA DESPLEGALE</h2>
+    <form action="https://www.w3schools.com/action_page.php">
+        <label for="idLista">Seleccione asignatura:</label><br>
+        <!--<select id="idLista" name="idLista" size="4" multiple>-->
+        <select id="idLista" name="idLista">
+            <option value="lm">Lenguaje de Marcas</option>
+            <option value="pr">Programación</option>
+            <option value="so">Sistemas operativos</option>
+            <option value="en" selected>Entornos</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Enviar">
+    </form>
 
+    <h2> FORMULARIO CON CAMPO DE LISTA DESPLEGABLE (AGRUPADA POR CATEGORÍAS)</h2>
+    <form action="https://www.w3schools.com/action_page.php">
+        <label for="idLista">Seleccione asignatura: </label><br>
+        <select id="idLista" name="idLista" size="7" multiple>
+            <optgroup label="Asignaturas de primero">
+                <option value="lm">Lenguaje de Marcas</option>
+                <option value="pr" selected>Programación</option>
+                <option value="so" selected>Sistemas operativos</option>
+                <option value="en" selected>Entornos</option>
+            </optgroup>
+            <optgroup label="Asignaturas de segundo">
+                <option value="dm">Dispositivos móviles</option>
+                <option value="sa">Sistemas avanzados</option>
+                <option value="in">Inglés</option>
+            </optgroup>
+        </select>
+        <br><br>
+        <input type="submit" value="Enviar">
+    </form>
 </body>
+
 </html>

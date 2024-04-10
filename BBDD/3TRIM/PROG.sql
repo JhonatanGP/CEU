@@ -5,3 +5,5 @@ CREATE TABLE personas (
  FECHA_NACIMIENTO DATE DEFAULT NULL,
  PRIMARY KEY (DNI)
 ); 
+INSERT INTO personas values('54999853E', 'Jhonatan', 'Guzmán Panozo','10-04-2024');
+INSERT INTO personas values('12345678A', 'Antonio', 'Rojas','10-04-2024');
