@@ -36,17 +36,17 @@ public class PersonaService {
 				p.setNombre(rs.getString("NOMBRE"));
 				p.setDni(rs.getString("DNI"));
 				
-				String apellido = rs.getString("APELLIDOS");
+				String apellidos = rs.getString("APELLIDOS");
 				p.setApellidos(apellidos);
 				p.setFechaNac(rs.getDate("FECHA_NAC").toLocalDate());
-				//return getPersonaFromResultSet(rs);				
+				//return getPersonaFromResultSet(rs);		
+				return p;
 			}else {
+				return null;
 				
 			}
 			
-		}catch(SQLException e){
-			
-		}
+		}finally }
 		
 	}
 
