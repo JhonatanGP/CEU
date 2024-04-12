@@ -7,25 +7,20 @@ import java.sql.Statement;
 
 import ej01.modelo.Persona;
 
-public class PersonaService {
+public class PersonaService2 {
 
 	private OpenConnection openConn;
 	
-	public PersonaService() {
+	public PersonaService2() {
 		openConn = new OpenConnection();
 	}
 	
 	public Persona consultarPersona(String dni) throws SQLException{
 		
-		Connection conn = null;
-		Statement stmt = null;
 		ResultSet rs = null;
-		
-		try {
-			
-			conn = openConn.getNewConnection();
-			stmt = conn.createStatement();
-			
+		try (Connection conn = openConn.getNewConnection();
+				Statement stmt = conn.createStatement()){
+					
 			String sql = "SELECT * FROM PERSONAS WHERE DNI = '" + dni + "'";
 			System.out.println(sql);
 			rs = stmt.executeQuery(sql);
@@ -43,11 +38,7 @@ public class PersonaService {
 			}else {
 				return null;
 			}
-			
-		}finally {
-			System.out.println("");
 		}
-		
 	}
 
 }
