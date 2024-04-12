@@ -40,5 +40,10 @@ public class PersonaService2 {
 			}
 		}
 	}
+	//EJ 02 
+	public Persona buscarPersona(String dni, String apellidos) throws SQLException{
+		
+		
+	}
 
 }

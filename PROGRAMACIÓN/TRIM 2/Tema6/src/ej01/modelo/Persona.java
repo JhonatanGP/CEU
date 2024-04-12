@@ -1,6 +1,7 @@
 package ej01.modelo;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Persona {
 	
@@ -34,12 +35,9 @@ public class Persona {
 	}
 	@Override
 	public String toString() {
-		return "Persona [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", fechaNac=" + fechaNac
-				+ "]";
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		return "Persona [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", fechaNac=" 
+				+ formato.format(fechaNac) + "]";
 	}
-
-
-
-
 
 }
