@@ -6,4 +6,5 @@ CREATE TABLE personas (
  PRIMARY KEY (DNI)
 ); 
 INSERT INTO personas values('54999853E', 'Jhonatan', 'Guzmán Panozo','10-04-2024');
+INSERT INTO personas values('54999853A', 'Jhonatan', 'Guzmán Panozo','10-04-2024');
 INSERT INTO personas values('12345678A', 'Antonio', 'Rojas','10-04-2024');
