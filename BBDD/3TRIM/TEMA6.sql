@@ -685,11 +685,8 @@ begin
 end;
 /
 /*Ej 5
-Se quieren guardar todos los datos del
-departamento cuyo deptno es 30 en una variable
-del tipo %rowtype llamada filacompleta. Muestra
-por la salida el valor de los distintos campos de
-filacompleta.*/
+Se quieren guardar todos los datos del departamento cuyo deptno es 30 en una variable del tipo %rowtype 
+llamada filacompleta. Muestra por la salida el valor de los distintos campos de filacompleta.*/
 declare
     filacompleta dept%rowtype;
 begin
@@ -699,18 +696,154 @@ begin
     dbms_output.put_line(filacompleta.loc);
 end;
 /
-
+--15/04/2024
 --6
+set serveroutput on;
 declare
     filacompleta2 dept%rowtype;
-    departamentoCodigo dept.deptno%type;
+    ---departamentoCodigo dept.deptno%type;
 begin
-    select deptno,loc into filacompleta from dept where deptno = 30;
-    dbms_output.put_line(filacompleta.deptno);
-    dbms_output.put_line(filacompleta.dname);
-    dbms_output.put_line(filacompleta.loc);
+    --select deptno,loc into filacompleta2.deptno, filacompleta2.loc from dept where deptno = 40;
+    select deptno,loc into filacompleta2.deptno, filacompleta2.loc from dept where deptno = 40;
+    dbms_output.put_line(filacompleta2.deptno);
+    dbms_output.put_line(filacompleta2.dname);
+    dbms_output.put_line(filacompleta2.loc);
+    select * into filacompleta2 from dept where deptno = 40;
+    dbms_output.put_line(filacompleta2.deptno);
+    dbms_output.put_line(filacompleta2.dname);
+    dbms_output.put_line(filacompleta2.loc);
 end;
 /
 
+/*Ejercicio 7
+Declarar una tabla de números y asignarle con un bucle for los números del 1 al 10. Además de
+asignar el valor dentro del bucle, mostrar el valor de la tabla por pantalla en cada iteración.*/
+declare
+    type tipoTablaNum is table of int index by binary_integer;
+    valTablanum tipoTablaNum; --valTablaNum1(1) := 1; valTablaNum2(2) := 2; ...
+begin
+   for i in 1 ..10 loop
+        valTablaNum(i) := i;
+        dbms_output.put_line(valTablaNum(i));
+    end loop;
+end;
+/
+-- exception
+declare
+    type tipoTablaNum is table of int index by binary_integer;
+    valTablanum tipoTablaNum; --valTablaNum1(1) := 1; valTablaNum2(2) := 2; ...
+begin
+   for i in 1 ..10 loop
+        valTablaNum(i) := i;
+        dbms_output.put_line(valTablaNum(i));
+    end loop;
+    --dbms_output.put_line(valTablaNum(20));
+    valTablaNum(22) := 1;
+    dbms_output.put_line(valTablaNum(22));
+exception
+    when no_data_found then
+        dbms_output.put_line('No hay valores');
+end;
+/
 
+/*Ejercicio 8
+Declarar una tabla de ‘personas’. Donde ‘personas’ es un tipo registro que almacena nombre, apellido1
+y apellido2. Asignarle valores para una persona e imprimirlos por pantalla.*/
+set serveroutput on;
+declare
+        type personas is record (
+        nombre varchar (100),
+        apellido1 varchar(100),
+        apellido2 varchar(100)
+        );
+        --Creamos el tipo de dato tabla
+        type tTabla is table of personas index by binary_integer;
+        --declaramos una variable del tipo tTabla
+        tablaValores tTabla;
+begin
+    tablaValores(1).nombre := 'Pepito';
+    tablaValores(1).apellido1 := 'Garcia';
+    tablaValores(1).apellido2 := 'Grillos';    
+    dbms_output.put_line(tablaValores(1).nombre || ' ' || tablaValores(1).apellido1 || ' ' || tablaValores(1).apellido2);
+    tablaValores(2).nombre := 'Antonio';
+    tablaValores(2).apellido1 := 'Montaño';
+    tablaValores(2).apellido2 := 'Palacios';    
+    dbms_output.put_line(tablaValores(2).nombre || ' ' || tablaValores(2).apellido1 || ' ' || tablaValores(2).apellido2);
+end;
+/
 
+/*Ejercicio 9. Sobre el ejercicio 7:
+1. Utilizar la función COUNT para devolver el número de elementos.
+2. Recorrerlo con FIRST Y LAST.
+3. Eliminar el último de la tabla y devolver el número total de elementos.
+4. Preguntar si existe valor en la posición 10.*/
+declare
+    type tipoTablaNum is table of int index by binary_integer;
+    valTablanum tipoTablaNum; --valTablaNum1(1) := 1; valTablaNum2(2) := 2; ...
+begin
+   for i in 1 ..10 loop
+        valTablaNum(i) := i;
+        dbms_output.put_line(valTablaNum(i));
+    end loop;
+end;
+/
+-- exception
+declare
+    type tipoTablaNum is table of int index by binary_integer;
+    valTablanum tipoTablaNum; --valTablaNum1(1) := 1; valTablaNum2(2) := 2; ...
+begin
+   for i in 1 ..10 loop
+        valTablaNum(i) := i;
+        dbms_output.put_line(valTablaNum(i));
+    end loop;
+    --1
+    dbms_output.put_line(valTablaNum.count);
+    --2
+    for j in valTablaNum.first..valTablaNum.last loop
+        dbms_output.put_line(valTablaNum(j));
+    end loop;
+    --3
+    valTablaNum.delete(valTablaNum.last);
+        dbms_output.put_line(valTablaNum.count);
+    --4
+    if not(valTablaNum.exists(10)) then
+        dbms_output.put_line('No existe la posición 10');
+    else
+        dbms_output.put_line('Existe la posición 10');
+    end if;
+end;
+/
+
+/*Ejercicio 10
+Se quiere mostrar por pantalla los datos de ciertos empleados (tabla emp). Se pide:
+? Se pedirá al usuario por la entrada de plsql que introduzca dos valores integer que coincidan con dos empnos de la tabla emp,
+y se guardarán en una tabla de integers.
+? Se debe crear una tabla que contendrá como valores todos los campos de las filas de emp cuyo empno coincida con los de la
+tabla anterior. Puedes usar registros o %rowtype.
+? Recorre la tabla anterior mostrando por la salida los valores de cada columna de los dos registros.
+NOTA: debes usar las funciones FIRST, LAST, COUNT, etc. para los índices de tus bucles. Usa por ejemplo empno 7839 y 7698. */
+declare
+    valor1 emp.empno%type := &empno1;
+    valor2 emp.empno%type := &empno2;
+    type tTabla1 is table of emp.empno%type index by binary_integer;
+    tabla1 tTabla1;
+    type tTabla2 is table of emp%rowtype index by binary_integer;
+    tabla2 tTabla2;
+begin
+    tabla1(1) := valor1;
+    tabla1(2) := valor2;
+    for i in tabla1.first..tabla1.last loop
+        select * into tabla2(i) from emp where empno = tabla1(i);
+    end loop;
+    for j in tabla2.first..tabla2.last loop
+        dbms_output.put_line(tabla2(j).empno);
+        dbms_output.put_line(tabla2(j).ename);
+        dbms_output.put_line(tabla2(j).job);
+        dbms_output.put_line(tabla2(j).mgr);
+        dbms_output.put_line(tabla2(j).hiredate);
+        dbms_output.put_line(tabla2(j).sal);
+        dbms_output.put_line(tabla2(j).comm);
+        dbms_output.put_line(tabla2(j).deptno);
+    end loop;
+end;
+/
