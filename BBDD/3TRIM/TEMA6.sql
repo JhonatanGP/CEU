@@ -847,3 +847,198 @@ begin
     end loop;
 end;
 /
+--LUNES 22/04/2024 FALTÉ
+CREATE TABLE ESTUDIANTES (
+    codigo           NUMBER PRIMARY KEY,
+    dni              VARCHAR2(10),
+    nombre           VARCHAR2(50),
+    apellidos        VARCHAR2(50),
+    fecha_nacimiento DATE
+);
+INSERT INTO ESTUDIANTES (codigo,dni, nombre, apellidos, fecha_nacimiento)
+VALUES (1,'75812952P', 'Ricardo','Lopez Lopez', to_date('10/10/1999','dd/mm/yyyy'));
+INSERT INTO ESTUDIANTES (codigo,dni, nombre, apellidos, fecha_nacimiento)
+VALUES (2,'48956895Q', 'Marta','Carrasco Perez', to_date('10/10/1998','dd/mm/yyyy'));
+INSERT INTO ESTUDIANTES (codigo,dni, nombre, apellidos, fecha_nacimiento)
+VALUES (3,'58268587L', 'Blanca','Baron Santos', to_date('01/05/1999','dd/mm/yyyy'));
+INSERT INTO ESTUDIANTES (codigo, dni, nombre, apellidos, fecha_nacimiento)
+VALUES (4,'28388914P', 'Ana','Ramirez Gomez', to_date('08/04/1999','dd/mm/yyyy'));
+INSERT INTO ESTUDIANTES (codigo, dni, nombre, apellidos, fecha_nacimiento)
+VALUES (5,'97898989T', 'Marta','Valencia Cabello', to_date('15/06/1999','dd/mm/yyyy'));
+
+CREATE TABLE ASIGNATURAS(
+    codigo          NUMBER(10) PRIMARY KEY,
+    curso           NUMBER(1),
+    descripcion     VARCHAR2(50),
+    profesor        VARCHAR2(50)
+);
+INSERT INTO ASIGNATURAS VALUES (1,1,'Redes','Elena Perez');
+INSERT INTO ASIGNATURAS VALUES (2,1,'Gestion de Base de datos','Ricardo Del Valle');
+INSERT INTO ASIGNATURAS VALUES (3,1,'Social','Sofia Islas');
+INSERT INTO ASIGNATURAS VALUES (4,1,'Matematicas','Federico Lopez');
+INSERT INTO ASIGNATURAS VALUES (5,1,'Ingles','Dolores Martin');
+INSERT INTO ASIGNATURAS VALUES (6,2,'Educacion Fisica','David Gomez');
+INSERT INTO ASIGNATURAS VALUES (7,2,'Musica','Teresa Jimenez');
+INSERT INTO ASIGNATURAS VALUES (8,2,'Lengua','Pepa de la Puerta');
+INSERT INTO ASIGNATURAS VALUES (9,2,'Natural','Inma Alonso');
+INSERT INTO ASIGNATURAS VALUES (10,2,'Aleman','Marta Jimenez');
+
+CREATE TABLE MATRICULAS(
+    cod_alumno      NUMBER(10),
+    cod_asignatura  NUMBER(10),
+    nota            VARCHAR2(4),
+    PRIMARY KEY (cod_alumno,cod_asignatura),
+    FOREIGN KEY (cod_alumno) REFERENCES estudiantes(codigo),
+    FOREIGN KEY (cod_asignatura) REFERENCES ASIGNATURAS(codigo)
+);
+INSERT INTO MATRICULAS VALUES (1,1,4.5);
+INSERT INTO MATRICULAS VALUES (1,2,5);
+INSERT INTO MATRICULAS VALUES (1,3,8);
+INSERT INTO MATRICULAS VALUES (2,2,6);
+INSERT INTO MATRICULAS VALUES (2,6,9);
+INSERT INTO MATRICULAS VALUES (2,9,8);
+INSERT INTO MATRICULAS VALUES (3,5,10);
+INSERT INTO MATRICULAS VALUES (3,8,9);
+INSERT INTO MATRICULAS VALUES (4,2,10);
+INSERT INTO MATRICULAS VALUES (4,4,9);
+INSERT INTO MATRICULAS VALUES (4,6,4);
+INSERT INTO MATRICULAS VALUES (4,8,6);
+INSERT INTO MATRICULAS VALUES (5,5,10);
+INSERT INTO MATRICULAS VALUES (5,6,9);
+INSERT INTO MATRICULAS VALUES (5,7,10);
+INSERT INTO MATRICULAS VALUES (5,9,6);
+commit;
+
+--MARTES 23/04/2024
+
+/*1.Se necesita una función llamada compruebaCadena que reciba dos parámetros que sean palabras del tipo varchar tamaño 10. Si la palabra
+1 tiene más letras que la palabra 2, la función devolverá concatenadas ambas palabras, siendo primero la palabra 1 y a continuación la
+palabra 2 (juntas). Si la palabra 2 tiene más letras que la palabra 1, la función devolverá una palabra que sea la unión/concatenación de
+la palabra 2 junto a la palabra 1 (en ese orden). Si ambas palabras tienen el mismo número de letras, la función debe devolver tantos
+guiones como letras tengan (ej.: si ambas palabras tienen 4 letras, debe devolver ----).*/
+
+set serveroutput on;
+create or replace function compruebaCadena(palabra1 varchar,palabra2 varchar) return varchar
+is
+    tam_palabra1 int := length(palabra1);
+    total varchar(100) := '';
+begin
+    if tam_palabra1 > length(palabra2) then
+        return palabra1||palabra2;
+    elsif tam_palabra1 < length(palabra2) then
+        return palabra2||palabra1;
+    else --tam_palabra1 = length(palabra2)
+        for i in 1..tam_palabra1 loop
+            total := total || '-';
+        end loop;
+        return total;
+    end if;
+end;
+/
+/*2.Realiza un bloque de código anónimo que pida al usuario que meta dos palabras por teclado de menos de diez letras (palabra 1 y palabra 2),
+y después muestra por pantalla el resultado de llamar a compruebaCadena usando las siguientes cadenas:
+2.1. Palabra 1 igual a DECKARD y palabra 2 igual a RICK.
+2.2. Palabra 1 igual a ZHORA y palabra 2 igual a BATTY. */
+declare
+    palabra1 varchar(10) := '&palabra1';
+    palabra2 varchar(10) := '&palabra2';
+begin
+    dbms_output.put_line(compruebaCadena(palabra1,palabra2));
+end;
+/
+
+/*Ejercicio 4.
+Definir un cursor explícito que seleccione el nombre, apellidos y DNI de la tabla
+ESTUDIANTES por ORDEN ALFABÉTICO DE APELLIDO, y en caso de coincidir, orden ALFABÉTICO DE NOMBRE. 
+Recorrerlo y mostrar todos los datos recuperados. Escribir al final el número de filas recuperadas en total.*/
+
+declare
+    --cursor datosEstudiantes is select * from estudiantes;
+    --filaEstudiante estudiantes%rowtype;
+    cursor datosEstudiantes is 
+        select nombre,apellidos,dni 
+            from estudiantes
+            order by apellidos,nombre;
+    nombreEstudiante estudiantes.nombre%type;
+    apellidosEstudiante estudiantes.apellidos%type;
+    dniEstudiante estudiantes.dni%type;
+begin
+    open datosEstudiantes;
+    loop
+        fetch datosEstudiantes into nombreEstudiante,apellidosEstudiante,dniEstudiante;
+        exit when datosEstudiantes%notfound;
+        dbms_output.put_line(apellidosEstudiante||', '||nombreEstudiante||', DNI: '||dniEstudiante);      
+    end loop;
+    dbms_output.put_line('Total de estudiantes: '||datosEstudiantes%rowcount);
+    close datosEstudiantes;
+end;
+/
+
+/*Ejercicio 5.
+Definir un cursor explícito que seleccione el nombre y la fecha de nacimiento de la tabla ESTUDIANTES. Recorrerlo y mostrar todos 
+los datos recuperados con WHILE LOOP. Escribir al final el número de filas recuperadas en total. */
+set serveroutput on;
+declare
+    cursor datos is select * from estudiantes;
+    fila estudiantes%rowtype; --fila.nombre, fila.fecha_nacimiento
+    contador int := 0;
+begin
+    open datos;
+    fetch datos into fila;
+    while datos%found loop
+        contador := contador + 1;
+        dbms_output.put_line(fila.nombre||'-'||fila.fecha_nacimiento);
+        fetch datos into fila;
+    end loop;
+    close datos;
+    dbms_output.put_line('Total = ' || contador);
+end;
+/
+/*Ejercicio 6.
+Definir un cursor explícito que seleccione el nombre, apellidos y fecha de nacimiento de la tabla ESTUDIANTES. Recorrerlo y 
+mostrar todos los datos recuperados con un bucle FOR. Escribir el número de filas recuperadas en total.*/
+set serveroutput on;
+declare
+    cursor datos is select nombre,apellidos,fecha_nacimiento from estudiantes;
+    fila estudiantes%rowtype;
+    total int := 0;
+begin
+    for fila in datos loop
+        total := total + 1;
+        dbms_output.put_line(fila.nombre||fila.apellidos||fila.fecha_nacimiento);
+    end loop;
+    dbms_output.put_line(total);
+end;
+/
+/*Ejercicio 7.
+Se quiere mostrar por pantalla el nombre y apellidos de los estudiantes que se llamen de cierta forma. 
+Para ello se pedirá al usuario que introduzca el nombre a buscar.
+El formato requerido para mostrar por pantalla es el siguiente (todo en mayúsculas): “APELLIDOS, NOMBRE”.
+Ej.: CARRASCO PEREZ, MARTA.
+En el supuesto de que SELECT no se traiga ningún registro, mostrar por pantalla “NO HAY DATOS”. Utiliza un
+bucle WHILE. Lanza la ejecución para el nombre “Marta” y después para el nombre “Luis”. */
+set serveroutput on;
+declare
+    vNombre estudiantes.nombre%type := '&nombre';
+    cursor cEstudiantes is select nombre,apellidos from estudiantes where upper(nombre) = upper(vNombre);
+    filaEstudiante estudiantes%rowtype;
+    total int := 0;
+begin
+    for filaEstudiante in cEstudiantes loop
+        total := total + 1;
+        dbms_output.put_line(upper(filaEstudiante.apellidos)||', '||upper(filaEstudiante.nombre));
+    end loop;
+    if total = 0 then
+        dbms_output.put_line('NO HAY DATOS');
+    end if;
+end;
+/
+
+
+/*1. Se quiere saber si un año es bisiesto o no. Para ello, se debe pedir por pantalla introducir un año, y 
+  luego se mostrará un mensaje por pantalla indicando "El año es bisiesto" o "El año no es bisiesto", 
+  según corresponda. Un año es bisiesto si el resto de dividir el año entre 4 es cero y además, el resto 
+  de dividir ese año entre 100 es distinto de cero o bien el resto de dividir ese año entre 400 es cero.*/
+set serveroutput on;
+
+    
