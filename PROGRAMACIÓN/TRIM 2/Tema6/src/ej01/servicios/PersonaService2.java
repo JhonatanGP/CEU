@@ -15,7 +15,7 @@ public class PersonaService2 {
 		openConn = new OpenConnection();
 	}
 	
-	public Persona consultarPersona(String dni) throws SQLException{
+public Persona consultarPersona(String dni) throws SQLException{
 		
 		ResultSet rs = null;
 		try (Connection conn = openConn.getNewConnection();
@@ -40,10 +40,5 @@ public class PersonaService2 {
 			}
 		}
 	}
-	//EJ 02 
-	public Persona buscarPersona(String dni, String apellidos) throws SQLException{
-		
-		
-	}
-
 }
+
