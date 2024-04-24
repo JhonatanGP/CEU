@@ -1,3 +1,5 @@
+
+
 CREATE TABLE personas (
  DNI varchar2(50) NOT NULL,
  NOMBRE varchar2(50) NOT NULL,
