@@ -1,0 +1,70 @@
+{
+    "nombre": "Biblioteca de Jhonatan",
+    "direccion": "C/Larga N20",
+    "telefono": 6958871770,
+    "ciudad": "Sevilla",
+    "venta": true,
+    "libros": [
+        {
+            "titulo": "las montañas",
+            "autores": [
+                {
+                    "autor": "a1"
+                },
+                {
+                    "autor":"a2"
+                }
+            ],
+            "añoPublicacion": 2002,
+            "generos": [
+                {
+                    "nombre": "terror"
+                },
+                {
+                    "nombre": "comedia"
+                }
+            ],
+            "comentario": [
+                {
+                    "nick": "u1",
+                    "comentario": "El libro es bueno"
+                },
+                {
+                    "nick": "u2",
+                    "comentario": "El libro es malo"
+                }
+            ]
+        },
+        {
+            "titulo": "el lago",
+            "autores": [
+                {
+                    "autor": "a1"
+                },
+                {
+                    "autor":"a2"
+                }
+            ],
+            "añoPublicacion": 2006,
+            "generos": [
+                {
+                    "nombre": "terror"
+                },
+                {
+                    "nombre": "comedia"
+                }
+            ],
+            "comentario": [
+                {
+                    "nick": "u1",
+                    "comentario": "El libro es bueno"
+                },
+                {
+                    "nick": "u2",
+                    "comentario": "El libro es malo"
+                }
+            ]
+        }
+    ]
+
+}

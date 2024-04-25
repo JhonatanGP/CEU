@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+ 
+<head>
+    <meta charset="UTF-8">
+    <!-- ETIQUETA PARA HACER RESPONSIVE LA PÁGINA, ADAPTACIÓN DE ESCALAS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 19 html</title>
+    <!-- ICONO DE VENTANA -->
+    <link rel="icon" type="image/x-icon" href="imagenes/favicon.ico">
+    <script>
+        var archivojson = {
+            "Nombre": "Samaniego",
+            "Direccion": "C/ San Jacinto, S/N",
+            "Telefono": 954182644,
+            "ciudad": "Sevilla",
+            "venta": true,
+            "libros":
+                [
+                    {
+                        "titulo": "El saber no ocupa lugar",
+                        "autores":
+                            [
+                                { "nombre": "Daniel Unamuno" },
+                                { "nombre": "Laura Gallego" }
+                            ],
+                        "generos":
+                            [
+                                { "nombre": "Romántico" },
+                                { "nombre": "Actualidad" }
+                            ],
+                        "comentarios":
+                            [
+                                { "nick": "Alon23", "texto": "Libro adecuado para la lectura" },
+                                { "nick": "Ana1999", "texto": "Final no esperado" }
+                            ]
+                    },
+                    { "titulo": "título del segundo libro" }
+                ]
+        };
+ 
+        //Borra toda la información del campo textarea:
+        function Borrar() {
+            document.getElementById("idArea").value = "";
+        }
+        //Lectura del campo nombre del json:
+        function lecturaNombre() {
+            document.getElementById("idArea").value = document.getElementById("idArea").value + archivojson.Nombre + "\n";
+        }
+ 
+        //Lectura del campo dirección del json:
+        function lecturaDireccion() {
+            document.getElementById("idArea").value = document.getElementById("idArea").value + archivojson.Direccion + "\n";
+        }
+ 
+        //Lectura del campo telefono:
+        function lecturaTelefono() {
+            document.getElementById("idArea").value = document.getElementById("idArea").value + archivojson.Telefono + "\n";
+        }
+ 
+        //Lectura del campo venta:
+        function lecturaVenta() {
+            document.getElementById("idArea").value = document.getElementById("idArea").value + archivojson.venta + "\n";
+        }
+ 
+        //Lectura del campo titulo del primer libro:
+        function lecturaNombreLibro1() {
+            document.getElementById("idArea").value = document.getElementById("idArea").value + archivojson.libros[0].titulo + "\n";
+        }
+ 
+        //Lectura del campo titulo del segundo libro:
+        function lecturaNombreLibro2() {
+            document.getElementById("idArea").value = document.getElementById("idArea").value + archivojson.libros[1].titulo + "\n";
+        }
+ 
+        //Lectura del campo nombre del autor 1 del libro 1:
+        function lecturaNombreAutores1Libro1() {
+            document.getElementById("idArea").value = document.getElementById("idArea").value + archivojson.libros[0].autores[0].nombre + "\n";
+        }
+        //Lectura del campo nombre del autor 2 del libro 1:
+        function lecturaNombreAutores2Libro1() {
+            document.getElementById("idArea").value = document.getElementById("idArea").value + archivojson.libros[0].autores[1].nombre + "\n";
+        }
+        //Lectura del campo nombre del genero 1 del libro 1:
+        function lecturaNombreGeneros1Libro1() {
+            document.getElementById("idArea").value = document.getElementById("idArea").value + archivojson.libros[0].generos[0].nombre + "\n";
+        }
+        //Lectura del campo nombre del genero 2 del libro 1:
+        function lecturaNombreGeneros2Libro1() {
+            document.getElementById("idArea").value = document.getElementById("idArea").value + archivojson.libros[0].generos[1].nombre + "\n";
+        }
+        //Lectura del campo comentario 1 del libro 1:
+        function lecturaComentario1Libro1() {
+            document.getElementById("idArea").value = document.getElementById("idArea").value + archivojson.libros[0].comentarios[0].nick + ": " + archivojson.libros[0].comentarios[0].texto + "\n";
+        }
+ 
+        //Lectura del campo comentario 1 del libro 1:
+        function lecturaComentario2Libro1() {
+            document.getElementById("idArea").value = document.getElementById("idArea").value + archivojson.libros[0].comentarios[1].nick + ": " + archivojson.libros[0].comentarios[1].texto + "\n";
+        }
+    </script>
+    <style>
+        textarea {
+            padding: 10px;
+            background-color: rgb(25, 78, 78);
+            color: white;
+            border-radius: 10px;
+            border: solid 5px rgb(232, 107, 18);
+        }
+ 
+        input[type="button"] {
+            padding: 10px;
+            background-color: rgb(86, 142, 162);
+            color: white;
+            border-radius: 10px;
+            border: solid 1px rgb(64, 49, 177);
+        }
+ 
+        label {
+            color: rgb(44, 123, 160);
+            font-size: x-large;
+            font-weight: 800;
+        }
+    </style>
+</head>
+ 
+<body>
+    <form>
+        <label for="idArea">Datos leídos del json</label><br>
+        <textarea id="idArea" name="idArea" style="width:90%;height:400px;"></textarea>
+        <br><br>
+        <input type="button" onclick="Borrar()" value="Borrar">
+        <input type="button" onclick="lecturaNombre()" value="Nombre">
+        <input type="button" onclick="lecturaDireccion()" value="Direccion">
+        <input type="button" onclick="lecturaTelefono()" value="Telefono">
+        <input type="button" onclick="lecturaVenta()" value="Venta">
+        <input type="button" onclick="lecturaNombreLibro1()" value="Nombre libro 1">
+        <input type="button" onclick="lecturaNombreLibro2()" value="Nombre libro 2">
+        <input type="button" onclick="lecturaNombreAutores1Libro1()" value="Autor 1 de Libro 1">
+        <input type="button" onclick="lecturaNombreAutores2Libro1()" value="Autor 2 de Libro 2">
+        <input type="button" onclick="lecturaNombreGeneros1Libro1()" value="Genero 1 de Libro 1">
+        <input type="button" onclick="lecturaNombreGeneros2Libro1()" value="Genero 2 de Libro 2">
+        <input type="button" onclick="lecturaComentario1Libro1()" value="Comentario 1 de Libro 1">
+        <input type="button" onclick="lecturaComentario2Libro1()" value="Comentario 2 de Libro 2">
+ 
+    </form>
+</body>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+ 
+<head>
+    <meta charset="UTF-8">
+    <!-- ETIQUETA PARA HACER RESPONSIVE LA PÁGINA, ADAPTACIÓN DE ESCALAS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 18 html</title>
+    <!-- ICONO DE VENTANA -->
+    <link rel="icon" type="image/x-icon" href="imagenes/favicon.ico">
+    <!-- HOJA DE ESTILOS EXTERNA-->
+    <link rel="stylesheet" href="estilos/estilos.css">
+    <script>
+        // Función para habilitar/deshabilitar el campo de módulo:
+        function cambiaModoModulo() {
+            document.getElementById("idModulo").disabled = !(document.getElementById("idModulo").disabled);
+        }
+ 
+        // Función para establecer la fecha actual en un campo:
+        function getFecha() {
+            document.getElementById("idFechaIngreso").value = new Date().toJSON().slice(0, 10);
+        }
+ 
+        //Actualiza el valor de un campo de tipo range en un campo de texto de solo lectura:
+        function actualizaTexto(texto) {
+            document.getElementById("idMuestraRango").value = texto;
+        }
+    </script>
+</head>
+ 
+<body>
+    <h2>FORMULARIO CON DISTINTOS TIPOS DE CAMPO</h2>
+    <form action="https://www.w3schools.com/action_page.php">
+        <!-- CAMPO TIPO TEXTO -->
+        <label for="idNombre">Nombre:</label><br>
+        <input type="text" id="idNombre" name="idNombre" required><br>
+        <br>
+        <!-- CAMPO TIPO TEXTO DISABLED CON VALUE POR DEFECTO -->
+        <label for="idModulo">Módulo</label><br>
+        <input type="text" id="idModulo" name="idModulo" value="Lenguaje de Marcas" disabled><br>
+        <input type="reset" value="Resetear">
+        <input type="button" onclick="cambiaModoModulo()" value="Habilita/deshabilita campo módulo">
+        <br>
+        <!-- CAMPO TIPO PASSWORD -->
+        <label for="idPwd">Password:</label><br>
+        <input type="password" id="idPwd" name="idPwd" required>
+        <br>
+        <!-- CAMPO TIPO RADIO BUTTON -->
+        <input type="radio" id="idHtml" name="lenguaje" value="HTML" checked>
+        <label for="html">HTML</label><br>
+        <input type="radio" id="idCss" name="lenguaje" value="CSS">
+        <label for="css">CSS</label><br>
+        <input type="radio" id="idScript" name="lenguaje" value="JavaScript">
+        <label for="javascript">JavaScript</label>
+        <br>
+        <!-- CAMPO TIPO CHECKBOX -->
+        <input type="checkbox" id="idAzul" name="idAzul" value="Azul">
+        <label for="idAzul">Azul</label><br>
+        <input type="checkbox" id="idRojo" name="idRojo" value="Rojo" checked>
+        <label for="idRojo">Rojo</label><br>
+        <input type="checkbox" id="idVerde" name="idVerde" value="Verde">
+        <label for="idVerde">Verde</label>
+        <br>
+        <!-- CAMPO TIPO COLOR -->
+        <label for="idColor">Seleccione su color favorito:</label>
+        <input type="color" id="idColor" name="idColor">
+        <br>
+        <!-- CAMPO TIPO FECHA (DATE) -->
+        <label for="idNacimiento">Fecha de nacimiento:</label>
+        <input type="date" id="idNacimiento" name="idNacimiento" min="2024-04-01" max="2024-04-30">
+        <br>
+        <!-- CAMPO TIPO FECHA Y HORA (DATETIME-LOCAL) -->
+        <label for="idReunión">Fecha y hora de la reunión:</label>
+        <input type="datetime-local" id="idReunion" name="idReunion" min="2024-04-01T00:00" max="2024-04-30T23:59">
+        <br>
+        <!-- CAMPO TIPO EMAIL -->
+        <label for="idEmail">Introduzca su correo electrónico:</label>
+        <input type="email" id="idEmail" name="idEmail">
+        <br>
+        <!-- CAMPO TIPO FILE -->
+        <label for="idFile">Selecciona un fichero:</label>
+        <input type="file" id="idFile" name="idFile">
+        <br>
+        <!-- CAMPO TIPO HIDDEN -->
+        <input type="hidden" id="idCodCliente" name="idCodCliente" value="1689">
+        <br>
+        <!-- CAMPO TIPO MONTH -->
+        <label for="idMonth">Selecciona mes y año:</label>
+        <input type="month" id="idMonth" name="idMonth">
+        <br>
+        <!-- CAMPO TIPO NUMBER -->
+        <label for="idCantidad">Introduzca un número entero:</label>
+        <input type="number" id="idCantidad" name="idCantidad">
+        <br>
+        <!-- CAMPO TIPO NUMBER ENTRE 1 Y 5 -->
+        <label for="idCantidad2">Introduzca un número entero (entre 1 a 5):</label>
+        <input type="number" id="idCantidad2" name="idCantidad2" min="1" max="5">
+        <br>
+        <!-- CAMPO TIPO TEXTO CON LONGITUD MAXIMA -->
+        <label for="idNombreMax">Nombre Máximo 20 caracteres:</label><br>
+        <input type="text" id="idNombreMax" name="idNombreMax" maxlength="20"><br>
+        <br>
+        <!-- CAMPO TIPO TEXTO READONLY -->
+        <label for="idFechaIngreso">Fecha de ingreso:</label><br>
+        <input type="text" id="idFechaIngreso" name="idFechaIngreso" readonly><br>
+        <br>
+        <!-- CAMPO TIPO TEXTO CON ANCHO DETERMINADO -->
+        <label for="idDireccion">Dirección:</label><br>
+        <input type="text" id="idDireccion" name="idDireccion" size="120"><br>
+        <br>
+        <!-- CAMPO TIPO NUMÉRICO CON INCREMENTOS DE VALORES -->
+        <label for="idPoder">Poder:</label><br>
+        <input type="number" id="idPoder" name="idPoder" min="0" max="100" step="10" value="50"><br>
+        <!-- CAMPO TIPO TEXTO CON PATTERN -->
+        <label for="idCodigoPostal">Código postal:</label><br>
+        <input type="text" id="idCodigoPostal" name="idCodigoPostal" pattern="[0-9]{5}"><br>
+        <br>
+        <!-- CAMPO TIPO RANGE -->
+        <label for="idVolumen">Selecciona el volumen (entre 0 y 100):</label><br>
+        <input type="range" id="idVolumen" name="idVolumen" min="0" max="100" step="5"
+            onchange="actualizaTexto(this.value);">
+        <input type="text" id="idMuestraRango" value="" readonly size="3">
+        <br>
+        <!-- CAMPO TIPO TEL -->
+        <label for="idTelefono">Introduce tu teléfono:</label><br>
+        <input type="tel" id="idTelefono" name="idTelefono" pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}-[0-9]{2}"><br>
+        <!-- CAMPO TIPO TIME -->
+        <label for="idHora">Seleciona la hora:</label><br>
+        <input type="time" id="idHora" name="idHora"><br>
+        <!-- CAMPO TIPO WEEK -->
+        <label for="idWeek">Selecciona la semana:</label><br>
+        <input type="week" id="idWeek" name="idWeek"><br>
+        <!-- CAMPO TIPO IMAGE COMO BUTTON SUBMIT -->
+        <input type="image"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUExw7EdMoQm1cyK2g9WyGK4ign6nucByF8Q&s"
+            alt="Submit" width="300" height="100">
+        <br>
+        <!-- CAMPO TIPO BUTTON -->
+        <input type="button" onclick="alert('Hola, bienvenido!')" value="Púlsame!">
+        <br>
+        <!-- CAMPO TIPO RESET -->
+        <input type="reset" value="Resetear">
+        <!-- CAMPO TIPO SUBMIT - ENVÍO DE FORMULARIO -->
+        <input type="submit" value="Enviar" class="form-submit-button">
+    </form>
+ 
+    <!-- FORMULARIO DE BÚSQUEDA EN GOOGLE -->
+    <form action="https://www.google.com/search">
+        <label for="q">Selecciona el término a buscar:</label><br>
+        <input type="search" name="q" autocomplete="off"><br>
+        <input type="submit" value="Buscar">
+    </form>
+ 
+ 
+    <script>
+        //Llamamos a la función getFecha() para establecer la fecha del sistema en el campo readonly
+        getFecha();
+        actualizaTexto("50")
+    </script>
+</body>
+
+</html>
