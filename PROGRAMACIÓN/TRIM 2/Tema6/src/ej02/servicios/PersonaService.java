@@ -15,6 +15,10 @@ public class PersonaService {
 		openConn = new OpenConnection();
 	}
 	
+	public Persona insertarPersona(String dni) throws SQLExceptions{
+		
+	}
+	
 	public Persona consultarPersona(String dni) throws SQLException{
 		
 		Connection conn = null;
