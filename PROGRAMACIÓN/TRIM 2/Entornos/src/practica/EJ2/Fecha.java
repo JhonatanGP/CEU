@@ -2,24 +2,35 @@ package practica.EJ2;
 
 public class Fecha {
 
-	private int DIA;
+	private int dia;
 	private int mes;
-	private int a�o;
+	private int ano;
 
-	public Fecha(int dia, int mes, int a�o) {
-		this.DIA = dia;
+	public Fecha(int dia, int mes, int ano) {
+		this.dia = dia;
 		this.mes = mes;
-		this.a�o = a�o;
+		this.ano = ano;
 	}
 
 	public boolean valida() {
-		if (DIA < 1 || DIA > 31) {
+		if (dia < 1 || dia > 31) {
 			return false;
 		}
 		if (mes < 1 || mes > 12) {
 			return false;
 		}
 
+		int diasMes = switchDiasMes();
+		if (dia > diasMes) {
+			return false;
+		}
+		else {
+			return true;
+		}
+
+	}
+
+	private int switchDiasMes() {
 		int diasMes = 0;
 		switch (mes) {
 		case 1:
@@ -38,20 +49,18 @@ public class Fecha {
 			diasMes = 30;
 			break;
 		case 2: // a�o bisiesto
-			if ((a�o % 400 == 0) ||
-					((a�o % 4 == 0) && (a�o % 100 != 0)))
+			if (esBisiesto())
 				diasMes = 29;
 			else
 				diasMes = 28;
 			break;
 		}
-		if (DIA > diasMes) {
-			return false;
-		}
-		else {
-			return true;
-		}
+		return diasMes;
+	}
 
+	private boolean esBisiesto() {
+		return (ano % 400 == 0) ||
+				((ano % 4 == 0) && (ano % 100 != 0));
 	}
 
 }

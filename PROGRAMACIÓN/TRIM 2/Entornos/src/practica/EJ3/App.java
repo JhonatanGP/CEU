@@ -7,7 +7,7 @@ public class App {
         Producto producto = new Producto("Camiseta", 20.99, 50);
 
         // Mostrar informaci�n del producto
-        System.out.println("Nombre del producto: " + producto.Nombre);
+        System.out.println("Nombre del producto: " + producto.nombre);
         System.out.println("Precio del producto: $" + producto.precio);
         System.out.println("Cantidad disponible: " + producto.cantidadDisponible);
 
