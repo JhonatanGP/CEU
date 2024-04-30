@@ -92,9 +92,9 @@ BEGIN
 END;
 /
 SHOW SERVEROUTPUT;
-/*CREAR PROCEDIMIENTO TODAY3_IS QUE, PRIMERO, TENGA UNA VARIABLE LOCAL LLAMADA ANTERIOR QUE SEA DATE Y VALGA UN DIA MENOS QUE EL PARAMETRO DE FECHA
-ANTERIOR. MOSTRAR POR LA CONSOLA LA VARIABLE LLAMADA ANTERIOR. LUEGO MODIFICA TU BLOQUE DE CODIGO ANONIMO PARA LLAMAR A ESE TODAY3_IS CON EL DIA
-DE TU CUMPLEAÑOS.*/
+/*CREAR PROCEDIMIENTO TODAY3_IS QUE, PRIMERO, TENGA UNA VARIABLE LOCAL LLAMADA ANTERIOR QUE SEA DATE Y VALGA UN DIA MENOS QUE EL PARAMETRO
+DE FECHA ANTERIOR. MOSTRAR POR LA CONSOLA LA VARIABLE LLAMADA ANTERIOR. LUEGO MODIFICA TU BLOQUE DE CODIGO ANONIMO PARA LLAMAR A ESE 
+TODAY3_IS CON EL DIA DE TU CUMPLEAÑOS.*/
 CREATE OR REPLACE PROCEDURE TODAY3_IS(FECHA DATE)
 IS
     ANTERIOR DATE;
@@ -1131,18 +1131,28 @@ begin
 end;
 /
 /*5. Obtener el nombre (ENAME) y puesto de trabajo (JOB) del empleado (tabla EMP) que tenga el código (EMPNO) igual a 7782.*/
+set serveroutput on;
 
-/*6. Pedir por pantalla un NIF (8 números y una letra). Comprobar si la letra es correcta y luego mostrar por pantalla si ese NIF escorrecto.*/
+/*6.Pedir por pantalla un NIF (8 números y una letra). Comprobar si la letra es correcta y luego mostrar por pantalla si ese NIF escorrecto.*/
+set serveroutput on;
+DECLARE
+    DNI VARCHAR(9) := 'METE_DNI';
+BEGIN
+    numerosDni
+    letraDni varchar(1)
 
 /*7. Realiza una función a la que se le pase por parámetro un valor de empno de la tabla EMP, y devuelva los campos nombre y salario.
 En el supuesto de que no haya encontrado ningún empno en la tabla EMP con dicho valor, que llame a una excepción que muestre por
 pantalla "Valor no existe en la base de datos".*/
+set serveroutput on;
 
 /*8. Realiza una función a la que se le pase por parámetro un valor de empno de la tabla EMP, y si existe, que borre el registro completo.
 En el supuesto de que no haya encontrado ningún empno en la tabla EMP con dicho valor, que llame a una excepción que muestre por 
 pantalla "No se ha podido borrar, el valor no existe en la base de datos".*/
+set serveroutput on;
 
 /*9. Realiza un procedimiento que muestre por pantalla el nombre de todos los departamentos de la tabla DEPT.*/
+set serveroutput on;
 
 /*10. Realiza una función que devuelva el número total de empleados de la tabla EMP.
 Si el número total es mayor de 5, crea una excepción que muestre el mensaje "hay más de 5 empleados".*/
@@ -1150,59 +1160,77 @@ Si el número total es mayor de 5, crea una excepción que muestre el mensaje "hay
 /*11. Crea un programa que pida dos números enteros por pantalla. Si ambos números son divisibles entre sí (requisito, el primer número debe
 ser mayor o igual que el segundo), entonces que muestre por pantalla el mensaje “Son divisibles”. En caso contrario, que se muestre el 
 mensaje "No son divisibles". NOTA: dos números son divisibles si su resto es cero. Puedes usar la función MOD.*/
+set serveroutput on;
 
 /*12. Crea un programa que devuelva por pantalla el día de la semana que es.*/
+set serveroutput on;
 
 /*13. Realiza un programa que pida por pantalla tres números y que luego muestre por pantalla el resultado de sumar los tres valores.
 Debes contemplar que no se introduzcan números negativos como condición.*/
+set serveroutput on;
 
 /*14. Desarrolla un programa que te pida por pantalla tu salario (número entero). Primero comprueba que es mayor que cero (si es menor que 
 cero,devuelve por pantalla el mensaje "Salario no válido"). Si el salario es menor de 20000, devuelve el mensaje "Tu salario es bajo".
 Si el salario está entre 20000 y 40000, indica por pantalla "Tu salario está bien". Si el salario es mayor de 40000, muestra por pantalla
 "Tu salario está muy bien!". Debes emplear CASE… WHEN.*/
+set serveroutput on;
 
 /*15. Crea un registro con tres campos, id, nombre y puesto, los cuáles deben tener el mismo tipo de dato que empno, ename y job de la tabla 
 EMP. Crea una variable del tipo de ese registro, asígnale valores y muéstralo por la salida. Luego mediante un cursor implícito obtén esos
 campos para empno = 7698, guardándolo en esa variable del tipo de ese registro, y luego mostrándolo por la salida.*/
+set serveroutput on;
 
 /*16. Crea una variable que sea del tipo ROWTYPE (tabla EMP) y una tabla que tenga los siguientes valores en las posiciones 1, 2 y 3: 
 7839, 7698 y 7782. Mediante un bucle while que recorra toda la tabla (usa la función count para el tamaño máximo del índice), 
 muestra por la salida de pantalla el nombre del trabajador (campo ename de la tabla emp) que corresponda su empno a cada valor
 guardado en la tabla (7839,7698,7782).*/
+set serveroutput on;
 
 /*17. Crea un registro que tenga los siguientes campos: codigo tipo number 4, nombre tipo varchar2 tamaño 10 y trabajo tipo varchar2 tamaño 9.
 Después crea un tipo de tabla con la estructura del registro anterior (codigo, nombre, trabajo) y usa una variable con ese tipo de tabla 
 para guardar en ella los datos (empno, ename y job) de la tabla emp cuyo empno valga 7839. Recuerda que es una tabla,por lo que tendrás que 
 guardar dichos datos en la posición 1 de la tabla, por ejemplo. Muestra por la salida de pantalla el empno, ename y job de esa tabla.*/
+set serveroutput on;
 
 /*18. Hacer una función obtenerNombreEmp que dado por parámetro un empno te devuelva el ename.*/
+set serveroutput on;
 
 /*19. Hacer un procedimiento mostrarDatosEmp que reciba por parámetro un empno y muestre por pantalla el nombre del empleado y el nombre de 
 su jefe. Utiliza la función obtenerNombreEmp.*/
+set serveroutput on;
 
 /*20. Empaqueta la función y el procedimiento anterior en un paquete denominado libreriaEmpleados.*/
+set serveroutput on;
 
 /*21. A través de un bloque de código anónimo, llama al procedimiento mostrarDatosEmp del paquete libreriaEmpleados con el empno 7698.*/
+set serveroutput on;
 
 /*22. Muestra por la salida el nombre de cada departamento junto al número de empleados que tiene.*/
+set serveroutput on;
 
 /*23. Obtén el salario medio de los empleados y muestra por pantalla ese salario medio junto al resultado del 21% de ese importe y para 
 finalizar, poner la suma del salario medio junto al 21% de dicho valor. Ej.: Importe de salario medio 1000, con 210 del 21% y total 1210.*/
+set serveroutput on;
 
 /*24. Muestra por la salida el nombre y salario de los empleados que hayan sido contratados en septiembre.*/
+set serveroutput on;
 
 /*25. Pide por la entrada de teclado un determinado mes y devuelve por la salida el nombre del empleado que haya sido contratado en dicho mes.
 En el caso de que no haya ninguno, mostrar el mensaje "No hay empleados que hayan sido contratados en ese mes".*/
+set serveroutput on;
 
 /*26. Se quiere hacer un bloque de código anónimo que pida todos los campos de la tabla emp e introduzca dicho registro en la tabla.*/
+set serveroutput on;
 
 /*27. Se quiere un código de bloque anónimo que borre registros de la tabla emp. Para ello pedirá un código empno por teclado, y si una vez
 comprobado que existe, se borrará de la tabla. Se debe mostrar un mensaje "No hay registros con ese código" cuando no haya empleados con
 ese empno. Si se borra el registro, debes indicarlo por la pantalla con el mensaje "Se ha borrado adecuadamente el empleado".*/
+set serveroutput on;
 
 /*28. Se quiere saber el nombre de los empleados que hayan sido contratados en un determinado mes. Para ello debes crear un bloque de código
 anónimo que pida un mes por el teclado con letras. Con esa información debes obtener todos los registros de la tabla emp cuyo hiredate haya 
 sido en dicho mes, recuperar el nombre y mostrarlo por la salida.*/
+set serveroutput on;
 
 /*29. Se quiere saber cuántos empleados hay en cada departamento. Para ello crea un bloque de código anónimo que pida por teclado el código
 de departamento deptno. Después, habrá que comprobar que dicho código existe o no en la tabla dept mostrando un mensaje en caso positivo
@@ -1252,6 +1280,10 @@ parámetro.Trata las excepciones que consideres necesarias.*/
 consideres necesarias.*/
 
 
+
+
+
+
 -- 02. ACTIVIDADES BLOQUE BÁSICO
 
 /*1. Crea una función llamada borrarEmpleado que reciba por parámetro un código empno y que si, existe dicho código en la base de datos 
@@ -1299,3 +1331,44 @@ devolver el mensaje "No se ha actualizado el registro porque ese nombre es el qu
 
 /*6. Se quiere un procedimiento mostrarAlReves que cuando se le llame desde un bloque de código anónimo con un parámetro, muestre por la
 salida de consola ese nombre al revés. Ej.: mostrarAlReves('HOLA') debe mostrar ALOH por la salida.*/
+
+
+
+
+--ACTIVIDADES COMPLEMENTARIAS
+/*1. Muestra por la salida el nombre de cada departamento junto al número de empleados que tiene.*/
+
+/*2. Obtén el salario medio de los empleados y muestra por pantalla ese salario medio junto al resultado del 21% de ese importe y para
+finalizar, poner la suma del salario medio junto al 21% de dicho valor. Ej.: Importe de salario medio 1000, con 210 del 21% y total 1210. */
+
+/*3. Muestra por la salida el nombre y salario de los empleados que hayan sido contratados en septiembre.*/
+
+/*4. Pide por la entrada de teclado un determinado mes y devuelve por la salida el nombre del empleado que haya sido contratado en dicho
+mes. En el caso de que no haya ninguno, mostrar el mensaje "No hay empleados que hayan sido contratados en ese mes".*/
+
+/*5. Se quiere hacer un bloque de código anónimo que pida todos los campos de la tabla emp e introduzca dicho registro en la tabla.*/
+
+/*6. Se quiere un código de bloque anónimo que borre registros de la tabla emp. Para ello pedirá un código empno por teclado, y si una
+vez comprobado que existe, se borrará de la tabla. Se debe mostrar un mensaje “No hay registros con ese código” cuando no haya empleados
+con ese empno. Si se borra el registro, debes indicarlo por la pantalla con el mensaje “Se ha borrado adecuadamente el empleado”.*/
+
+/*7. Se quiere saber el nombre de los empleados que hayan sido contratados en un determinado mes. Para ello debes crear un bloque de 
+código anónimo que pida un mes por el teclado con letras. Con esa información debes obtener todos los registros de la tabla emp cuyo
+hiredate haya sido en dicho mes, recuperar el nombre y mostrarlo por la salida.*/
+
+/*8. Se quiere saber cuántos empleados hay en cada departamento. Para ello crea un bloque de código anónimo que pida por teclado el código
+de departamento deptno. Después, habrá que comprobar que dicho código existe o no en la tabla dept mostrando un mensaje en caso positivo
+y otro en caso negativo. Si hay departamentos con ese código, se comprobará que hay o no empleados de ese departamento en la tabla emp,
+mostrando mensajes en ambos casos (positivo y negativo). Para finalizar, sí y solo sí hay empleados de ese departamento, debes calcular
+el número de empleados que hay de ese departamento e indicarlo en un mensaje como el que sigue “Hay xx empleados en ese departamento”,
+donde xx es el número obtenido del total de empleados de ese departamento.*/
+
+/*9. Se quiere saber el número de veces de cierta vocal que tienen los nombres de los empleados. Para ello se pedirá al usuario por 
+teclado una vocal, que habrá que comprobar inicialmente si realmente lo es o no. Si es vocal, se contará cuantas veces aparece en cada
+nombre de cada empleado, indicando un mensaje como el que sigue: “KING tiene 1 vez la vocal i” donde se debe haber introducido inicialmente
+por teclado “i”. Deben mostrarse todos los empleados con el número de veces que aparece la vocal introducida.*/
+
+/*10. Se quiere un bloque de código anónimo que busque el empleado que tiene el nombre más largo y el que tiene el nombre más corto. En
+caso de coincidencia en el tamaño de los nombres, se pondrán todos.1. Muestra por la salida el nombre de cada departamento junto al número
+de empleados que tiene.*/
+
