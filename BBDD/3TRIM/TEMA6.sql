@@ -1135,11 +1135,7 @@ set serveroutput on;
 
 /*6.Pedir por pantalla un NIF (8 números y una letra). Comprobar si la letra es correcta y luego mostrar por pantalla si ese NIF escorrecto.*/
 set serveroutput on;
-DECLARE
-    DNI VARCHAR(9) := 'METE_DNI';
-BEGIN
-    numerosDni
-    letraDni varchar(1)
+
 
 /*7. Realiza una función a la que se le pase por parámetro un valor de empno de la tabla EMP, y devuelva los campos nombre y salario.
 En el supuesto de que no haya encontrado ningún empno en la tabla EMP con dicho valor, que llame a una excepción que muestre por
@@ -1372,3 +1368,194 @@ por teclado “i”. Deben mostrarse todos los empleados con el número de veces que 
 caso de coincidencia en el tamaño de los nombres, se pondrán todos.1. Muestra por la salida el nombre de cada departamento junto al número
 de empleados que tiene.*/
 
+---MARTES 07/05/2023
+--05. PROCEDIMIENTOS Y FUNCIONES
+
+/* 1 Crea un procedimiento que se llame consultarEmpleado. Debe tomar una variable de entrada v_empno con el tipo de dato del campo empno de la
+tabla emp. Debe tomar como variables de salida v_ename y v_job, cuyos tipos de datos deben coincidir con los de los campos ename y job de la
+tabla emp. Controla con una excepción que no se encuentre ningún dato con el valor de v_empno de entrada, mostrando el mensaje:
+“No se encontraron datos”.*/
+set serveroutput on;
+create or replace procedure consultarEmpleado(
+    v_empno emp.empno%type,
+    v_ename out emp.ename%type,
+    v_job out emp.job%type)
+is
+    noHayDatos exception; --opción3
+begin
+    select empno into numEmp from emp where empno = v_empno; --opción 2
+    select ename,job into v_ename,v_job from emp where empno = v_empno; --opción 2
+    select count(*) into contador from emp where empno = v_empno; --opción 3
+    if contador = 0 then --opción 3
+        raise noHayDatos;
+    else
+        select ename,job into v_ename,v_job from emp where empno = v_empno;
+    end if;
+    select ename,job into v_ename,v_job from emp where empno = v_empno; --opción 1
+exception
+    when no_data_found then --opción 1 / opción 2
+        dbms_output.put_line('No se encontraron datos');
+    when noHayDatos then --opción 3
+        dbms_output.put_line('No se encontraron datos');
+end;
+/
+declare
+    v_empno emp.empno%type;
+    v_ename emp.ename%type;
+    v_job emp.job%type;
+begin
+    v_empno := 1111;
+    consultarEmpleado(v_empno,v_ename,v_job);
+    dbms_output.put_line(v_ename||'|'||v_job);
+end;
+/
+--otro
+create or replace procedure consultarEmpleado(
+    v_empno emp.empno%type,
+    v_ename out emp.ename%type,
+    v_job out emp.job%type)
+is
+    noHayDatos exception; --opción3
+    numEmp emp.empno%type;
+    contador int := 0;
+begin
+    select empno into numEmp from emp where empno = v_empno; --opción 2
+    select ename,job into v_ename,v_job from emp where empno = v_empno; --opción 2
+    select count(*) into contador from emp where empno = v_empno; --opción 3
+    if contador = 0 then --opción 3
+        raise noHayDatos;
+    else
+        select ename,job into v_ename,v_job from emp where empno = v_empno;
+    end if;
+    select ename,job into v_ename,v_job from emp where empno = v_empno; --opción 1
+exception
+    when no_data_found then --opción 1 / opción 2
+        dbms_output.put_line('No se encontraron datos');
+    when noHayDatos then --opción 3
+        dbms_output.put_line('No se encontraron datos');
+end;
+/
+declare
+    v_empno emp.empno%type;
+    v_ename emp.ename%type;
+    v_job emp.job%type;
+begin
+    v_empno := 7839;
+    consultarEmpleado(v_empno,v_ename,v_job);
+    dbms_output.put_line(v_ename||'|'||v_job);
+end;
+/
+--aaaaaaa
+declare
+    nombre emp.ename%type;
+    puesto emp.job%type;
+begin
+    miPaquete.is_today;
+    miPaquete.consultarEmpleado(7839,nombre,puesto);
+    dbms_output.put_line(nombre||'|'||puesto);
+end;
+/
+--aaa
+/*
+Ejercicio 2
+Escriba un paquete gestionEMP con:
+? Procedimiento nuevoEmpleado que inserte un nuevo empleado con los siguientes datos:
+? Empno = 8000
+? Ename = JUAN
+? JOB = CLERK
+? MGR = 7902
+? HIREDATE = 01/05/22
+? SAL = 1500
+? COMM = NULL
+? DEPTNO = 20
+? Al insertar el nuevo empleado, debe mostrar un mensaje “Registro creado correctamente”.
+Llamar al procedimiento en un bloque anónimo y muestra el mensaje.
+*/
+create or replace package gestionEMP
+is
+    procedure nuevoEmpleado(
+        empno emp.empno%type,
+        ename emp.ename%type,
+        job emp.job%type,
+        mgr emp.mgr%type,
+        hiredate emp.hiredate%type,
+        sal emp.sal%type,
+        comm emp.comm%type,
+        deptno emp.deptno%type,
+        mensaje out varchar
+    );
+end;
+/
+create or replace package body gestionEMP
+is
+    procedure nuevoEmpleado(
+        empno emp.empno%type,
+        ename emp.ename%type,
+        job emp.job%type,
+        mgr emp.mgr%type,
+        hiredate emp.hiredate%type,
+        sal emp.sal%type,
+        comm emp.comm%type,
+        deptno emp.deptno%type,
+        mensaje out varchar
+    )
+    is
+        existe emp.empno%type;
+    begin
+        select empno into existe from emp where empno = empno;
+        mensaje := 'El empno ya existe';
+    exception
+        when no_data_found then
+            insert into emp values (empno,ename,job,mgr,hiredate,sal,comm,deptno);
+            mensaje := 'Registro creado correctamente';
+    end;
+end;
+/
+
+create or replace package gestionEMP
+is
+    procedure nuevoEmpleado(
+        vempno emp.empno%type,
+        ename emp.ename%type,
+        job emp.job%type,
+        mgr emp.mgr%type,
+        hiredate emp.hiredate%type,
+        sal emp.sal%type,
+        comm emp.comm%type,
+        deptno emp.deptno%type,
+        mensaje out varchar
+    );
+end;
+/
+create or replace package body gestionEMP
+is
+    procedure nuevoEmpleado(
+        vempno emp.empno%type,
+        ename emp.ename%type,
+        job emp.job%type,
+        mgr emp.mgr%type,
+        hiredate emp.hiredate%type,
+        sal emp.sal%type,
+        comm emp.comm%type,
+        deptno emp.deptno%type,
+        mensaje out varchar
+    )
+    is
+        existe emp.empno%type;
+    begin
+        select empno into existe from emp where empno = vempno;
+        mensaje := 'El empno ya existe';
+    exception
+        when no_data_found then
+            insert into emp values (vempno,ename,job,mgr,hiredate,sal,comm,deptno);
+            mensaje := 'Registro creado correctamente';
+    end;
+end;
+/
+declare
+    mensaje varchar(100);
+begin
+    gestionEMP.nuevoEmpleado(2222,'prueba',null,null,null,null,null,10,mensaje);
+    dbms_output.put_line(mensaje);
+end;
+/

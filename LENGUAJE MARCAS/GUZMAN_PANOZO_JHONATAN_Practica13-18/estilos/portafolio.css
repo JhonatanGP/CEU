@@ -275,7 +275,16 @@ width: 130px;
     padding: 0 20px;
 }
 .educacion .fila .col h3{
-    font-size: 28px;
+    font-size: 30px;
     font-family: Tahoma;
     margin-bottom: 25px;
+}
+.educacion .fila .item .fecha{
+    display: block;
+    color: #55a3c2;
+}
+.educacion .fila .item .es{
+    font-size: 20px;
+    display: block;
+    color: #55a3c2;
 }
