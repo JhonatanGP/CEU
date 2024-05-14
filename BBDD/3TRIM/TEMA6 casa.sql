@@ -1,16 +1,3 @@
-set serveroutput on;
-begin
-    dbms_output.put_line('No he puesto nada');
-end;
-/
---ej
-set serveroutput on;
-declare
-    num int := 7;
-begin
-    dbms_output.put_line(num);
-end;
-/
 --ej
 set serveroutput on;
 declare
