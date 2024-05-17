@@ -1,34 +1,90 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
+  <head>
     <!-- ESTABLECE EL JUEGO DE CARACTERES -->
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <!-- ETIQUETA PARA HACER RESPONSIVE LA PÁGINA, ADAPTACIÓN DE ESCALAS -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- ESTABLECE UNA DESCRIPCIÓN DE LA PÁGINA -->
-    <meta name="descripction" content="Curso Html Tema 14">
+    <meta name="descripction" content="Curso Html Tema 14" />
     <!-- ESTABLECE PALABRAS CLAVE PARA SER LOCALIZADA LA PÁGINA POR LOS MOTORES DE BÚSQUEDA -->
-    <meta name="keywords" content="HTML, CSS, JAVASCRIPT, META, RESPONSIVE">
+    <meta name="keywords" content="HTML, CSS, JAVASCRIPT, META, RESPONSIVE" />
     <!-- ESTABLECE EL AUTOR DEL ARCHIVO -->
-    <meta name="AUTHOR" content="JHONATAN GUZMÁN ">
+    <meta name="AUTHOR" content="JHONATAN GUZMÁN " />
     <title>Tema 14 html</title>
     <!-- ICONO DE VENTANA -->
-    <link rel="icon" type="image/x-icon" href="imagenes/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="imagenes/favicon.ico" />
     <!--PONEMOS URL BASE  -->
-    <base href="https://www.diariodesevilla.es/" target="_blank">
-    
-</head>
-
-<body>
+    <!-- <base href="https://www.diariodesevilla.es/" target="_blank"> -->
+    <base href="paginastema14/" target="_blank" />
+    <style>
+      /* USO DE MEDIA QUERIE */
+      * {
+        box-sizing: border-box; /*Cuenta como ancho de elementos también el padding en las cajas.*/
+      }
+      .left {
+        background-color: #2196f3;
+        padding: 20px;
+        float: left;
+        width: 20%; /* Ancho a 20% por defecto */
+      }
+      .main {
+        background-color: #f1f1f1;
+        padding: 20px;
+        float: left;
+        width: 60%; /* Ancho a 60% por defecto */
+      }
+      .right {
+        background-color: #04aa6d;
+        padding: 20px;
+        float: left;
+        width: 20%; /* Ancho a 20% por defecto */
+      }
+      /* Uso de media query para añadir un cambio cuando se llega a 800px o menos: */
+      @media screen and (max-width: 800px) {
+        .left,
+        .main,
+        .right {
+          width: 100%; /*Pone en vertical las cajas cuando baja o llega a los 800px la resolución de pantalla */
+        }
+      }
+    </style>
+  </head>
+  <body>
     <!-- LINK EXTERNOS ABSOLUTOS -->
-    <a href="" >Abrir diario de Sevilla</a>
+    <!-- <a href="" >Abrir diario de Sevilla</a> 
     <hr>
     <a href="aljarafe/" >Abrir diario de Sevilla noticias Aljarafe</a>
     <hr>
     <a href="economia" >Abrir diario de Sevilla apartado economía</a>
+    <hr>  -->
+
+    <!-- LINKS RELATIVOS -->
+    <a href="T14_1.html">Abrir tema 14_1</a> <br />
+    <a href="T14_2.html">Abrir tema 14_2</a> <br />
+    <!-- USO RESPONSIVE DE IMÁGENES -->
+    <!-- <img src="lago.jpg" alt="foto de lago" style="width:100%;"> -->
+    <!--  PROPIEDAD MAX-WIDTH PARA DELIMITAR EL ESCALADO HORIZONTAL DE UNA IMAGEN -->
+    <img src="lago.jpg" alt="foto de lago" style="max-width: 100%" />
+    <!-- TEXTO EN PIXELES -->
+    <h1 style="font-size: 16px">TEXTO NORMAL EN PIXELES</h1>
+    <p style="font-size: 12px">Este párrafo estña escrito en tamaño de 12 px</p>
+    <!-- TEXTO EN VIEWPORT -->
+    <h1 style="font-size: 10vw">TEXTO RESPOSIVE EN WN</h1>
+    <p style="font-size: 5vw">Este párrafo esta een RESPONSIVE a 5vw</p>
+    <!-- USO DE MEDIA QUERIE -->
+    <h2>Media Queries</h2>
+    <p>Escala el ancho del navegador</p>
+    <p>mira lo que pasa cuando se alcanza los 800 px.</p>
     <hr>
-
-</body>
-
+    <div class="left">
+        <p>parte ixquierda</p>
+    </div>
+    <div class="main">
+        <p>parte central</p>
+    </div>
+    <div class="right">
+        <p>parte derecha</p>
+    </div>
+  </body>
 </html>

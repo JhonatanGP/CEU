@@ -54,8 +54,7 @@ section::after {
 }
 
 /* Responsive layout: se extienden al 100% para tamaños */
-@media (max-widht: 600px) {
-
+@media (max-width: 600px) {
     nav,
     article {
         width: 100%;
