@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
- 
+<html lang="es"> 
 <head>
     <meta charset="UTF-8">
     <!-- ETIQUETA PARA HACER RESPONSIVE LA PÁGINA, ADAPTACIÓN DE ESCALAS -->
@@ -15,22 +14,19 @@
         function cambiaModoModulo() {
             document.getElementById("idModulo").disabled = !(document.getElementById("idModulo").disabled);
         }
- 
         // Función para establecer la fecha actual en un campo:
         function getFecha() {
             document.getElementById("idFechaIngreso").value = new Date().toJSON().slice(0, 10);
         }
- 
         //Actualiza el valor de un campo de tipo range en un campo de texto de solo lectura:
         function actualizaTexto(texto) {
             document.getElementById("idMuestraRango").value = texto;
         }
     </script>
 </head>
- 
 <body>
     <h2>FORMULARIO CON DISTINTOS TIPOS DE CAMPO</h2>
-    <form action="https://www.w3schools.com/action_page.php">
+    <form action="https://www.w3schools.com/action_page.php" target="_blank">
         <!-- CAMPO TIPO TEXTO -->
         <label for="idNombre">Nombre:</label><br>
         <input type="text" id="idNombre" name="idNombre" required><br>
