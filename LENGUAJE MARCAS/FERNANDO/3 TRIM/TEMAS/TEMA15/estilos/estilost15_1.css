@@ -47,9 +47,9 @@ figure {
 }
 
 figcaption {
-    font-style: italic;
+    font-style:normal;
     text-align: left;
-    margin-top: 10px;
+    margin-top: px;
 }
 
 img {
