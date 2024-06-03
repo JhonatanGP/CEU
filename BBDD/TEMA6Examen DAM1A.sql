@@ -84,13 +84,55 @@ Crea un procedimiento que se utilice para borrar comandas que se llame eliminarC
 registro de la tabla. Una vez se borre, mostrar el mensaje "Comanda eliminada satisfactoriamente". Ten en cuenta que:
 - Es necesario que el id de la comanda exista en la tabla comandas. Si no es así, crear una excepción personalizada llamada idNoValido que muestre por
 pantalla "No existe ese id". */
-
+create or replace procedure eliminarComanda(idComanda comandas.id%type)
+is
+    contador int;
+    idNoValido exception;
+begin
+    select count(*) into contador from comandas where id = idComanda;
+    if contador = 0 then
+        raise idNoValido;
+    else
+        delete from comandas where id = idComanda;
+        dbms_output.put_line('Comanda eliminada satisfactoriamente');
+    end if;
+exception
+    when idNoValido then
+        dbms_output.put_line('No existe ese id');
+end;
+/
+begin
+    eliminarComanda(32);
+end;
+/
 
 /*### Ejercicio 4
 Se quiere crear una función denominada obtenerPalabrasYEspaciosPlatos que no reciba ningún parámetro y que devuelva el número de espacios en blanco 
 que hay en total entre todos los nombres de platos. Además, se quiere que se muestre por pantalla el nombre de cada plato seguido del número de 
 palabras de su nombre. Por ejemplo, el plato "Plato Arroz caldoso" tiene 3 palabras. */ --siempre hay uno mas, substr(nombre,instr(nombre,' ')+1
-
+create or replace function obtenerPalabrasYEspaciosPlatos return int
+is
+    cursor datos is select nombre from platos;
+    contador int := 0;
+    total int := 0;
+begin
+    for fila in datos loop
+        for i in 1..length(fila.nombre) loop
+            if substr(fila.nombre,i,1) = ' ' then
+                contador := contador + 1;
+            end if;
+        end loop;
+        total := total + contador;
+        dbms_output.put_line(fila.nombre || ' - ' || (contador+1) || ' palabras');
+        contador := 0;
+    end loop;
+    return total;
+end;
+/
+begin
+    dbms_output.put_line(obtenerPalabrasYEspaciosPlatos);
+end;
+/
 
 /*### Ejercicio 5
 Crea un paquete que se llame paqueteLibreriaRestaurante que contenga:
