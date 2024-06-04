@@ -11,7 +11,7 @@ public class AlumnosService {
 
 	private OpenConnection openConn;
 
-	public AlumnosService() {
+	public  AlumnosService() {
 		openConn = new OpenConnection();
 	}
 	
@@ -20,6 +20,7 @@ public class AlumnosService {
 		String sql = "INSERT INTO ALUMNOS VALUES (?,?,?,?)";
 		 
 		try ( Connection conn = openConn.getNewConnection(); PreparedStament stmt = conn.prepareStatement(sql)){
+			
 			
 		}
 		
