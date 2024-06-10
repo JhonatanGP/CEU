@@ -2,32 +2,36 @@
 
 # Ejercicio 1 6p
 
-Se va trabajar sobre la tabla FUTBOLISTAS y EQUIPOS. Se quiere hacer un CRUD completo por lo que necesitamos crear distintas funciones y procedimientos para poder crear,
-editar, consultar o borrar registros de esta tabla. Además, todas estas funciones y procedimientos deberán estar dentro de un paquete llamado funcFutbolistas. Se pide:
+Se va trabajar sobre la tabla FUTBOLISTAS y EQUIPOS. Se quiere hacer un CRUD completo por lo que necesitamos crear distintas funciones y procedimientos 
+para poder crear, editar, consultar o borrar registros de esta tabla. Además, todas estas funciones y procedimientos deberán estar dentro de un paquete 
+llamado funcFutbolistas. Se pide:
 
-1.1. Crea una función insertarFutbolista que tenga como parámetros todos los campos de la tabla FUTBOLISTAS. No hace falta que compruebas que estos datos se introducen 
-bien o no, pero sí debes COMPROBAR que el ID introducido no existe previamente en la base de datos, y además es válido (recuerda que ese campo ID es PK con la restricción
-de que sea F seguido de 3 números y luego el número 20. Si tienes dudas mira la restricción en la tabla). 
-Si el ID introducido como parámetro no es válido, muestra en la salida el mensaje "ID no válido" y devuelve -1. Si el ID no existe y el ID es válido, inserta en la base de 
-datos a ese nuevo futbolista, muestra por la salida el mensaje "Futbolista creado correctamente" y devuelve 1. Si el ID ya existía en la base de datos, muestra por la salida
-el mensaje "Ese ID ya existe" y devuelve 0.
+1.1. Crea una función insertarFutbolista que tenga como parámetros todos los campos de la tabla FUTBOLISTAS. No hace falta que compruebas que estos datos
+se introducen bien o no, pero sí debes COMPROBAR que el ID introducido no existe previamente en la base de datos, y además es válido (recuerda que ese 
+campo ID es PK con la restricción de que sea F seguido de 3 números y luego el número 20. Si tienes dudas mira la restricción en la tabla). 
+Si el ID introducido como parámetro no es válido, muestra en la salida el mensaje "ID no válido" y devuelve -1. Si el ID no existe y el ID es válido, 
+inserta en la base de datos a ese nuevo futbolista, muestra por la salida el mensaje "Futbolista creado correctamente" y devuelve 1. Si el ID ya existía 
+en la base de datos, muestra por la salida el mensaje "Ese ID ya existe" y devuelve 0.
 
-1.2. Crea una función actualizaFutbolista que tenga como parámetros todos los campos de la tabla FUTBOLISTAS. Como en el caso anterior, no vamos a comprobar todas las restricciones
-de todos los campos, asumimos que están bien, salvo el ID. En este caso no será necesario comprobar nada más que el ID existe ya que es el único caso en que se editará el futbolista.
-Si no existe, mostrar por la salida el mensaje "No existe ese ID", no hace falta indicar si es válido o no, y devolver -1. Si el ID existe, modificar los valores de los campos del 
-futbolista, TODOS menos el ID, con los valores pasados por parámetros a la función. Mostrar por la salida el mensaje "Futbolista editado correctamente" y devolver 1.
+1.2. Crea una función actualizaFutbolista que tenga como parámetros todos los campos de la tabla FUTBOLISTAS. Como en el caso anterior, no vamos a comprobar
+todas las restricciones de todos los campos, asumimos que están bien, salvo el ID. En este caso no será necesario comprobar nada más que el ID existe ya que
+es el único caso en que se editará el futbolista. Si no existe, mostrar por la salida el mensaje "No existe ese ID", no hace falta indicar si es válido o no,
+y devolver -1. Si el ID existe, modificar los valores de los campos del futbolista, TODOS menos el ID, con los valores pasados por parámetros a la función. 
+Mostrar por la salida el mensaje "Futbolista editado correctamente" y devolver 1.
 
-1.3. Crear un procedimiento llamado borrarFutbolista que tenga como parámetro de entrada un ID de futbolista. Si existe ese ID en la tabla futbolistas, borrar toda la fila de ese ID
-y mostrar por la salida el mensaje "Futbolista borrado correctamente". Si ese ID no existe, utilizar una EXCEPCIÓN y mostrar por la salida el mensaje "No existe ese ID".
+1.3. Crear un procedimiento llamado borrarFutbolista que tenga como parámetro de entrada un ID de futbolista. Si existe ese ID en la tabla futbolistas, 
+borrar toda la fila de ese ID y mostrar por la salida el mensaje "Futbolista borrado correctamente". Si ese ID no existe, utilizar una EXCEPCIÓN y mostrar
+por la salida el mensaje "No existe ese ID".
 
-1.4. Se quiere obtener un informe con los futbolistas que juegan en un determinado equipo. Para ello crea un procedimiento mostrarFutbolistasEquipo que tenga como parámetro de entrada
-el NOMBRE de un equipo (campo NOMBRE de la tabla EQUIPOS) y muestre por la salida de consola todos los futbolistas que juegan en ese equipo (tabla FUTBOLISTAS, campos NOMBRE y APELLIDOS).
+1.4. Se quiere obtener un informe con los futbolistas que juegan en un determinado equipo. Para ello crea un procedimiento mostrarFutbolistasEquipo que tenga
+como parámetro de entrada el NOMBRE de un equipo (campo NOMBRE de la tabla EQUIPOS) y muestre por la salida de consola todos los futbolistas que juegan en
+ese equipo (tabla FUTBOLISTAS, campos NOMBRE y APELLIDOS).
 
 1.5. Debes introducir todas las funciones y procedimientos anteriores dentro de un paquete llamado funcFutbolistas.
 
 1.6. Crea un programa que realice lo siguiente:
-    1. Llamada a la función insertarFutbolista del paquete funcFutbolistas para introducir un nuevo futbolista. Pásale los valores que quieras pero debe crear un nuevo futbolista en la
-    tabla (NO lo pidas por teclado, NO).
+    1. Llamada a la función insertarFutbolista del paquete funcFutbolistas para introducir un nuevo futbolista. Pásale los valores que quieras pero debe 
+    crear un nuevo futbolista en la tabla (NO lo pidas por teclado, NO).
     2. Cambia el nombre del futbolista PABLO por PABLO JESUS usando la función actualizaFutbolista.
     3. Borra al futbolista de ID F00320 usando borrarFutbolista.
     4. Termina ejecutando el procedimiento mostrarFutbolistasEquipo para el EQUIPO B.
@@ -35,20 +39,21 @@ el NOMBRE de un equipo (campo NOMBRE de la tabla EQUIPOS) y muestre por la salid
 
 ### Ejercicio 2 2p
 
-Se quiere crear un programa que muestre por la salida de la consola el nombre, apellidos y años que tienen los futbolistas que, A DÍA DE HOY YA HAYAN CUMPLIDO AÑOS, es decir, que en lo
-que va de año hasta HOY ya fue su cumpleaños. No muestres los futbolistas que no han cumplido años todavía.
+Se quiere crear un programa que muestre por la salida de la consola el nombre, apellidos y años que tienen los futbolistas que, A DÍA DE HOY YA HAYAN CUMPLIDO
+AÑOS, es decir, que en lo que va de año hasta HOY ya fue su cumpleaños. No muestres los futbolistas que no han cumplido años todavía.
 
 ### Ejercicio 3 2p
 
-1. Crea una función llamada obtenerFutbolistasPorAnyo que reciba como parámetros dos años con cuatro dígitos (ej.: 2021 y 2019). Debes mostrar por la salida el nombre del futbolista y el
-nombre del equipo en el que juega de aquellos futbolistas nacidos entre esos dos años pasados por parámetro (ambos inclusives). NOTA: los años deben poder meterse con cualquier orden, da
-igual que el primero sea mayor que el segundo, al revés, o que ambos sean iguales, debe funcionar indistintamente. Se devolverá un número con el total de futbolistas mostrados. 
-Debe devolver 1 si lo hace correctamente, es decir, hay futbolistas, y -1 si no los hay.
+1. Crea una función llamada obtenerFutbolistasPorAnyo que reciba como parámetros dos años con cuatro dígitos (ej.: 2021 y 2019). Debes mostrar por la salida
+el nombre del futbolista y el nombre del equipo en el que juega de aquellos futbolistas nacidos entre esos dos años pasados por parámetro (ambos inclusives). 
+NOTA: los años deben poder meterse con cualquier orden, da igual que el primero sea mayor que el segundo, al revés, o que ambos sean iguales, debe funcionar 
+indistintamente. Se devolverá un número con el total de futbolistas mostrados. Debe devolver 1 si lo hace correctamente, es decir, hay futbolistas, y -1 si 
+no los hay.
 
 2. Crea un programa que llame a obtenerFutbolistasPorAnyo con estos tres supuestos (respeta el orden de los parámetros):
-2.1. 1990 y 1985.
-2.2. 2000 y 2000.
-2.3. 2005 y 2007.
+    2.1. 1990 y 1985.
+    2.2. 2000 y 2000.
+    2.3. 2005 y 2007.
 
 --RESUELTO
 /*Se va trabajar sobre la tabla FUTBOLISTAS. Se quiere hacer un CRUD completo por lo que necesitamos crear distintas funciones y procedimientos 

@@ -152,7 +152,8 @@ Se quiere un programa o bloque de código anónimo que, empleando las funciones y 
 - Borra la comanda creada anteriormente usando como datos para calcular el id de la comanda lo siguiente:
     - Ha sido en el día de hoy.
     - Es de Jose Miguel.
-- Llama a la función obtenerPalabrasYEspaciosPlatos y muestra por pantalla el valor devuelto con el número de espacios que hay en los nombres de los platos. */
+- Llama a la función obtenerPalabrasYEspaciosPlatos y muestra por pantalla el valor devuelto con el número de espacios que hay en los nombres de los 
+platos. */
 
 
 /*### Ejercicio 7
