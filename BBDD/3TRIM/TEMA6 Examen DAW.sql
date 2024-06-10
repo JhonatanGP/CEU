@@ -84,6 +84,7 @@ UPDATE FUTBOLISTAS SET ALTURA = 183, PESO = 84 WHERE NOMBRE LIKE 'PABLO';
 UPDATE FUTBOLISTAS SET ALTURA = 180, PESO = 81.5 WHERE NOMBRE LIKE
 'ESTEBAN';
 UPDATE FUTBOLISTAS SET ALTURA = 162, PESO = 60 WHERE NOMBRE LIKE 'ENRIQUE';
+
 set serveroutput on;
 
 /*###  Ejercicio 1
@@ -128,6 +129,7 @@ begin
     introduceEquipos('EQUIPO ABC','A',1);
 end;
 /
+
 /*###  Ejercicio 2
 Crea un procedimiento que se llame borrarEquipo que reciba por parámetro el id de un equipo para borrar (tabla equipos) y elimine dicha fila de la tabla.
 Una vez borrado, debes mostrar el mensaje "Equipo borrado correctamente de la tabla equipos". Debes tener en cuenta lo siguiente:
@@ -148,6 +150,41 @@ Se quiere crear un procedimiento que se llame listarDatosCuriososFutbolistas que
 - Nombre del equipo donde juega el futbolista que menos pesa, junto a su peso.
 - Nombre de todos los equipos junto al número total de futbolistas que juegan en ese equipo.
 - Número total de futbolistas. */
+
+create or replace procedure listarDatosCuriososFutbolistas
+is
+    nombreEquipoAlto equipos.nombre%type;
+    alturaAlto futbolistas.altura%type;
+    nombreEquipoPeso equipos.nombre%type;
+    pesoBajo futbolistas.peso%type;
+    cursor datos is 
+        select equipos.nombre as equipo,count(*) as contador
+            from futbolistas
+            join equipos on futbolistas.id_equipo = equipos.id
+            group by equipos.nombre;
+    totalFutbolistas int := 0;
+begin
+    select equipos.nombre,altura into nombreEquipoAlto,alturaAlto 
+        from equipos
+        join futbolistas on futbolistas.id_equipo = equipos.id
+        where altura = (select max(altura) from futbolistas);
+    dbms_output.put_line(nombreEquipoAlto || '|' || alturaAlto);
+    select equipos.nombre,peso into nombreEquipoPeso,pesoBajo 
+        from equipos
+        join futbolistas on futbolistas.id_equipo = equipos.id
+        where peso = (select min(peso) from futbolistas);
+    dbms_output.put_line(nombreEquipoPeso || '|' || pesoBajo);
+    for fila in datos loop
+        dbms_output.put_line(fila.equipo||'|'||fila.contador);
+    end loop;
+    select count(*) into totalFutbolistas from futbolistas;
+    dbms_output.put_line('Total jugadores: ' || totalFutbolistas);
+end;
+/
+begin
+    listarDatosCuriososFutbolistas;
+end;
+/
 
 /*###  Ejercicio 5
 Crea un paquete denominado libFutbolistas que contenga:
@@ -170,3 +207,35 @@ Desarrolla un bloque de código anónimo que, llamando a funciones y procedimiento
 Crea una función que se llame golesEquipo que reciba por parámetro el nombre del equipo y devuelva el número de goles que ha marcado en 
 total (tanto en casa como jugando fuera). Esos goles los podrás obtener de los resultados de los partidos. Se debe tener en cuenta la 
 excepción de que no exista el id de ese equipo para ese nombre, mostrando un mensaje por pantalla "No existe ese equipo" y devolviendo -1.*/
+
+create or replace function golesEquipo(nombreEquipo equipos.nombre%type) return int
+is
+    existeId equipos.id%type;
+    cursor datos is 
+        select resultado,equipoCasa.nombre as equipoCasa,equipoFuera.nombre as equipoFuera 
+            from partidos 
+            join equipos equipoCasa on equipoCasa.id = partidos.id_equipo_casa
+            join equipos equipoFuera on equipoFuera.id = partidos.id_equipo_fuera
+            where equipoCasa.nombre = nombreEquipo or equipoFuera.nombre = nombreEquipo;
+    golesTotales int := 0;
+begin
+    select id into existeId from equipos where nombre = nombreEquipo;
+    for fila in datos loop
+        dbms_output.put_line(fila.resultado);
+        if fila.equipoCasa = nombreEquipo then --juega en casa
+            golesTotales := golesTotales + to_number(substr(fila.resultado,1,2));
+        else --juega fuera
+            golesTotales := golesTotales + to_number(substr(fila.resultado,4,2));
+        end if;
+    end loop;
+    return golesTotales;
+exception
+    when no_data_found then
+        dbms_output.put_line('No existe ese equipo');
+        return -1;
+end;
+/
+begin
+    dbms_output.put_line(golesEquipo('EQUIPO C'));
+end;
+/
