@@ -98,7 +98,7 @@ y con esos datos introduzca esos valores en los campos de un nuevo registro de l
   es 4 entonces debes guardar ese nuevo registro con el id 5). Debes tener en cuenta que la tabla puede estar vacia y en ese caso asignarle al id el 
   valor de 1.
 - Una vez introducido dicho nuevo registro equipo, mostrar por pantalla "Se ha introducido correctamente un nuevo equipo". */
-
+drop procedure introduceEquipos;
 create or replace procedure introduceEquipos(nombreEquipo equipos.nombre%type,nombreEstadio equipos.estadio%type,presupuestoEquipo equipos.presupuesto%type)
 is
     cuentaId int := 0;

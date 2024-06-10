@@ -1,5 +1,6 @@
 set serveroutput on;
 --1
+
 create or replace procedure borraEquipo(vid equipo.id%type)
 is
      existe equipo.id%type;
@@ -14,7 +15,7 @@ end;
 /
 
 --2
-
+drop function introduceEquipos;
 create or replace procedure introduceEquipos( nombre equipos.nombre%type, estadio equipos.estadio%type, prsupuesto equipos.presupuesto%type)
 is
     existe equipos%type;
