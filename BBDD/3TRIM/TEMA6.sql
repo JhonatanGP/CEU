@@ -1,160 +1,4 @@
-drop table platos cascade constraints;
-drop table ingredientes cascade constraints;
-drop table ingredientes_platos cascade constraints;
-drop table clientes cascade constraints;
-drop table comandas cascade constraints;
-create table platos (
-    id int primary key,
-    nombre varchar(100) not null,
-    precio number(6,2),
-    tiempo_preparacion int
-);
-create table ingredientes(
-    id int primary key,
-    nombre varchar(100) not null,
-    categoria varchar(30) check(categoria in ('CARNE','PESCADO','CONDIMENTO','FRUTA','VERDURA','LACTEO','BEBIDA','LEGUMBRE','OTRO')),
-    estado varchar(30) check( estado in ('SOLIDO','LIQUIDO'))
-);
-create table ingredientes_platos(
-    id_ingrediente int,
-    id_plato int,
-    cantidad int
-);
-alter table ingredientes_platos
-add foreign key (id_ingrediente) references ingredientes(id);
-alter table ingredientes_platos
-add foreign key (id_plato) references platos(id);
-create table clientes(
-    id int primary key,
-    nombre varchar(100) not null,
-    telefono varchar(10),
-    localidad varchar(100) not null
-);
-create table comandas(
-    id int primary key,
-    mesa int,
-    id_cliente int,
-    id_plato int,
-    estado varchar(30) check( estado in ('COCINA','SERVIDO','COBRADO','DEVUELTO')),
-    fecha date,
-    hora char(5)
-);
-alter table comandas
-add foreign key (id_cliente) references clientes(id);
-alter table comandas
-add foreign key (id_plato) references platos(id);
 
-insert into platos values (1,'Plato Arroz caldoso',12.50,25);
-insert into platos values (2,'Plato Calamares con patatas',7.50,15);
-insert into platos values (3,'Entrante bacalao en aceite',4.50,10);
-insert into platos values (4,'Entrante Crema de zanahorias',3,10);
-insert into platos values (5,'Tarta de queso',5.50,10);
-
-insert into ingredientes values (1,'Ajo','VERDURA','SOLIDO');
-insert into ingredientes values (2,'Aceite de oliva virgen extra','CONDIMENTO','LIQUIDO');
-insert into ingredientes values (3,'Cebolla','VERDURA','SOLIDO');
-insert into ingredientes values (4,'Calamar','PESCADO','SOLIDO');
-insert into ingredientes values (5,'Patata','VERDURA','SOLIDO');
-insert into ingredientes values (6,'Pimiento','VERDURA','SOLIDO');
-insert into ingredientes values (7,'Vino blanco','BEBIDA','LIQUIDO');
-insert into ingredientes values (8,'Sal','CONDIMENTO','SOLIDO');
-insert into ingredientes values (9,'Pimienta','CONDIMENTO','SOLIDO');
-insert into ingredientes values (10,'Costilla de cerdo','CARNE','SOLIDO');
-insert into ingredientes values (11,'Guisante','VERDURA','SOLIDO');
-insert into ingredientes values (12,'Tomate','VERDURA','SOLIDO');
-insert into ingredientes values (13,'Pimenton dulce','CONDIMENTO','SOLIDO');
-insert into ingredientes values (14,'Agua','BEBIDA','LIQUIDO');
-insert into ingredientes values (15,'Caldo de ave','BEBIDA','LIQUIDO');
-insert into ingredientes values (16,'Arroz','LEGUMBRE','SOLIDO');
-insert into ingredientes values (17,'Bacalao','PESCADO','SOLIDO');
-insert into ingredientes values (18,'Guindilla','CONDIMENTO','SOLIDO');
-insert into ingredientes values (19,'Perejil','CONDIMENTO','SOLIDO');
-insert into ingredientes values (20,'Zanahoria','VERDURA','SOLIDO');
-insert into ingredientes values (21,'Caldo de verduras','CONDIMENTO','LIQUIDO');
-insert into ingredientes values (22,'Nata liquida','LACTEO','LIQUIDO');
-insert into ingredientes values (23,'Queso mascarpone','LACTEO','SOLIDO');
-insert into ingredientes values (24,'Leche','LACTEO','SOLIDO');
-insert into ingredientes values (25,'Esencia vainilla','CONDIMENTO','LIQUIDO');
-insert into ingredientes values (26,'Huevo','OTRO','SOLIDO');
-insert into ingredientes values (27,'Harina','OTRO','SOLIDO');
-insert into ingredientes values (28,'Frutos rojos','FRUTA','SOLIDO');
-
-insert into ingredientes_platos values (1,1,3);
-insert into ingredientes_platos values (2,1,30);
-insert into ingredientes_platos values (10,1,300);
-insert into ingredientes_platos values (11,1,60);
-insert into ingredientes_platos values (12,1,40);
-insert into ingredientes_platos values (13,1,5);
-insert into ingredientes_platos values (14,1,250);
-insert into ingredientes_platos values (15,1,400);
-insert into ingredientes_platos values (6,1,80);
-insert into ingredientes_platos values (8,1,10);
-insert into ingredientes_platos values (16,1,150);
-insert into ingredientes_platos values (4,2,400);
-insert into ingredientes_platos values (2,2,40);
-insert into ingredientes_platos values (3,2,100);
-insert into ingredientes_platos values (1,2,10);
-insert into ingredientes_platos values (5,2,120);
-insert into ingredientes_platos values (6,2,80);
-insert into ingredientes_platos values (7,2,120);
-insert into ingredientes_platos values (8,2,12);
-insert into ingredientes_platos values (9,2,8);
-insert into ingredientes_platos values (17,3,125);
-insert into ingredientes_platos values (1,3,5);
-insert into ingredientes_platos values (18,3,2);
-insert into ingredientes_platos values (2,3,20);
-insert into ingredientes_platos values (19,3,2);
-insert into ingredientes_platos values (3,4,25);
-insert into ingredientes_platos values (20,4,60);
-insert into ingredientes_platos values (21,4,250);
-insert into ingredientes_platos values (22,4,50);
-insert into ingredientes_platos values (8,4,5);
-insert into ingredientes_platos values (9,4,5);
-insert into ingredientes_platos values (2,4,15);
-insert into ingredientes_platos values (2,5,3);
-insert into ingredientes_platos values (23,5,60);
-insert into ingredientes_platos values (24,5,20);
-insert into ingredientes_platos values (25,5,1);
-insert into ingredientes_platos values (26,5,10);
-insert into ingredientes_platos values (27,5,10);
-insert into ingredientes_platos values (28,5,20);
-
-insert into clientes values (1,'Pedro Juan','111222333','Bormujos');
-insert into clientes values (2,'Jose Miguel','222333444','Bormujos');
-insert into clientes values (3,'Maria','333444555','Gines');
-
-insert into comandas values (1,1,1,3,'COCINA','01-03-2021','21:00');
-insert into comandas values (2,1,1,1,'COCINA','01-03-2021','21:00');
-insert into comandas values (3,2,2,3,'COCINA','01-03-2021','21:05');
-insert into comandas values (4,2,2,4,'COCINA','01-03-2021','21:05');
-insert into comandas values (5,1,1,3,'SERVIDO','01-03-2021','21:10');
-insert into comandas values (6,2,2,3,'SERVIDO','01-03-2021','21:15');
-insert into comandas values (7,2,2,4,'SERVIDO','01-03-2021','21:16');
-insert into comandas values (8,2,2,2,'COCINA','01-03-2021','21:16');
-insert into comandas values (9,1,1,1,'SERVIDO','01-03-2021','21:25');
-insert into comandas values (10,1,1,5,'COCINA','01-03-2021','21:25');
-insert into comandas values (11,2,2,5,'COCINA','01-03-2021','21:26');
-insert into comandas values (12,2,2,2,'SERVIDO','01-03-2021','21:35');
-insert into comandas values (13,1,1,5,'SERVIDO','01-03-2021','21:37');
-insert into comandas values (14,2,2,5,'SERVIDO','01-03-2021','21:38');
-insert into comandas values (15,1,1,3,'COBRADO','01-03-2021','21:50');
-insert into comandas values (16,1,1,1,'COBRADO','01-03-2021','21:50');
-insert into comandas values (17,1,1,5,'COBRADO','01-03-2021','21:50');
-insert into comandas values (18,1,2,3,'COBRADO','01-03-2021','21:50');
-insert into comandas values (19,1,2,4,'COBRADO','01-03-2021','21:50');
-insert into comandas values (20,1,2,2,'COBRADO','01-03-2021','21:50');
-insert into comandas values (21,1,2,5,'COBRADO','01-03-2021','21:50');
-insert into comandas values (22,1,3,3,'COCINA','02-03-2021','21:05');
-insert into comandas values (23,1,3,1,'COCINA','02-03-2021','21:10');
-insert into comandas values (24,1,3,2,'COCINA','02-03-2021','21:12');
-insert into comandas values (25,1,3,1,'DEVUELTO','02-03-2021','21:12');
-insert into comandas values (26,1,3,3,'SERVIDO','02-03-2021','21:15');
-insert into comandas values (27,1,3,2,'SERVIDO','02-03-2021','21:27');
-insert into comandas values (28,1,3,5,'COCINA','02-03-2021','21:27');
-insert into comandas values (29,1,3,5,'SERVIDO','02-03-2021','21:37');
-insert into comandas values (30,1,3,3,'COBRADO','02-03-2021','21:55');
-insert into comandas values (31,1,3,2,'COBRADO','02-03-2021','21:55');
-insert into comandas values (32,1,3,5,'COBRADO','02-03-2021','21:55');
 set serveroutput on;
 begin
     dbms_output.put_line('No he puesto nada');
@@ -306,23 +150,6 @@ begin
     dbms_output.put_line(pi);
 end;
 /
---PDF 2
--- Ejercicio 1
-/*
-
-? Declara una variable tipo fecha sin inicializarla.
-? Declara una variable tipo fecha inicializada a día 6
-de abril de 2021.
-? Declara una variable numérica (NUMBER) con 3
-dígitos que no sea null sin inicializar.
-? Declara una variable numérica (NUMBER) con 4
-dígitos de precisión de los cuales 2 son decimales,
-e inicialízala a 10,99.
-? Declara una variable carácter (VARCHAR2) de
-tamaño 10 con la frase CLASE DE DAMDAW.
-? Declara una constante numérica y valor 11.
-*/
-
 --LUNES 01/04/2024
 
 SET SERVEROUTPUT ON; 
@@ -334,7 +161,7 @@ declare
     mifila dept%rowtype;
 begin
     mivariable := 25;-- 2 cosas que no se pueden hacer ni el = para asignar ni el == para comparar
-    mivariable2:=8;
+    mivariable2:= 8;
     mivariable3 := 'Nombre';
     mivariable4 := 'Sevilla bajo';
     mifila.deptno := 8;
@@ -342,11 +169,17 @@ begin
    -- dbms_output.put_line(mivariable);
     --dbms_output.put_line(mivariable2);
     --dbms_output.put_line(mifila.deptno);
-     dbms_output.put_line(mifila.deptno||mifila.dname||mifila.loc);
+     dbms_output.put_line(mifila.deptno|| mifila.dname|| mifila.loc);
 end;
 /
+--PDF 2 Ejercicio 1
+/* Declara una variable tipo fecha sin inicializarla.
+? Declara una variable tipo fecha inicializada a día 6  de abril de 2021.
+? Declara una variable numérica (NUMBER) con 3  dígitos que no sea null sin inicializar.
+? Declara una variable numérica (NUMBER) con 4  dígitos de precisión de los cuales 2 son decimales,e inicialízala a 10,99.
+? Declara una variable carácter (VARCHAR2) de  tamaño 10 con la frase CLASE DE DAMDAW.
+? Declara una constante numérica y valor 11.*/
 
---Ejercicio 1
 SET SERVEROUTPUT ON; 
 declare
     fecha date;
@@ -361,7 +194,13 @@ begin
     dbms_output.put_line('');
 end;
 /
---Ejercicio 2
+--Ejercicio 2 
+--Declara una variable que tenga el tipo de dato igual que el de la columna ENAME de la tabla EMP.
+--Declara una variable que haga referencia a toda una fila de la tabla EMP.
+
+--Ejercicio 3. Utilizando las dos variables declaradas en el ejercicio 2, asígnales los valores siguientes:
+--? Primer caso: el valor del campo ENAME cuando EMPNO vale 7839.
+--? Segundo caso: la fila completa cuando EMPNO vale 7698.
 declare 
     variable1 emp.ename%type;
     variabale2 emp%rowtype;
@@ -374,10 +213,23 @@ begin
     dbms_output.put_line(variable2.ename);
 end;
 /
-/*Ej 4
-1.T
-2 .F
-3.T
+/*Ej 4 
+01. (16 – 8) / 2 = 4
+02. (7 + 3) != 10
+03. 0 IS NOT NULL
+04. (3 = (9/3)) AND NULL
+05. NULL OR (2 * 5 = 10)
+06. 0 <> NULL
+07. 4 BETWEEN 3 AND 9
+08. NOT(2 ** 3 = 8)
+09. ‘a12’ = ‘a’ || ’12’
+10. 0 IS NULL
+11. ‘ANA’ LIKE ‘%N’
+12. ‘B’ IN (‘A’,’D’)
+
+01.T
+02.F
+03.T
 4.N
 5.T
 6.T
@@ -391,8 +243,6 @@ end;
 --EJERCICIO 5
 --Crea un bloque de código anónimo que pida la base y altura de un triángulo, y devuelva el área de este.
 --NOTA: El área de un triángulo es base por altura entre dos.
-SET SERVEROUTPUT ON; 
-
 create or replace function calcularAreaTriangulo(base int,altura int)return number
 is
     total number := 0;
@@ -401,7 +251,6 @@ begin
     return total;
 end;
 /
-
 declare
     base int :=&dame_un_valor_para_base;
     altura int := &dame_un_numero_para_altura;
@@ -412,8 +261,20 @@ begin
     dbms_output.put_line('El área es (con funcion): ' || calcularAreaTriangulo(5,15));
 end;
 /
---Ejercio6
-SET SERVEROUTPUT ON; 
+create or replace function calcularAreaTriangulo(base int,altura int)return number
+is
+    total number := 0;
+begin
+    total :=  (base*altura)/2;
+    return total;
+end;
+/
+begin
+    dbms_output.put_line('El área es: ' || calcularAreaTriangulo(5,15));
+end;
+/
+--Ejercio6 
+--Crea un bloque de código anónimo que requiera por pantalla un nombre, luego un apellido y muestre como resultado “Hola nombre apellido”.
 declare
     nombre varchar2(100) := '&dametunombre';
     apellido varchar2(100) := '&dametuapellido';
@@ -422,93 +283,53 @@ begin
 end;
 /
 
---Ejercicio 7
-/*
+--Ejercicio 7 
+--Crea un programa que realiza la suma, resta, multiplicación y división de dos números enteros, num1 y num2 (8 y 4).
 declare
     num1 int;
     num2 int;
-begin 
+begin
     num1 := 8;
     num2 := 4;
-    /*dbms_output.put_line(num1+num2);
+    dbms_output.put_line(num1+num2);
     dbms_output.put_line(num1-num2);
     dbms_output.put_line(num1*num2);
-    dbms_output.put_line(num1/num2);*//*
-    ejercicio7
+    dbms_output.put_line(num1/num2);
 end;
 /
-
---Ejercicio 7 otra forma
-declare
-    num1 int;
-    num2 int;
-begin 
-    num1 := 8;
-    num2 := 4;
-    /*dbms_output.put_line(num1+num2);
-    dbms_output.put_line(num1-num2);
-    dbms_output.put_line(num1*num2);
-    dbms_output.put_line(num1/num2);*//*
-    ejercicio7
-end;
-/
-*/
-
 --02/02/2024
---Ejercio8
+/*Ejercio 8
+Crea un programa que realiza la suma de dos números enteros, num1 y num2, si num1 es mayor que num2. En caso contrario que no haga nada. 
+Asigna por ejemplo los valores 7 y 3 a los números.*/
 SET SERVEROUTPUT ON; 
 declare
-    num1 int := 7;
-    num2 int;
-    --num2 int := 3;
+    n1 int :=&dame_un_valor;
+    n2 int := &dame_un_valor;
 begin
-    num2 := 3;
-    if num1 > num2 then 
-        dbms_output.put_line('La suma de  ' || num1 || ' y ' || num2 ||' es ' || (num1+num2));
-        dbms_output.put_line(num1+num2);
+    if n1 > n2 then  dbms_output.put_line('La suma  es: ' || (n1+n2));
+    else dbms_output.put_line('');
+    end if;
+end;
+/
+declare
+    num1 int := &introduce_valor ;
+    num2 int := &introduce_valor ;
+begin
+    if num1 > num2 then dbms_output.put_line('La suma de  ' || num1 || ' y ' || num2 ||' es ' || (num1+num2));
     end if;
 end;
 /
 
 /*Ejercicio 9 modificado
-Crea una función llamada restarNumEnteros que reciba dos
-parámetros, num1 y num2, y si num1 es mayor que num2, devuelva
-la resta de ambos números. En caso contrario, muestra por
-pantalla "Num1 es menor o igual que num2" y devuelva -1.
-Llama a dicha función desde un bloque de código anónimo con
-los valores 7 y 3, en primer lugar, y 4 y 8 en segundo lugar.
-*/
-SET SERVEROUTPUT ON; 
+Crea una función llamada restarNumEnteros que reciba dos parámetros, num1 y num2, y si num1 es mayor que num2, devuelva la resta de ambos
+números. En caso contrario, muestra por pantalla "Num1 es menor o igual que num2" y devuelva -1. Llama a dicha función desde un bloque de
+código anónimo con los valores 7 y 3, en primer lugar, y 4 y 8 en segundo lugar.*/
 
-create or replace function restarNumeros (num1 int, num2 int) return int
-is
-
-begin 
-    if num1 > num2 then
-        return num1 - num2;
-    else
-        dbms_output.put_line(num1 || 'es menor o igual que ' || num2);
-        return -1;
-    end if;
-end;
-/
-
-declare
-    numero1 int := 7;
-    numero2 int := 3;
-    resta int;
-begin
-    resta := restarNumeros (7,3);
-    dbms_output.put_line(restarNumeros(numero1,numero2));
-end;
-/
-
---inda
 create or replace function restarNumEnteros (num1 int, num2 int) return int
 is
  
 begin
-    if num1 > num2 then
+    if num1 > num2 then dbms_output.put_line(num1 || ' es mayor que ' || num2 ||' '|| 'Su resta es:');
         return num1 - num2;
     else
         dbms_output.put_line(num1 || ' es menor o igual que ' || num2);
@@ -516,7 +337,6 @@ begin
     end if;
 end;
 /
- 
 declare
     numero1 int := 7;
     numero2 int := 3;
@@ -531,26 +351,9 @@ end;
 /
 
 --EJERCICIO 10 con IF / ELSIF / ELSE
-declare
-    nota number(2,1) := &nota;
-begin
-    if nota < 5 and nota >= 0 then
-        dbms_output.put_line('SUSPENSO');
-    elsif nota >= 5 and nota < 6 then
-    dbms_output.put_line('APROBADO');
-    elsif nota >= 6 and nota < 7 then
-    dbms_output.put_line('BIEN');
-    elsif nota >= 7 and nota < 9 then
-    dbms_output.put_line('NOTABLE');
-    elsif nota >= 9 and nota < 10 then
-    dbms_output.put_line('SOBRESALIENTE');
-    else
-        dbms_output.put_line('El valor introducido es incorrecto');
-    end if;
-end;
-/
-
---inda
+/*Crea un programa que tome pida una variable al usuario para que la introduzca por teclado (tiene que ser un número), y según sea su valor 
+entre 0 y 10, devuelva por pantalla el valor de la nota: SUSPENSO, APROBADO, BIEN, NOTABLE,SOBRESALIENTE. En caso contrario, que devuelva
+‘El valor introducido es incorrecto’.*/
 declare
     nota number(3,1) := &nota;
 begin
@@ -570,7 +373,7 @@ begin
 end;
 /
 
---Ejercicio 11. Hacerlo con CASE
+--Ejercicio 11. Hacerlo con CASE el 10
 declare
     nota number(3,1) := &nota;
 begin
@@ -591,24 +394,32 @@ begin
 end;
 /
 
-/*12 Realiza un programa que lea por teclado dos números enteros. El primero será los goles del
-equipo de casa, y el segundo los goles del equipo de fuera.
-Se quiere devolver por pantalla quién ha ganado: “El equipo de casa/visitante ha ganado”. En caso
-de empate se indicará “El resultado del partido ha sido de empate”. */
-
-
+/*12 Realiza un programa que lea por teclado dos números enteros. El primero será los goles del equipo de casa, y el segundo los goles del
+equipo de fuera. Se quiere devolver por pantalla quién ha ganado: “El equipo de casa/visitante ha ganado”. En caso de empate se indicará
+“El resultado del partido ha sido de empate”. */
+declare
+    eq1 INT := &goles_casa;
+    eq2 INT := &goles_fuera;
+begin
+     if eq1 > eq2  then
+        dbms_output.put_line('El equipo de casa ha ganado');
+    elsif eq1 = eq2 then
+        dbms_output.put_line('empate');
+    else
+        dbms_output.put_line('El equipo de fuera ha ganado');
+    end if;
+end;
+/
 --08/04/2024
-
 --BUCLES
-
 set serveroutput on;
 declare
     i int := 0;
 begin
     loop 
-        if i < 10 then
+        if i <= 10 then
     dbms_output.put_line(i);
-    elsif i = 10 then
+    elsif i = 11 then
         exit;
         end if;
         i := i+1; --i++ no, i+=1
@@ -616,7 +427,6 @@ begin
 end;
 /
 --otro ejemplo
-set serveroutput on;
 declare
     i int := 0;
 begin
@@ -628,41 +438,42 @@ begin
 end;
 /
 --Ejercicio 13
+/*Realiza un programa que ejecute un bucle LOOP y se salga con un EXIT WHEN. Para ello crea una variable entero inicializada a 0 y que se vaya
+incrementando en el bucle, además de mostrar por pantalla su valor; la condición de salida será cuando dicha variable valga más de 20.*/
 declare
     num1 int := 0;
 begin
     loop 
     num1 := num1+2; --me lo suma segun ponga el numero
         dbms_output.put_line(num1);
-        exit when num1 > 20;
+        exit when num1 >= 20;
     end loop;
 end;
 /
-
---Ejercicio 14
+--Ejercicio 14. Realiza un programa que haga lo indicado en el ejercicio 13 pero que se salga mediante un IF condición THEN EXIT.
 declare
     num1 int := 0;
 begin
     loop 
     num1 := num1+1; --me lo suma segun ponga el numero
         dbms_output.put_line(num1);
-        if num1 > 20 then
+        if num1 >= 20 then
             exit;
         end if;
     end loop;
 end;
 /
---Ejercicio 15
+--Ejercicio 15. Realiza un programa que haga lo indicado en el ejercicio 13 pero emplea un bucle WHILE.
 declare
     num1 int := 0;
 begin
-    while num1 <=20 loop
+    while num1 <= 19 loop
         num1 := num1+1; --me lo suma segun ponga el numero
         dbms_output.put_line(num1);
     end loop;
 end;
 /
---Ejercicio 16
+--Ejercicio 16. el 13 pero con FOR
 declare
 begin
     for i in 1..20 loop
@@ -670,7 +481,7 @@ begin
     end loop;
 end;
 /
--- Ejercicio 17 in reverse
+-- Ejercicio 17. El 13 pero con FOR in reverse
 declare
 begin
     for i in reverse 0..20 loop
@@ -678,23 +489,22 @@ begin
     end loop;
 end;
 /
---Ejercicio 18
+--Ejercicio 18 
+/*Realiza un programa que muestre por pantalla los números pares hasta llegar a 40, inclusive.
+Nota: la función MOD(m,n) devuelve el resto de dividir el parámetro m entre el parámetro n.*/
 declare 
     i int;
 begin
     for indice in 0..40 loop
---  for indice in 1..40 loop
         i := mod(indice,2); 
-      if i = 0 and indice != 0 then --CONDICION PAR
+        if i = 0 and indice != 0 then --CONDICION PAR
      -- if i != 0 then --CONDICION IMPAR
             dbms_output.put_line(indice);
         end if;
     end loop;
 end;
 /
--- Ejercicio 19
-declare
-
+-- Ejercicio 19. Realiza un programa que muestre por pantalla las tablas de multiplicar del 1 al 10.
 begin
     for i in 1..10 loop
         for j in 1..10 loop
@@ -703,10 +513,8 @@ begin
     end loop;
 end;
 /
-
 /*Actividad para pensar
-Quiero pedir por teclado una palabra y a continuación mostraremos dicha palabra del revés. 
-Deben salir en la misma línea. Ej: HOLA mostraría ALOH. */
+Pedir por teclado una palabra y mostraremos dicha palabra del revés. Deben salir en la misma línea. Ej: HOLA mostraría ALOH. */
 declare
     palabra varchar(10) := '&palabra';
 begin
@@ -715,18 +523,18 @@ begin
     dbms_output.put_line(length(palabra)); --5
 end;
 /
-
-declare
-    palabra varchar(10) := '&palabra';
-    palabra2 varchar(10);
-begin
-    for i in reverse 1..length(palabra) loop
-      --dbms_output.put_line(substr(palabra,i,1)); 
-      palabra2 := palabra2 || substr(palabra,i,1);
-    end loop;
-    dbms_output.put_line(palabra2);
-end;
+DECLARE
+    p1 VARCHAR2(100) := '&palabra'; -- Pedimos al usuario que ingrese una palabra
+    p2 VARCHAR2(100) := '';         -- Invertimos la palabra
+BEGIN
+    FOR i IN REVERSE 1..LENGTH(p1) LOOP
+        p2 := p2 || SUBSTR(p1, i, 1);
+    END LOOP;
+    DBMS_OUTPUT.PUT_LINE('Palabra invertida: ' || p2);
+    dbms_output.put_line('Número de letras: ' || length(p1)); 
+END;
 /
+
 --PDF REGISTROS Y TABLAS
 
 /* Ejercicio 1
@@ -761,7 +569,6 @@ declare
         propietario tPersona
     );
     persona1 tPersona;
-    persona2 tPersona;
     mascota1 tMascota;
 begin
     persona1.codigo := 1;
@@ -771,39 +578,15 @@ begin
     mascota1.nombre := '&mascota';
     dbms_output.put_line('Mostrar los datos de personas');
     dbms_output.put_line(persona1.codigo||'|'||persona1.nombre||'|'||persona1.edad);
-    dbms_output.put_line(persona2.codigo||'|'||persona2.nombre||'|'||persona2.edad);
     dbms_output.put_line('Mostrar los datos de mascotas');
     dbms_output.put_line(mascota1.nombre||'|'||mascota1.propietario.codigo||'|'||mascota1.propietario.nombre||'|'||mascota1.propietario.edad);
 end;
 /
-
---QUIERO QUE ME HAGAIS UN REGISTRO TDEPT CON LA ESTRUCTURA DE LA TABLA DEPT
-DECLARE
-    TYPE TDEPT IS RECORD(
-    DEPTNO DEPT.DEPTNO%TYPE,
-    DNAME DEPT.DNAME%TYPE,
-    LOC DEPT.LOC%TYPE
-    );
-    DEPARTAMENTO TDEPT;
-BEGIN
-    SELECT DNAME INTO DEPARTAMENTO.DNAME FROM DEPT WHERE DEPTNO = 40;
-    SELECT * INTO DEPARTAMENTO FROM DEPT WHERE DEPTNO = 40;
-    DBMS_OUTPUT.PUT_LINE(DEPARTAMENTO.DNAME);
-    DBMS_OUTPUT.PUT_LINE(DEPARTAMENTO.DEPTNO);
-    DBMS_OUTPUT.PUT_LINE(DEPARTAMENTO2.DNAME);
-    DBMS_OUTPUT.PUT_LINE(DEPARTAMENTO2.DEPTNO);
-END;
-/
 /*EJERCICIO 2 
-2.1. Crea un registro tpersona igual que el del ejemplo de teoría. Después, crea otro registro alumno que tenga como
+02.1. Crea un registro tpersona igual que el del ejemplo de teoría. Después, crea otro registro alumno que tenga como
 campos nombre varchar 100, y profesor tpersona.
-
-2.2. Crea una variable alumno1 del tipo alumno, dale valores a todos sus campos y muéstralos por la salida.
-
-2.3. Crea una variable alumno2 del tipo alumno, dale valores solo a nombre y código de profesor, y
-saca los datos por la salida. */
-
---Ejercicio2
+02.2. Crea una variable alumno1 del tipo alumno, dale valores a todos sus campos y muéstralos por la salida.
+02.3. Crea una variable alumno2 del tipo alumno, dale valores solo a nombre y código de profesor, y saca los datos por la salida. */
 declare
     type tPersona is record(
         codigo number,
@@ -821,17 +604,19 @@ declare
     alumno2 alumno;
 begin
     --Ejercicio 2.2
-    alumno1.nombre := 'Rocket';
-    alumno1.profesor.codigo := 0;
-    alumno1.profesor.nombre := 'Drax';
-    alumno1.profesor.edad := 125;
+    alumno1.nombre := 'JUAN';
+    alumno1.profesor.codigo := 440;
+    alumno1.profesor.nombre := 'JULIO';
+    alumno1.profesor.edad := 45;
+    dbms_output.put_line('EJERCICIO2.2');
     dbms_output.put_line(alumno1.nombre);
     dbms_output.put_line(alumno1.profesor.codigo);
     dbms_output.put_line(alumno1.profesor.nombre);
     dbms_output.put_line(alumno1.profesor.edad);
     --Ejercicio 2.3
-    alumno2.nombre := 'Groot';
-    alumno2.profesor.codigo := 0;
+    alumno2.nombre := 'ANA';
+    alumno2.profesor.codigo := 457;
+    dbms_output.put_line('EJERCICIO2.3');
     dbms_output.put_line(alumno2.nombre);
     dbms_output.put_line(alumno2.profesor.codigo);
 end;
@@ -849,24 +634,22 @@ begin
 end;
 /
 --15/04/2024
---6
+/*6
+Se quieren guardar los datos deptno y loc del departamento cuyo deptno es 40 en una variable del tipo %rowtype llamada filacompleta2. 
+Muestra por la salida el valor de los dos campos de filacompleta2.*/
 set serveroutput on;
 declare
     filacompleta2 dept%rowtype;
     ---departamentoCodigo dept.deptno%type;
 begin
-    --select deptno,loc into filacompleta2.deptno, filacompleta2.loc from dept where deptno = 40;
     select deptno,loc into filacompleta2.deptno, filacompleta2.loc from dept where deptno = 40;
     dbms_output.put_line(filacompleta2.deptno);
-    dbms_output.put_line(filacompleta2.dname);
     dbms_output.put_line(filacompleta2.loc);
     select * into filacompleta2 from dept where deptno = 40;
     dbms_output.put_line(filacompleta2.deptno);
-    dbms_output.put_line(filacompleta2.dname);
     dbms_output.put_line(filacompleta2.loc);
 end;
 /
-
 /*Ejercicio 7
 Declarar una tabla de números y asignarle con un bucle for los números del 1 al 10. Además de
 asignar el valor dentro del bucle, mostrar el valor de la tabla por pantalla en cada iteración.*/
@@ -897,7 +680,6 @@ exception
         dbms_output.put_line('No hay valores');
 end;
 /
-
 /*Ejercicio 8
 Declarar una tabla de ‘personas’. Donde ‘personas’ es un tipo registro que almacena nombre, apellido1
 y apellido2. Asignarle valores para una persona e imprimirlos por pantalla.*/
@@ -923,7 +705,6 @@ begin
     dbms_output.put_line(tablaValores(2).nombre || ' ' || tablaValores(2).apellido1 || ' ' || tablaValores(2).apellido2);
 end;
 /
-
 /*Ejercicio 9. Sobre el ejercicio 7:
 1. Utilizar la función COUNT para devolver el número de elementos.
 2. Recorrerlo con FIRST Y LAST.
@@ -965,7 +746,6 @@ begin
     end if;
 end;
 /
-
 /*Ejercicio 10
 Se quiere mostrar por pantalla los datos de ciertos empleados (tabla emp). Se pide:
 ? Se pedirá al usuario por la entrada de plsql que introduzca dos valores integer que coincidan con dos empnos de la tabla emp,
@@ -1068,7 +848,6 @@ commit;
 palabra 2 (juntas). Si la palabra 2 tiene más letras que la palabra 1, la función devolverá una palabra que sea la unión/concatenación de
 la palabra 2 junto a la palabra 1 (en ese orden). Si ambas palabras tienen el mismo número de letras, la función debe devolver tantos
 guiones como letras tengan (ej.: si ambas palabras tienen 4 letras, debe devolver ----).*/
-
 set serveroutput on;
 create or replace function compruebaCadena(palabra1 varchar,palabra2 varchar) return varchar
 is

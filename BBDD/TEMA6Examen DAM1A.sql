@@ -163,7 +163,6 @@ Crea una función que se llame calculaDineroComandasDias que reciba como parámetr
 fecha de comandas en base de datos) y devuelva el importe total que se ha ganado ese día.
 NOTA 1: los precios de los platos están en la tabla platos.
 NOTA 2: solo nos interesan las comandas que se encuentren en estado COBRADO. */
-
 create or replace function calculaDineroComandasDias(dia comandas.fecha%type) return platos.precio%type
 is
     totalCobrado platos.precio%type;

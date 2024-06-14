@@ -1,5 +1,18 @@
 set serveroutput on;
 declare
+   cadena varchar(100) := '&introduce_cadena';
+begin
+    dbms_output.put_line('El valor guardado en cadena es: ' || cadena);
+end;
+/
+declare
+    num int := &introduce_valor;
+begin
+    dbms_output.put_line('El valor guardado en num es: ' || num);
+end;
+/
+
+declare
     num1 int := 7;
     num2 int := 3;
 begin
@@ -77,7 +90,6 @@ begin
 end;
 /
 begin 
-    hoy_es(sysdate);
     today3_is(sysdate);
 end;
 /
