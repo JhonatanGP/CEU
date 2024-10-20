@@ -1,4 +1,0 @@
-INDEX VERSION 1.134+C:\Users\jhona\Desktop\CEU\PROGRAMACION\.metadata\.plugins\org.eclipse.jdt.core
-3065598807.index
-1865797976.index
-672925659.index
