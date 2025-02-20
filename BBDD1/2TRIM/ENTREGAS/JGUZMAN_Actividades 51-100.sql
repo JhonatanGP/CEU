@@ -24,7 +24,7 @@ SELECT EMP.ENAME,DEPT.DNAME,DEPT.DEPTNO FROM EMP JOIN DEPT ON EMP.DEPTNO = DEPT.
 SELECT EM.ENAME "EMPLEADO", E.ENAME "JEFE" FROM EMP EM JOIN EMP E ON E.EMPNO = EM.MGR ;
 
 --58. Listar el nombre del empleado y el nombre de su jefe. Incluir empleados que no tengan jefe. 
-SELECT EM.ENAME "EMPLEADO", E.ENAME "JEFE" FROM EMP EM JOIN EMP E ON E.EMPNO = EM.MGR;
+SELECT EM.ENAME "EMPLEADO", E.ENAME "JEFE" FROM EMP EM left JOIN EMP E ON E.EMPNO = EM.MGR;
 
 --59. Seleccionar nombre del empleado, nombre del jefe, fechas contrato del trabajador y del jefe, de forma que la fecha de contrato del empleado sea anterior a la de su jefe.
 SELECT EM.ENAME "EMPLEADO", E.ENAME "JEFE", EM.HIREDATE "EMPLEADO", E.HIREDATE "JEFE" FROM EMP EM JOIN EMP E ON E.EMPNO = EM.MGR WHERE  E.HIREDATE > EM.HIREDATE;
@@ -106,7 +106,7 @@ SELECT ENAME,JOB,SAL FROM EMP WHERE JOB = 'SALESMAN' OR JOB = 'CLERK' AND SAL NO
 SELECT EMP.ENAME "EMPLEADO", EMP.SAL "SALARIO MENSUAL", DEPT.DNAME FROM EMP JOIN DEPT ON EMP.DEPTNO = DEPT.DEPTNO WHERE COMM > 400;
 
 --85. Listar el nombre y salario de los empleados, de forma que estén separados por una línea de puntos, y que de extremo a extremo haya 30 caracteres (por ejemplo: "KING......................5000").
-SELECT RPAD(ENAME,30,'.')||SAL "SALARIO" FROM EMP;
+SELECT RPAD(ENAME,30-length(sal),'.')||SAL "SALARIO" FROM EMP;
 
 --86. Listar los nombres de los empleados, reemplazando la letra 'a' por un '1'.
 SELECT REPLACE(ENAME,'A','L')"A X L" from EMP; 
@@ -138,16 +138,22 @@ SELECT ENAME,HIREDATE,NEXT_DAY(ADD_MONTHS(HIREDATE,6),'LUNES')"REVISION" FROM EM
 
 SELECT REPLACE(TO_CHAR(HIREDATE,'DAY'),' ',' ') || TO_CHAR(HIREDATE,'dd') || 'th de ' || REPLACE(TO_CHAR(HIREDATE,'month'),' ','') || ' de ' || TO_CHAR(HIREDATE,'yyyy') FROM EMP;
 
+select ename, hiredate, 
+trim(to_char(next_day(add_months(hiredate,6),'LUNES'),'DAY')) || ', ' || 
+trim(to_char(next_day(add_months(hiredate,6),'LUNES'),'DD')) || ' th de ' || 
+trim(to_char(next_day(add_months(hiredate,6),'LUNES'),'MONTH')) || ' de ' || 
+trim(to_char(next_day(add_months(hiredate,6),'LUNES'),'YYYY'))from emp;
+
 --95. Listar nombre, fecha contrato y día de la semana en que fueron contratados los empleados, ordenando por día de la semana, de forma que queden ordenados por lunes, martes, miércoles, jueves, viernes, sábado y domingo.
 SELECT ENAME,HIREDATE,TO_CHAR(HIREDATE,'DAY') FROM EMP ORDER BY TO_CHAR(HIREDATE,'DAY') ASC;
 
 --96. Listar nombre y comisión de los empleados. En el caso de que no gane comisión, sacar la frase "Sin comisión".
 SELECT ENAME,NVL(NULL,'SIN COMISION') FROM EMP ;
 
-/*97. Listar nombre de los empleados, y una tira de asteriscos, de forma que haya un asterisco por cada 1000$ (redondeada) que gana el empleado.
+/*97. Listar nombre de los empleados y una tira de asteriscos de forma que haya un asterisco por cada 1000$ (redondeada) que gana el empleado.
 Titula la columna 'Empleado y su salario'. Ordenar esta columna de forma que los que más ganan aparezcan primero. Los nombres deben quedar 
 ajustados a la longitud del nombre más largo. Ej.: "KING..:  *****" */
-SELECT ENAME, DECODE(SAL,SAL,'***') "SALARIO" FROM EMP;
+SELECT RPAD(ENAME,(SELECT MAX (LENGTH(ENAME)) FROM EMP),'.') || ':' || RPAD('*',ROUND(SAL/1000),'*')"EMPLEADO Y SALARIO" FROM EMP ORDER BY SAL DESC;
 
 --98. Listar los distintos nombres de puestos de los empleados, de forma que : PRESIDENT se traduzca por A, MANAGER por B, ANALYST por C, CLERK por D y el resto por E.
 SELECT  JOB , DECODE(JOB,'PRESIDENT','A','MANAGER','B','ANALYST','C','CLERK','D','SALESMAN','E') FROM EMP;
