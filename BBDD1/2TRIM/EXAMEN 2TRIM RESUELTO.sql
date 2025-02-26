@@ -5,12 +5,10 @@
  
  select categoria, sum(cantidad) from ingredientes_platos 
     join ingredientes on ingredientes.id = ingredientes_platos.id_ingrediente
-    group by categoria
-    having sum(cantidad);
---ahora tengo que hacer la subconculta, copiando lo mismo al final e igulando, esto lo pego al final.
+    group by categoria   having sum(cantidad);
+--ahora tengo que hacer la subconculta, copiando lo mismo al final e igualando, esto lo pego al final.
 select max(sum(cantidad)) from ingredientes_platos 
-    join ingredientes on ingredientes.id = ingredientes_platos.id_ingrediente
-    group by categoria; 
+    join ingredientes on ingredientes.id = ingredientes_platos.id_ingrediente   group by categoria; 
     
 select categoria, sum(cantidad) from ingredientes_platos 
     join ingredientes on ingredientes.id = ingredientes_platos.id_ingrediente
@@ -51,8 +49,7 @@ select distinct categoria from ingredientes order by categoria desc;
 /*9. Se quiere saber cuántas comandas se realizaron entre las 21:00 y las 21:10 horas (ambas inclusive) el día 01/03/21. cuando apaarezca cuantas se pone count(*)*/ 
 select count(*) from comandas where hora between '21:00' and '21:10' and fecha = '01-03-2021';
 
-/*
-10. Muestra el nombre, teléfono y localidad de los clientes que viva en Bormujos y su teléfono no empiece por 1. Debes usar alias para nombrar las tres columnas, 
+/*10. Muestra el nombre, teléfono y localidad de los clientes que viva en Bormujos y su teléfono no empiece por 1. Debes usar alias para nombrar las tres columnas, 
 la primera será "Cliente", la segunda "Tfno" y la tercera "Loc".*/
 select nombre "Cliente",telefono "Tfno",localidad "Loc" from clientes where localidad = 'Bormujos' and telefono not like '1%';
  

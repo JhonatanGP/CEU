@@ -54,15 +54,16 @@ SELECT A.ENAME,A.EMPNO,NVL(B.ENAME,0),NVL(B.EMPNO,0) FROM EMP A, EMP B WHERE A.M
 --115. Seleccionar código departamento, nombre de empleado y nombre de jefe de cada empleado del departamento que está en Boston.
 SELECT A.DEPTNO,A.ENAME,B.ENAME FROM EMP A, EMP B JOIN DEPT B ON EMP.DEPTNO = DEPT.DEPTNO WHERE A.MGR = B.EMPNO AND B.DEPT.LOC = 'BOSTON';
 --NO ME SALE
+select dept.deptno, e.ename, e2.ename , loc from emp e join dept on e.deptno = dept.deptno join emp e2 on e.mgr = e2.empno where dept.loc = 'BOSTON';
 
 --116. Seleccionar nombre y fecha contrato de los empleados contratados posteriormente al empleado 'WARD'.
 SELECT ENAME,HIREDATE FROM EMP WHERE HIREDATE < (SELECT HIREDATE FROM EMP WHERE ENAME = 'WARD');
 
---118. Seleccionar nombre y fecha de contrato de los empleados, además del nombre y fecha de contrato de su jefe, siempre y cuando la fecha del contrato del empleado fuera anterior a la fecha de contrato de su jefe.
+--117. Seleccionar nombre y fecha de contrato de los empleados, además del nombre y fecha de contrato de su jefe, siempre y cuando la fecha del contrato del empleado fuera anterior a la fecha de contrato de su jefe.
 SELECT A.ENAME, A.HIREDATE,B.ENAME, B.HIREDATE FROM EMP A, EMP B WHERE A.MGR=B.EMPNO AND A.HIREDATE < B.HIREDATE;
 
---119. Listar todos los nombres cuya longitud sea menor que la media de todas las longitudes de nombres de empleados redondeado al entero superior.
+--118. Listar todos los nombres cuya longitud sea menor que la media de todas las longitudes de nombres de empleados redondeado al entero superior.
 SELECT ENAME FROM EMP WHERE LENGTH(ENAME)<(SELECT AVG(LENGTH(ENAME))FROM EMP);
 
---120. Seleccionar el nombre de los empleados y el nombre del departamento al que pertenecen, siempre y cuando el nombre del departamento comience por la letra 'S'.
+--119. Seleccionar el nombre de los empleados y el nombre del departamento al que pertenecen, siempre y cuando el nombre del departamento comience por la letra 'S'.
 SELECT EMP.ENAME, DEPT.DNAME FROM EMP JOIN DEPT ON EMP.DEPTNO = DEPT.DEPTNO WHERE DEPT.DNAME LIKE 'S%';
