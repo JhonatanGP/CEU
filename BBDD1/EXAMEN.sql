@@ -246,7 +246,6 @@ select ingredientes.nombre from ingredientes
     join platos on ingredientes_platos.id_plato = platos.id where platos.nombre = 'Tarta de queso';
 
 --20. Devuelve el NOMBRE y la CATEGORIA de los ingredientes que empiezan por "Pi".
-
 select nombre,categoria from ingredientes where nombre like 'Pi%';
 
 --21. ¿Cuántos ingredientes pertenecen a la CATEGORIA de LACTEO? Indica tan solo el número.
@@ -254,19 +253,26 @@ select count(*) from ingredientes where categoria = 'LACTEO';
 
 /*22. ¿Cuánto dinero se ha obtenido del plato de ID = 5? Indica solo una columna con el importe con dos decimales. Recuerda que para 
 obtener dinero de un plato, los comensales han debido de pagar la comanda, es decir, tener un estado COBRADO.*/
-select * from ingredientes_platos;
-select * from  platos;
 select sum(precio) from platos join comandas on platos.id = comandas.id_plato where id_plato = 5 and estado = 'COBRADO';
-
+    
 --23. ¿Cuál es el NOMBRE del ingrediente que se usa en más platos?
+select nombre,count(*) from ingredientes join ingredientes_platos on ingredientes.id = ingredientes_platos.id_ingrediente group by ingredientes.nombre 
+    having count(*) = (select max(count(nombre)) from ingredientes join ingredientes_platos on ingredientes.id = ingredientes_platos.id_ingrediente group by ingredientes.nombre);
 
 --24. ¿En el NOMBRE de qué platos se usa el ingrediente "Aceite de oliva virgen extra"?
 
+select platos.nombre from platos join ingredientes_platos on platos.id = ingredientes_platos.id_plato 
+    join ingredientes on ingredientes_platos.id_ingrediente = ingredientes.id where ingredientes.nombre = 'Aceite de oliva virgen extra';
+
 --25. ¿Cuál es el nombre del plato que entró por comanda en COCINA el 01/03/21 a las 21:16?
+select platos.nombre from platos join comandas on platos.id = comandas.id_plato where estado = 'COCINA' and fecha = '01-03-2021' and hora = '21:16';
 
 --26. ¿Cuántas comandas, independientemente del estado de la comanda, hay registradas hasta ahora del plato "Entrante Crema de zanahorias"?
+select count(*) from comandas join platos on comandas.id_plato = platos.id where platos.nombre = 'Entrante Crema de zanahorias';
 
 --27. Indica el nombre de los platos cuyo precio sea superior a 4 euros pero se tarde menos de 15 minutos en prepararse.
+select * from comandas;
+select * from  platos;
 
 --28. Indica el nombre de cliente que ha DEVUELTO una comanda.
 

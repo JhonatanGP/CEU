@@ -123,9 +123,7 @@ select platos.nombre from ingredientes_platos
     where ingredientes.nombre = 'Aceite de oliva virgen extra';
  
 /*25. ¿Cuál es el nombre del plato que entró por comanda en COCINA el 01/03/21 a las 21:16?*/
-select platos.nombre from comandas 
-    join platos on platos.id = comandas.id_plato
-    where estado = 'COCINA' and fecha '01/03/2021' and hora = '21:26';-- foto no me sale
+-- foto no me sale
  
 /*26. ¿Cuántas comandas, independientemente del estado de la comanda, hay registradas hasta ahora del plato "Entrante Crema de zanahorias"?*/
 select * from comandas;
