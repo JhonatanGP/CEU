@@ -155,105 +155,108 @@ insert into comandas values (29,1,3,5,'SERVIDO','02-03-2021','21:37');
 insert into comandas values (30,1,3,3,'COBRADO','02-03-2021','21:55');
 insert into comandas values (31,1,3,2,'COBRADO','02-03-2021','21:55');
 insert into comandas values (32,1,3,5,'COBRADO','02-03-2021','21:55');
+
+
+select * from platos;
+select * from ingredientes;
+select * from ingredientes_platos;
+select * from clientes;
+select * from comandas;
+
 --1. ¿Cuál es la categoría de ingrediente (carne, pescado, etc.) que se usa en mayor cantidad en los platos del restaurante?
-select * from ingredientes join ingredientes_platos on id = id_ingrediente;
-select categoria,sum(cantidad) from ingredientes join ingredientes_platos on id = id_ingrediente group by categoria;
-select categoria 
-    from ingredientes
-    join ingredientes_platos on id = id_ingrediente
-    group by categoria
-    having sum(cantidad) = (
-        select max(sum(cantidad)) 
-            from ingredientes
-            join ingredientes_platos on id = id_ingrediente
-            group by categoria);
+select categoria,sum(cantidad) from ingredientes join ingredientes_platos on ingredientes.id = ingredientes_platos.id_ingrediente group by categoria
+    having sum(cantidad) = (select max(sum(cantidad)) from ingredientes_platos join ingredientes on ingredientes_platos.id_ingrediente = ingredientes.id
+    group by categoria);
+    
+SELECT CATEGORIA, SUM(CANTIDAD) FROM ingredientes 
+    JOIN ingredientes_platos ON INGREDIENTES.ID = INGREDIENTES_PLATOS.ID_INGREDIENTE GROUP BY CATEGORIA 
+    having sum(cantidad) = (SELECT MAX(SUM(CANTIDAD)) FROM ingredientes_platos 
+    JOIN ingredientes ON INGREDIENTES.ID = INGREDIENTES_PLATOS.ID_INGREDIENTE GROUP BY CATEGORIA);
+    
+/*2. Queremos el primer nombre de todos los clientes que tienen 333 en alguna parte de su teléfono. Debe ir completamente en mayúsculas. 
+No deben haber espacios en blanco al principio o al final del nombre en el resultado final.*/
+select upper(trim(substr(nombre,1,instr(nombre||' ',' ')))) from clientes where telefono like '%333%';
+select upper(trim(substr(nombre,instr(nombre,' ')))) from clientes where telefono like '%333%';
+select upper(replace(substr(nombre,1,instr(nombre||' ',' ')),' ')) from clientes where telefono like '%333%';
 
---2. Queremos el primer nombre de todos los clientes que tienen 333 en alguna parte de su teléfono. Debe ir completamente en mayúsculas. 
---No deben haber espacios en blanco al principio o al final del nombre en el resultado final.
---like '%..%' upper trim replace(c,' ') substr instr
-select * from cliente;
-select nombre,instr(nombre||' ',' ')from clientes;
-select upper(substr(nombre,1,instr(nombre||' ',' ')-1)) "El nombre"
-    from clientes
-    where telefono like '%333%';
+/*3. Se quiere mostrar todos los nombres de los ingredientes que empiecen por una letra consonante, con todas sus letras en mayúsculas, 
+y cuyo estado sea LIQUIDO.*/
+select upper(nombre) from ingredientes where substr(nombre,1,1) not in ('A','E','I','O','U') and estado = 'LIQUIDO';
 
---3. Se quiere mostrar todos los nombres de los ingredientes que empiecen por una letra consonante, con todas sus letras en mayúsculas, y cuyo estado sea LIQUIDO.
-select nombre,substr(nombre,1,1) from ingredientes;
-select nombre,substr(nombre,1,1) from ingredientes where substr(nombre,1,1) not in ('A','E','I','O','U');
-select upper (nombre) from ingredientes where substr(nombre,1,1) not in ('A','E','I','O','U') and estado = 'LIQUIDO';
+/*4. ¿Cuál es la diferencia de cantidad que hay entre el ingrediente que se usa en mayor cantidad y el que se usa en menos? 
+Expresa el valor añadiendo al final "gramos". Añade el alias de columna "Diferencia" al resultado.*/
+select max(cantidad)-min(cantidad)||' gramos' "Diferencia" from ingredientes_platos;
 
---4. ¿Cuál es la diferencia de cantidad que hay entre el ingrediente que se usa en mayor cantidad y el que se usa en menos? 
---Expresa el valor añadiendo al final "gramos". Añade el alias de columna "Diferencia" al resultado.
---sum group by max(sum) min(sum) || "" 2 select FROM DUAL
-select max(cantidad) from ingredientes_platos;
-select min(cantidad) from ingredientes_platos;
-select max(cantidad)-min(cantidad) ||' gramos' "Diferencia" from ingredientes_platos;--estaria bien por casualidad pero no esta bien del todo
-select max(sum(cantidad)) - min(sum(cantidad)) || ' gramos' "Diferencia"
-    from ingredientes_platos
-    group by id_ingrediente;
-select (select max(sum(cantidad))
-    from ingredientes_platos
-    group by id_ingrediente)-
-(select min(sum(cantidad))
-    from ingredientes_platos
-    group by id_ingrediente) from dual;
 
---5. Se quiere mostrar el nombre de los platos pero con un formato distinto. Se quiere quitar las palabras "Plato" y "Entrante", debe estar la primera 
---letra en mayúsculas de cada palabra, y se debe incluir un punto y final al terminar de mostrar el nombre del plato. No debe quedar ningún espacio ni 
---al principio ni al final del nombre del plato. replace initcap || replace/trim
-select nombre,replace(nombre,'Plato','') from platos;
-select nombre,replace(nombre,'Plato ','') from platos;
-select initcap(replace(replace(nombre,'Plato ',''),'Entrante ',''))||'.' from platos;
+/*5. Se quiere mostrar el nombre de los platos pero con un formato distinto. Se quiere quitar las palabras "Plato" y "Entrante", debe estar la 
+primera letra en mayúsculas de cada palabra, y se debe incluir un punto y final al terminar de mostrar el nombre del plato. No debe quedar ningún
+espacio ni al principio ni al final del nombre del plato.*/
+select initcap(trim(replace(replace(nombre,'Plato',''),'Entrante','')))||'.' "Nombre" from platos;
 
 --6. ¿Qué nombre de platos se sirvieron (estado SERVIDO en COMANDAS), sin repetir, el 1 de marzo de 2021 entre las 21 y las 21:30 horas?
--- join distinct between
-select distinct nombre 
-    from comandas 
-    join platos on platos.id = comandas.id_plato 
+select distinct(nombre),estado,fecha,hora from platos join comandas on platos.id = comandas.id_plato 
     where estado = 'SERVIDO' and fecha = '01-03-2021' and hora between '21:00' and '21:30';
-
-select distinct nombre 
-    from platos p
-    join comandas c on p.id = c.id_plato
-    where c.estado = 'SERVIDO' and c.fecha = '01-03-2021' and c.hora between '21:00' and '21:30';
+    
 --7. Se quiere una lista con el nombre en minúsculas de todos los ingredientes que sean CONDIMENTO y se encuentren en estado SOLIDO.
-select lower(nombre) from ingredientes where categoria = 'CONDIMENTO' and estado = 'SOLIDO';
+select lower(nombre),categoria,estado from ingredientes where categoria= 'CONDIMENTO' and estado = 'SOLIDO';
 
 --8. Se quiere saber todas las categorías (CATEGORIA) de ingredientes que haya sin repetir resultado ordenadas en orden de la z a la a.
-select distinct categoria from ingredientes order by categoria desc;
+select distinct(categoria) from ingredientes order by categoria desc;
 
 --9. Se quiere saber cuántas comandas se realizaron entre las 21:00 y las 21:10 horas (ambas inclusive) el día 01/03/21.
-select count(*) from comandas where fecha = '01-03-2021' and hora between '21:00' and '21:10';
+select count(*) from comandas where hora between '21:00' and '21:10' and fecha = '01-03-21';
 
---10. Muestra el nombre, teléfono y localidad de los clientes que viva en Bormujos y su teléfono no empiece por 1. Debes usar alias para nombrar 
---las tres columnas, la primera será "Cliente", la segunda "Tfno" y la tercera "Loc".
+/*10. Muestra el nombre, teléfono y localidad de los clientes que viva en Bormujos y su teléfono no empiece por 1. Debes usar alias para nombrar 
+las tres columnas, la primera será "Cliente", la segunda "Tfno" y la tercera "Loc".*/
+
+select nombre"Cliente",telefono"Tfno",localidad"Loc" from clientes where localidad = 'Bormujos' and telefono not like '1%';
 
 --11. Muestra todos los datos de la tabla ingredientes en mayúsculas y que se encuentren en estado SOLIDO.
+select upper(id),upper(nombre),upper(categoria),upper(estado) from ingredientes where estado = 'SOLIDO';
 
---12. ¿Cuál es el ingrediente cuyo nombre tiene más caracteres? Pon en una única columna el nombre del ingrediente: número de caracteres. Ej.: Guisante: 8
+--12. Ingrediente cuyo nombre tiene más caracteres? Pon en una única columna el nombre del ingrediente: número de caracteres. Ej.: Guisante: 8
+select nombre||': '|| length(nombre) from ingredientes where length(nombre) = (select max(length(nombre)) from ingredientes);
 
 --13. ¿Cuántas comandas se han hecho en MARTES? Debe dar 11.
+select count(*) from comandas where trim(to_char(fecha,'DAY')) = 'MARTES';
 
---14. Se quiere saber cuántos platos se preparan en 10 minutos, cuantos en 15 y cuantos en 25. Muestra una lista agrupada con el tiempo de preparación y 
---el número de platos que tardan ese tiempo. EL resultado debe estar ordenado por el tiempo de preparación de menor a mayor.
+/*14. Cuántos platos se preparan en 10 minutos, cuantos en 15 y cuantos en 25. Muestra una lista agrupada con el tiempo de preparación 
+y el número de platos que tardan ese tiempo. EL resultado debe estar ordenado por el tiempo de preparación de menor a mayor.*/
+select tiempo_preparacion,count(tiempo_preparacion) from platos group by tiempo_preparacion order by tiempo_preparacion asc;
 
---15. Necesitamos una lista con el NOMBRE y la LOCALIDAD de los clientes, pero el NOMBRE debe tener todas las letras en mayúsculas y que no haya ningún 
---espacio entre nombres compuestos. Ej.: PEDROJUAN.
+/*15. Lista con el NOMBRE y la LOCALIDAD de los clientes, pero el NOMBRE debe tener todas las letras en mayúsculas y que no haya ningún 
+espacio entre nombres compuestos. Ej.: PEDROJUAN.*/
+select upper(replace(nombre,' ','')), localidad from clientes;
 
 --16. Indica el valor medio del PRECIO de los platos con REDONDEO de dos decimales.
+select to_char(round(avg(precio),2),'9.00L')"PRECIO" from platos;
+SELECT TRIM(TO_CHAR(ROUND(AVG(PRECIO),2),'9.00L'))"PRECIO" FROM PLATOS;
 
 --17. Indica el NOMBRE del plato más caro.
+select nombre,to_char(precio,'99.00L')"PRECIO" from platos where precio = (select max(precio) from platos);
 
 --18. Indica la lista de ingredientes (NOMBRE y CANTIDAD en 2 columnas diferentes) del plato "Entrante bacalao en aceite".
+select ingredientes.nombre, ingredientes_platos.cantidad from ingredientes 
+    join ingredientes_platos on ingredientes.id = ingredientes_platos.id_ingrediente
+    join platos on ingredientes_platos.id_plato = platos.id where platos.nombre = 'Entrante bacalao en aceite';
 
 --19. Indica la lista de ingredientes (NOMBRE) del plato "Tarta de queso".
+select ingredientes.nombre from ingredientes 
+    join ingredientes_platos on ingredientes.id = ingredientes_platos.id_ingrediente
+    join platos on ingredientes_platos.id_plato = platos.id where platos.nombre = 'Tarta de queso';
 
 --20. Devuelve el NOMBRE y la CATEGORIA de los ingredientes que empiezan por "Pi".
 
---21. ¿Cuántos ingredientes pertenecen a la CATEGORIA de LACTEO? Indica tan solo el número.
+select nombre,categoria from ingredientes where nombre like 'Pi%';
 
---22. ¿Cuánto dinero se ha obtenido del plato de ID = 5? Indica solo una columna con el importe con dos decimales. Recuerda que para 
---obtener dinero de un plato, los comensales han debido de pagar la comanda, es decir, tener un estado COBRADO.
+--21. ¿Cuántos ingredientes pertenecen a la CATEGORIA de LACTEO? Indica tan solo el número.
+select count(*) from ingredientes where categoria = 'LACTEO';
+
+/*22. ¿Cuánto dinero se ha obtenido del plato de ID = 5? Indica solo una columna con el importe con dos decimales. Recuerda que para 
+obtener dinero de un plato, los comensales han debido de pagar la comanda, es decir, tener un estado COBRADO.*/
+select * from ingredientes_platos;
+select * from  platos;
+select sum(precio) from platos join comandas on platos.id = comandas.id_plato where id_plato = 5 and estado = 'COBRADO';
 
 --23. ¿Cuál es el NOMBRE del ingrediente que se usa en más platos?
 
@@ -269,12 +272,12 @@ select count(*) from comandas where fecha = '01-03-2021' and hora between '21:00
 
 --29. ¿Cuántas comandas se han SERVIDO a la mesa 1 entre las 21:20 y las 21:50?
 
---30. Indica la CATEGORIA del ingrediente Perejil. Debes mostrar dicha categoría con el tamaño/número de caracteres que sea el tamaño de la 
---categoría que tenga menos letras. En este caso, es OTRO, que tiene 4 caracteres, pero no puedes usar el número 4, debes calcular en tu query 
---ese tamaño mínimo.
+/*30. Indica la CATEGORIA del ingrediente Perejil. Debes mostrar dicha categoría con el tamaño/número de caracteres que sea el tamaño de la 
+categoría que tenga menos letras. En este caso, es OTRO, que tiene 4 caracteres, pero no puedes usar el número 4, debes calcular en tu query 
+ese tamaño mínimo.*/
 
---31. Se quiere saber el nombre del cliente, el tiempo de preparación del plato que pidió, el nombre del ingrediente que se usa en mayor 
---cantidad en dicho plato que pidió y la categoría de dicho ingrediente, para aquella comanda realizada en la mesa 1 que fue DEVUELTO.
+/*31. Se quiere saber el nombre del cliente, el tiempo de preparación del plato que pidió, el nombre del ingrediente que se usa en mayor 
+cantidad en dicho plato que pidió y la categoría de dicho ingrediente, para aquella comanda realizada en la mesa 1 que fue DEVUELTO.*/
 
---32. Se quiere mostrar una lista con todos los ingredientes en una columna, y en otra columna la suma de la cantidad empleada por cada
---ingrediente en los distintos platos.
+/*32. Se quiere mostrar una lista con todos los ingredientes en una columna, y en otra columna la suma de la cantidad empleada por cada
+ingrediente en los distintos platos.*/
